@@ -6,6 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -49,10 +55,34 @@ public class MainActivity extends AppCompatActivity {
         formAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent otherActivity = new Intent(getApplicationContext(), formulairePremiereConnexion.class);
-                startActivity(otherActivity);
-                finish();
+                //Intent otherActivity = new Intent(getApplicationContext(), formulairePremiereConnexion.class);
+                //startActivity(otherActivity);
+                //finish();
+                readData();
             }
         });
+
+
+    }
+
+
+    private void readData() {
+        String fileName = getResources().getString(R.string.dateUser);
+        try {
+            // Open stream to read file.
+            FileInputStream in = this.openFileInput(fileName);
+
+            BufferedReader br= new BufferedReader(new InputStreamReader(in));
+
+            StringBuilder sb= new StringBuilder();
+            String s= null;
+            while((s= br.readLine())!= null)  {
+                sb.append(s).append("\n");
+            }
+            ((TextView) findViewById(R.id.ret)).setText(sb.toString());
+
+        } catch (Exception e) {
+            Toast.makeText(this,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
     }
 }

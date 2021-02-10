@@ -30,4 +30,9 @@
         android:layout_margin="50pt"
         android:text="@string/no_account_button"/>
 
+    <TextView
+        android:id="@+id/ret"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
