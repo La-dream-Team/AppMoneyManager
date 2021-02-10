@@ -53,10 +53,11 @@ public class formulairePremiereConnexion extends AppCompatActivity {
                 }
                 else
                     {
-                    save_Acc(firstName, lastName, dev);
-                    Intent otherActivity = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(otherActivity);
-                    finish();
+                        System.out.println("bonjour " + firstName + " "  + lastName + " qui a pour devise " + dev.toString());
+                        save_Acc(firstName, lastName, dev);
+                        Intent otherActivity = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(otherActivity);
+                        finish();
                 }
             }
         });
@@ -83,6 +84,30 @@ public class formulairePremiereConnexion extends AppCompatActivity {
         int butYenPer = findViewById(R.id.butYenPer).getId();
         int butRouble = findViewById(R.id.butRouble).getId();
 
+        if (select == butEuroPer)
+            return Devise.Euro;
+        else
+        {
+            if  (select == butDolarPer)
+                return Devise.Dolar_American;
+            else
+                {
+                if (select == butLivrePer)
+                    return Devise.Livre_Sterling;
+                else
+                {
+                    if(select == butYenPer)
+                        return Devise.Yen;
+                    else
+                    {
+                        if(select == butRouble)
+                            return Devise.Rouble;
+                        else
+                            return null;
+                    }
+                }
+            }
+        }
         /*switch(select){
             case butEuroPer :
                 return Devise.Euro;
@@ -102,9 +127,6 @@ public class formulairePremiereConnexion extends AppCompatActivity {
             default:
                 return null;
         }*/
-
-
-        return null;
     }
 
     private void save_Acc(String fist, String last, Devise C)
