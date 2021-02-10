@@ -6,4 +6,5 @@
     <string name="yesbutton">Oui</string>
     <string name="noButton">Non</string>
     <string name="toastFormulaire">Vous n\'avez pas bien rempli le formulaire !</string>
+    <string name="dateUser">user.txt</string>
 </resources>

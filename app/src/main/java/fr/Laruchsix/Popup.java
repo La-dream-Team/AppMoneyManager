@@ -58,7 +58,7 @@ public class Popup extends Dialog {
 
     public void build()
     {
-        show();
+        this.show();
         titleView.setText(title);
         subTitleView.setText(subTitle);
     }

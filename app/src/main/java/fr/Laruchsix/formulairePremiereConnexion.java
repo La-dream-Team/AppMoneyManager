@@ -11,6 +11,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.io.FileOutputStream;
+
 public class formulairePremiereConnexion extends AppCompatActivity {
 
     @Override
@@ -78,7 +80,7 @@ public class formulairePremiereConnexion extends AppCompatActivity {
         select = findViewById(gp.getCheckedRadioButtonId()).getId();
 
         // on recupère les ids de tous les boutons
-        final int butEuroPer = findViewById(R.id.butEuroPer).getId();
+        int butEuroPer = findViewById(R.id.butEuroPer).getId();
         int butDolarPer = findViewById(R.id.butDolarPer).getId();
         int butLivrePer = findViewById(R.id.butLivrePer).getId();
         int butYenPer = findViewById(R.id.butYenPer).getId();
@@ -129,8 +131,22 @@ public class formulairePremiereConnexion extends AppCompatActivity {
         }*/
     }
 
-    private void save_Acc(String fist, String last, Devise C)
+    private void save_Acc(String first, String last, Devise devise)
     {
+        // on créé la liste la chaîne de caractère de données
+        String data = (first + " " + last + " " + devise.toString());
 
+        String fileName = getResources().getString(R.string.dateUser) ;
+
+        try {
+            // Open Stream to write file.
+            FileOutputStream out = this.openFileOutput(fileName, MODE_PRIVATE);
+
+            out.write(data.getBytes());
+            out.close();
+            Toast.makeText(this,"File saved!",Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Toast.makeText(this,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
+            }
     }
 }
