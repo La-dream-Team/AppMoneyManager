@@ -70,33 +70,33 @@
         tools:layout_editor_absoluteX="0dp">
 
         <RadioGroup
+            android:id="@+id/butgpAcc"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <RadioButton
-                android:id="@+id/butEuro"
+                android:id="@+id/butEuroPer"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-
                 android:layout_marginLeft="30dp"
                 android:text="Euro" />
 
             <RadioButton
-                android:id="@+id/butDolar"
+                android:id="@+id/butDolarPer"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginLeft="30dp"
                 android:text="Dolar American" />
 
             <RadioButton
-                android:id="@+id/butLivre"
+                android:id="@+id/butLivrePer"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginLeft="30dp"
                 android:text="Livre Sterling" />
 
             <RadioButton
-                android:id="@+id/butYen"
+                android:id="@+id/butYenPer"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginLeft="30dp"
