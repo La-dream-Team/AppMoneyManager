@@ -8,7 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 
 public class AccountsSelect extends AppCompatActivity {
 
@@ -17,14 +20,28 @@ public class AccountsSelect extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accounts_select);
 
+        // bouton reset
         Button reset = findViewById(R.id.resetuser);
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reset_Acc();
+                reset_User();
 
                 // on relance la page par default
                 Intent otherActivity = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(otherActivity);
+                finish();
+            }
+        });
+
+        // button Add Acc
+        Button addAcc = findViewById(R.id.ajoutAcc);
+        addAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // start new actvity
+                Intent otherActivity = new Intent(getApplicationContext(), formulaireCreationDeCompte.class);
                 startActivity(otherActivity);
                 finish();
             }
@@ -35,7 +52,7 @@ public class AccountsSelect extends AppCompatActivity {
 
 
 
-    private void reset_Acc()
+    private void reset_User()
     {
         // on créé la liste la chaîne de caractère de données
         String data = "";
@@ -53,4 +70,26 @@ public class AccountsSelect extends AppCompatActivity {
             Toast.makeText(this,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
         }
     }
+
+    private String readDataAccount() {
+        String fileName = getResources().getString(R.string.dataAccount);
+        StringBuilder sb;
+        try {
+            // Open stream to read file.
+            FileInputStream in = this.openFileInput(fileName);
+
+            BufferedReader br= new BufferedReader(new InputStreamReader(in));
+
+            sb= new StringBuilder();
+            String s= null;
+            while((s= br.readLine())!= null)  {
+                sb.append(s).append("\n");
+            }
+        } catch (Exception e) {
+            //Toast.makeText(this,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
+            return "";
+        }
+        return sb.toString();
+    }
+
 }
