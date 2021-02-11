@@ -6,12 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class AccountsSelect extends AppCompatActivity {
 
@@ -47,11 +51,15 @@ public class AccountsSelect extends AppCompatActivity {
             }
         });
 
+        // liste de comptes
+        List<Account> accountsList = new ArrayList<>();
+        accountsList.add(new Account(10000, "Main", "Mon compte principal", null, Devise.Euro));
+        accountsList.add(new Account(500, "Francais", "Mon compte francais", null, Devise.Dolar_American));
+        accountsList.add(new Account(3065, "Espagnole", "Mon compte espagnol",null, Devise.Yen));
+
+        ListView accountListView = findViewById(R.id.account_list);
+        accountListView.setAdapter(new AccountAdapter(this, accountsList));
     }
-
-
-
-
     private void reset_User()
     {
         // on créé la liste la chaîne de caractère de données

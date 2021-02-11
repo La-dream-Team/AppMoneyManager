@@ -8,4 +8,9 @@
     <string name="toastFormulaire">Vous n\'avez pas bien rempli le formulaire !</string>
     <string name="dateUser">user.txt</string>
     <string name="dataAccount">account.txt</string>
+    <string name="account_name">Nom du compte :</string>
+    <string name="account_description">Description du compte</string>
+    <string name="account_balance">Balance du compte</string>
+    <string name="total_balance">Balance total de vos comptes :</string>
+    <string name="account_devise">Devise du compte</string>
 </resources>
