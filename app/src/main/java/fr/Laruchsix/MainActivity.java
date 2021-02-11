@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
             // autre pop up
             this.popup = new AlertDialog.Builder(this.activity);
-            this.popup.setTitle("Bonjour, merci d'avoir téléchargé MoneyMananger");
-            this.popup.setMessage("Pour continuer appuyer sur oui afin de remplir un petit formulaire pour facilier la gestion de l'application. \nPour quitter appuyer sur non.");
+            this.popup.setTitle("Bonjour, merci d'avoir téléchargé MoneyManager");
+            this.popup.setMessage("Pour continuer appuyez sur oui afin de remplir un petit formulaire pour faciliter la gestion de l'application. \nPour quitter appuyez sur non.");
             this.popup.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {

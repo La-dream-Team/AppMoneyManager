@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MoneyMananger</string>
+    <string name="app_name">MoneyManager</string>
     <string name="no_account">Bonjour, Bienvenue sur L\'application Money Manager.</string>
     <string name="no_accountbis">Appuyer sur le bouton pour continuer.</string>
     <string name="no_account_button">Créer un compte</string>
