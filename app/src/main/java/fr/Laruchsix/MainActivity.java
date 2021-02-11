@@ -1,7 +1,9 @@
 package fr.Laruchsix;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,12 +17,38 @@ import java.io.InputStreamReader;
 
 
 public class MainActivity extends AppCompatActivity {
-    private Popup popup;
+    private AlertDialog.Builder  popup;
+    private MainActivity activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        this.activity = this;
+
+        // autre pop up
+        this.popup = new AlertDialog.Builder(this.activity);
+        this.popup.setTitle("Bonjour, merci d'avoir téléchargé MoneyMananger");
+        this.popup.setMessage("Pour continuer appuyer sur oui afin de remplir un petit formulaire pour facilier la gestion de l'application. \nPour quitter appuyer sur non.");
+        this.popup.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent otherActivity = new Intent(getApplicationContext(), formulairePremiereConnexion.class);
+                startActivity(otherActivity);
+                finish();
+            }
+        });
+
+        this.popup.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        this.popup.show();
+
+
+        /*
         // initialisation du popup
         this.popup = new Popup(this);
         this.popup.setTitle("Bonjour, merci d'avoir téléchargé MoneyMananger");
@@ -49,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         // on affiche le popup
         this.popup.build();
-
+        */
         final Button formAcc = (Button) findViewById(R.id.newAccount);
 
         formAcc.setOnClickListener(new View.OnClickListener() {
