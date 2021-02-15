@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -14,10 +15,15 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 public class AccountsSelect extends AppCompatActivity {
+
+    private int totalBalance = 0;
+    private TextView totalBalanceView;
+    private List<Account> accountsList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,15 +57,26 @@ public class AccountsSelect extends AppCompatActivity {
             }
         });
 
-        // liste de comptes
-        List<Account> accountsList = new ArrayList<>();
-        accountsList.add(new Account(10000, "Main", "Mon compte principal", null, Devise.Euro));
-        accountsList.add(new Account(500, "Francais", "Mon compte francais", null, Devise.Dolar_American));
-        accountsList.add(new Account(3065, "Espagnole", "Mon compte espagnol",null, Devise.Yen));
+        addNewAccount(10000, "Main", "Mon compte principal", Devise.Euro);
+        addNewAccount(520, "Francais", "Mon compte francais", Devise.Dolar_American);
+        addNewAccount(3065, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        addNewAccount(10000, "Main", "Mon compte principal", Devise.Euro);
+        addNewAccount(520, "Francais", "Mon compte francais", Devise.Dolar_American);
+        addNewAccount(3065, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        addNewAccount(10000, "Main", "Mon compte principal", Devise.Euro);
+        addNewAccount(520, "Francais", "Mon compte francais", Devise.Dolar_American);
+        addNewAccount(3065, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        addNewAccount(10000, "Main", "Mon compte principal", Devise.Euro);
+        addNewAccount(520, "Francais", "Mon compte francais", Devise.Dolar_American);
+        addNewAccount(3065, "Espagnol", "Mon compte espagnol", Devise.Yen);
 
         ListView accountListView = findViewById(R.id.account_list);
         accountListView.setAdapter(new AccountAdapter(this, accountsList));
+
+        this.totalBalanceView = (TextView)findViewById(R.id.total_balance);
+        changeTotalBalanceViewText();
     }
+
     private void reset_User()
     {
         // on créé la liste la chaîne de caractère de données
@@ -100,4 +117,20 @@ public class AccountsSelect extends AppCompatActivity {
         return sb.toString();
     }
 
+    private int getTotalBalance()
+    {
+        return this.totalBalance;
+    }
+
+    private void changeTotalBalanceViewText()
+    {
+        this.totalBalanceView.setText("Balance total de vos comptes :" + getTotalBalance());
+    }
+
+    private void addNewAccount(int balance, String name, String description, Devise devise)
+    {
+        Date currentTime = Calendar.getInstance().getTime();
+        this.accountsList.add(new Account(balance, name, description, currentTime, devise));
+        this.totalBalance += balance;
+    }
 }
