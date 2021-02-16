@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,9 +22,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class AccountsSelect extends AppCompatActivity {
+public class AccountsSelect extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    private int totalBalance = 0;
+    private float totalBalance = 0.0f;
     private TextView totalBalanceView;
     private List<Account> accountsList = new ArrayList<>();
 
@@ -57,24 +60,30 @@ public class AccountsSelect extends AppCompatActivity {
             }
         });
 
-        addNewAccount(10000, "Main", "Mon compte principal", Devise.Euro);
-        addNewAccount(520, "Francais", "Mon compte francais", Devise.Dolar_American);
-        addNewAccount(3065, "Espagnol", "Mon compte espagnol", Devise.Yen);
-        addNewAccount(10000, "Main", "Mon compte principal", Devise.Euro);
-        addNewAccount(520, "Francais", "Mon compte francais", Devise.Dolar_American);
-        addNewAccount(3065, "Espagnol", "Mon compte espagnol", Devise.Yen);
-        addNewAccount(10000, "Main", "Mon compte principal", Devise.Euro);
-        addNewAccount(520, "Francais", "Mon compte francais", Devise.Dolar_American);
-        addNewAccount(3065, "Espagnol", "Mon compte espagnol", Devise.Yen);
-        addNewAccount(10000, "Main", "Mon compte principal", Devise.Euro);
-        addNewAccount(520, "Francais", "Mon compte francais", Devise.Dolar_American);
-        addNewAccount(3065, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
+        addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
+        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
+        addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
+        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
+        addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
+        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
+        addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
+        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
 
         ListView accountListView = findViewById(R.id.account_list);
         accountListView.setAdapter(new AccountAdapter(this, accountsList));
 
-        this.totalBalanceView = (TextView)findViewById(R.id.total_balance);
+        this.totalBalanceView = (TextView)findViewById(R.id.total_balance_number);
         changeTotalBalanceViewText();
+
+        Spinner currencySpinner = findViewById(R.id.currency_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.currency, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        currencySpinner.setAdapter(adapter);
+        currencySpinner.setOnItemSelectedListener(this);
     }
 
     private void reset_User()
@@ -98,20 +107,30 @@ public class AccountsSelect extends AppCompatActivity {
 
 
 
-    private int getTotalBalance()
+    private float getTotalBalance()
     {
         return this.totalBalance;
     }
 
     private void changeTotalBalanceViewText()
     {
-        this.totalBalanceView.setText("Balance total de vos comptes :" + getTotalBalance());
+        this.totalBalanceView.setText(String.valueOf(getTotalBalance()));
     }
 
-    private void addNewAccount(int balance, String name, String description, Devise devise)
+    private void addNewAccount(float balance, String name, String description, Devise devise)
     {
         Date currentTime = Calendar.getInstance().getTime();
         this.accountsList.add(new Account(balance, name, description, currentTime, devise));
         this.totalBalance += balance;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
