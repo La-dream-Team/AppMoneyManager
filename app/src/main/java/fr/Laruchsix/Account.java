@@ -20,7 +20,7 @@ public class Account {
     private Devise accountDevise;
 
     // constructeurs
-    public Account(int balance, String name, String description
+    public Account(float balance, String name, String description
                    ,Date currentDate, Person owner, Devise devise)
 
     {
@@ -151,7 +151,7 @@ public class Account {
     public String toString()
     {
         String ret = this.name + " " + this.description + " " + this.accountDevise.toString() + " "
-                + this.DEFAULT_BALANCE + " " + this.currentBalance + " " + this.activites.size();
+                + this.DEFAULT_BALANCE + " " + this.activites.size();
         for(Activity currentAct : this.activites)
         {
             ret = ret + "\n" + currentAct.toString();

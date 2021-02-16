@@ -150,8 +150,20 @@ public class FonctionsAux {
               sb= new StringBuilder();
               String s= null;
               while((s= br.readLine())!= null)  {
-                  sb.append(s).append("\n");
+                  sb = sb.append(s).append("\n");
+                  String[] person = sb.toString().split(" ");
+                  Person p = new Person(Devise.valueOf(person[2]), person[0], person[1]);
 
+                  for(int i=0; i < Integer.getInteger(person[3]) ; i++)
+                  {
+                      sb = sb.append(br.readLine()).append("\n");
+                      String[] currentStringAcc = sb.toString().split(" ");
+                      Account currentAcc = p.createAcc(Float.valueOf(currentStringAcc[3]), currentStringAcc[0],
+                              currentStringAcc[1], Devise.valueOf(currentStringAcc[2]));
+
+                      for int j=0 ; j < InterfaceColors currentStringAcc[4]
+
+                  }
               }
           } catch (Exception e) {
               //Toast.makeText(this,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();

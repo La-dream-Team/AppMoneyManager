@@ -64,6 +64,13 @@ public class Person {
         }
         this.globalBalance = sum;
     }
+
+    public Account createAcc(float balance, String name, String description, Devise devise)
+    {
+        Account ret = new Account(balance, name, description, null, this, devise);
+        this.acconts.add(ret);
+        return ret;
+    }
     
     public void forceRefresh()
     {
