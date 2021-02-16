@@ -20,7 +20,7 @@ public class Account {
     private Devise accountDevise;
 
     // constructeurs
-    public Account(int balance, String name, String description
+    public Account(float balance, String name, String description
                    ,Date currentDate/*, Person owner*/, Devise devise)
     {
         this.DEFAULT_BALANCE = balance;

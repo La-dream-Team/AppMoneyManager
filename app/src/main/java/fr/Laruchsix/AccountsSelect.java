@@ -24,7 +24,7 @@ import java.util.List;
 
 public class AccountsSelect extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    private int totalBalance = 0;
+    private float totalBalance = 0.0f;
     private TextView totalBalanceView;
     private List<Account> accountsList = new ArrayList<>();
 
@@ -60,18 +60,18 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
             }
         });
 
-        addNewAccount(10000, "Main", "Mon compte principal", Devise.Euro);
-        addNewAccount(520, "Francais", "Mon compte francais", Devise.Dolar_American);
-        addNewAccount(3065, "Espagnol", "Mon compte espagnol", Devise.Yen);
-        addNewAccount(10000, "Main", "Mon compte principal", Devise.Euro);
-        addNewAccount(520, "Francais", "Mon compte francais", Devise.Dolar_American);
-        addNewAccount(3065, "Espagnol", "Mon compte espagnol", Devise.Yen);
-        addNewAccount(10000, "Main", "Mon compte principal", Devise.Euro);
-        addNewAccount(520, "Francais", "Mon compte francais", Devise.Dolar_American);
-        addNewAccount(3065, "Espagnol", "Mon compte espagnol", Devise.Yen);
-        addNewAccount(10000, "Main", "Mon compte principal", Devise.Euro);
-        addNewAccount(520, "Francais", "Mon compte francais", Devise.Dolar_American);
-        addNewAccount(3065, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
+        addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
+        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
+        addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
+        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
+        addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
+        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
+        addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
+        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
 
         ListView accountListView = findViewById(R.id.account_list);
         accountListView.setAdapter(new AccountAdapter(this, accountsList));
@@ -126,7 +126,7 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         return sb.toString();
     }
 
-    private int getTotalBalance()
+    private float getTotalBalance()
     {
         return this.totalBalance;
     }
@@ -136,7 +136,7 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         this.totalBalanceView.setText(String.valueOf(getTotalBalance()));
     }
 
-    private void addNewAccount(int balance, String name, String description, Devise devise)
+    private void addNewAccount(float balance, String name, String description, Devise devise)
     {
         Date currentTime = Calendar.getInstance().getTime();
         this.accountsList.add(new Account(balance, name, description, currentTime, devise));
