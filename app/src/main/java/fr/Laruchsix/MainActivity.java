@@ -22,54 +22,35 @@ public class MainActivity extends AppCompatActivity {
     private String data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        this.data = readData();
-        if(this.data.equals("") || this.data.equals(null))
-        {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main2);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-            this.activity = this;
+        this.activity = this;
 
 
-            // autre pop up
-            this.popup = new AlertDialog.Builder(this.activity);
-            this.popup.setTitle("Bonjour, merci d'avoir téléchargé MoneyManager");
-            this.popup.setMessage("Pour continuer appuyez sur oui afin de remplir un petit formulaire pour faciliter la gestion de l'application. \nPour quitter appuyez sur non.");
-            this.popup.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Intent otherActivity = new Intent(getApplicationContext(), formulairePremiereConnexion.class);
-                    startActivity(otherActivity);
-                    finish();
-                }
-            });
+        // but new
+        Button newuser = findViewById(R.id.butnew);
+        newuser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent otherActivity = new Intent(getApplicationContext(), formulairePremiereConnexion.class);
+                startActivity(otherActivity);
+                finish();
+            }
+        });
 
-            this.popup.setNegativeButton("Non", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                }
-            });
+        // button load
+        Button loaduser= findViewById(R.id.butload);
+        loaduser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-            this.popup.show();
+            }
+        });
 
 
-            final Button formAcc = (Button) findViewById(R.id.newAccount);
 
-            formAcc.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent otherActivity = new Intent(getApplicationContext(), formulairePremiereConnexion.class);
-                    startActivity(otherActivity);
-                    finish();
-                }
-            });
-        }
-        else
-        {
-            Intent otherActivity = new Intent(getApplicationContext(), AccountsSelect.class);
-            startActivity(otherActivity);
-            finish();
-        }
+
 
     }
 

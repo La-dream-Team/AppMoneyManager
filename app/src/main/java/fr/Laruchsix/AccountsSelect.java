@@ -96,26 +96,7 @@ public class AccountsSelect extends AppCompatActivity {
         }
     }
 
-    private String readDataAccount() {
-        String fileName = getResources().getString(R.string.dataAccount);
-        StringBuilder sb;
-        try {
-            // Open stream to read file.
-            FileInputStream in = this.openFileInput(fileName);
 
-            BufferedReader br= new BufferedReader(new InputStreamReader(in));
-
-            sb= new StringBuilder();
-            String s= null;
-            while((s= br.readLine())!= null)  {
-                sb.append(s).append("\n");
-            }
-        } catch (Exception e) {
-            //Toast.makeText(this,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
-            return "";
-        }
-        return sb.toString();
-    }
 
     private int getTotalBalance()
     {
