@@ -11,6 +11,14 @@
     <string name="account_name">Nom du compte :</string>
     <string name="account_description">Description du compte</string>
     <string name="account_balance">Balance du compte</string>
-    <string name="total_balance">Balance total de vos comptes : </string>
-    <string name="account_devise">Devise du compte</string>
+    <string name="total_balance_text">Balance total de vos comptes : </string>
+    <string name="total_balance_number"> 0 </string>
+    <string name="account_currency">Devise du compte</string>
+    <string-array name="currency">
+        <item>€</item>
+        <item>£</item>
+        <item>¥</item>
+        <item>$</item>
+        <item>₽</item>
+    </string-array>
 </resources>

@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +22,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class AccountsSelect extends AppCompatActivity {
+public class AccountsSelect extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private int totalBalance = 0;
     private TextView totalBalanceView;
@@ -73,8 +76,14 @@ public class AccountsSelect extends AppCompatActivity {
         ListView accountListView = findViewById(R.id.account_list);
         accountListView.setAdapter(new AccountAdapter(this, accountsList));
 
-        this.totalBalanceView = (TextView)findViewById(R.id.total_balance);
+        this.totalBalanceView = (TextView)findViewById(R.id.total_balance_number);
         changeTotalBalanceViewText();
+
+        Spinner currencySpinner = findViewById(R.id.currency_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.currency, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        currencySpinner.setAdapter(adapter);
+        currencySpinner.setOnItemSelectedListener(this);
     }
 
     private void reset_User()
@@ -124,7 +133,7 @@ public class AccountsSelect extends AppCompatActivity {
 
     private void changeTotalBalanceViewText()
     {
-        this.totalBalanceView.setText("Balance total de vos comptes :" + getTotalBalance());
+        this.totalBalanceView.setText(String.valueOf(getTotalBalance()));
     }
 
     private void addNewAccount(int balance, String name, String description, Devise devise)
@@ -132,5 +141,15 @@ public class AccountsSelect extends AppCompatActivity {
         Date currentTime = Calendar.getInstance().getTime();
         this.accountsList.add(new Account(balance, name, description, currentTime, devise));
         this.totalBalance += balance;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

@@ -47,7 +47,7 @@ public class AccountAdapter extends BaseAdapter {
         String accountName = currentAccount.getName();
         String accountDescription = currentAccount.getDescription();
         String accountBalance = String.valueOf(currentAccount.getCurrentBalance());
-        String accountDevise = currentAccount.getDevise().toString();
+        String accountDevise = CurrencyTranslation.currencySymbol(currentAccount.getDevise());
 
         TextView accountNameView = convertView.findViewById(R.id.account_name);
         accountNameView.setText(accountName);
@@ -55,7 +55,8 @@ public class AccountAdapter extends BaseAdapter {
         TextView accountDescriptionView = convertView.findViewById(R.id.account_description);
         accountDescriptionView.setText(accountDescription);
 
-        TextView accountDeviseView = convertView.findViewById(R.id.account_devise);
+        TextView accountDeviseView = convertView.findViewById(R.id.account_currency);
+
         accountDeviseView.setText(accountDevise);
 
         TextView accountBalanceView = convertView.findViewById(R.id.account_balance);
