@@ -60,29 +60,31 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
             }
         });
 
-        addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
-        addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
-        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
-        addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
-        addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
-        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
-        addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
-        addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
-        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
-        addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
-        addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
-        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        //Propietaire crée pour tester
+        Person owner = new Person( Devise.Euro, "Remy", "Debacque");
 
+        //Liste de comptes
+        addNewAccount(10000.86f, "Main", "Mon compte principal", owner, Devise.Euro);
+        addNewAccount(520.23f, "Francais", "Mon compte francais", owner, Devise.Dolar_American);
+        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", owner, Devise.Yen);
+
+        //On ajoute l'adapter à la liste de comptes
         ListView accountListView = findViewById(R.id.account_list);
         accountListView.setAdapter(new AccountAdapter(this, accountsList));
 
+        //On initialise le compteur
         this.totalBalanceView = (TextView)findViewById(R.id.total_balance_number);
         changeTotalBalanceViewText();
 
+        //On recupere la devise de reference choisi par le propietaire de ces comptes
+        int currencyIndex = getCurrencyStringIndex(owner.getDevise());
+
+        //On recupere le spinner et on l'associe à la string array que doit traiter
         Spinner currencySpinner = findViewById(R.id.currency_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.currency, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         currencySpinner.setAdapter(adapter);
+        currencySpinner.setSelection(currencyIndex);
         currencySpinner.setOnItemSelectedListener(this);
     }
 
@@ -117,10 +119,10 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         this.totalBalanceView.setText(String.valueOf(getTotalBalance()));
     }
 
-    private void addNewAccount(float balance, String name, String description, Devise devise)
+    private void addNewAccount(float balance, String name, String description, Person owner,  Devise devise)
     {
         Date currentTime = Calendar.getInstance().getTime();
-        this.accountsList.add(new Account(balance, name, description, currentTime, devise));
+        this.accountsList.add(new Account(balance, name, description, currentTime, owner, devise));
         this.totalBalance += balance;
     }
 
@@ -133,4 +135,24 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    public int getCurrencyStringIndex (Devise currency)
+    {
+        String[] tab = getResources().getStringArray(R.array.currency);
+        switch (currency) {
+            case Euro:
+                return 0;
+            case Livre_Sterling:
+                return 1;
+            case Yen:
+                return 2;
+            case Dolar_American:
+                return 3;
+            case Rouble:
+                return 4;
+            default:
+                return -1;
+        }
+    }
+
 }

@@ -101,7 +101,7 @@ public class Account {
     {
         return this.owner;
     }
-
+/*
     // methodes
     public void addActivity(float val, String des, String name, Date day)
     {
@@ -110,14 +110,15 @@ public class Account {
         this.activites.add(newAct); // ajout aux activité du compte
         this.refresh(newAct); // mise a jours du solode courant
     }
-
+    */
+/*
     public void refresh(Activity newAct)
     {
         this.currentBalance += newAct.getValue(); // on met a jours le montant courant du compte
 
         this.owner.refresh();
     }
-
+*/
     // prend l'id de l'activité pour la suprimer
     // renvoie vrai si la supression c'est fait avec succès
     public boolean removeAct(int id)
