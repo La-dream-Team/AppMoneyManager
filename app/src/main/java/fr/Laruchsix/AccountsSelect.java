@@ -30,15 +30,22 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_accounts_select);
+
         Intent intent = getIntent();
         String fistName = intent.getStringExtra(MainActivity.EXTRA_FIRST_NAME);
         String lastName = intent.getStringExtra(MainActivity.EXTRA_LAST_NAME);
 
         Toast.makeText(getApplicationContext(), "Bonjour " + fistName + " " + lastName , Toast.LENGTH_LONG).show();
 
+        // on charge le fichier
+        owner = FonctionsAux.loadUser(fistName, lastName, this);
+        owner.addNewAccount(50.0f, "Toto", "Les blagues a toto", Devise.Yen);
+        // pour test on l'affiche
+        TextView txt = findViewById(R.id.TitreAccSelect);
+        txt.setText(owner.toString());
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_accounts_select);
 
         // bouton reset
         Button reset = findViewById(R.id.resetuser);
