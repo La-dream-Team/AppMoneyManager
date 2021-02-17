@@ -100,8 +100,8 @@ public class Person {
     public String toString()
     {
         String ret = this.firstName + "--" + this.lastName + "--" + this.globalDevise.toString() + "--"
-                + this.acconts.size();
-        for(Account currentAcc : this.acconts)
+                + this.accounts.size();
+        for(Account currentAcc : this.accounts)
         {
             ret = ret + "\n" + currentAcc.toString();
          }

@@ -115,7 +115,7 @@ public class Account {
     {
         this.currentBalance += newAct.getValue(); // on met a jours le montant courant du compte
 
-        this.owner.refresh();
+        this.owner.refreshAll();
     }
 
     // prend l'id de l'activité pour la suprimer
