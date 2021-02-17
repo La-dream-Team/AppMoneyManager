@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView data = findViewById(R.id.readData);
         Person myp = FonctionsAux.loadUser("Tibo", "Ru", this);
-        data.setText(FonctionsAux.readUser(this) + myp.toString());
+        data.setText(FonctionsAux.readUser(this) );
         // + FonctionsAux.loadUser("Tibo", "Ru", this).toString()
 
         // button load

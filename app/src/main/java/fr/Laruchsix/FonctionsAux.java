@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ActivityChooserView;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
@@ -119,16 +120,18 @@ public class FonctionsAux {
     }
 
 
-    public static void saveUser(String firstName, String lastName, AppCompatActivity act, Account acc)
+    public static void savePerson(String firstName, String lastName, AppCompatActivity act, Person per)
     {
         String fileName = lastName + firstName + "Data.txt";
-        StringBuilder sb;
         try {
             // Open Stream to write file.
             FileOutputStream out = act.openFileOutput(fileName, MODE_PRIVATE);
+            out.write("".getBytes());
+            out.close();
+            out = act.openFileOutput(fileName, MODE_PRIVATE);
 
             // on met l'espace utilisateur dans le fichier
-            String save = acc.toString();
+            String save = per.toString();
             out.write(save.getBytes());
             out.close();
 
@@ -173,11 +176,8 @@ public class FonctionsAux {
                       s = br.readLine();
                       sb = sb.append(s).append("\n");
                       String[] currentStringAcc = sb.toString().split("--");
-<<<<<<< HEAD
                       Account currentAcc = p.addNewAccount(Float.parseFloat(currentStringAcc[3]), currentStringAcc[0],
-=======
                       Account currentAcc = p.addNewAccount(Float.valueOf(currentStringAcc[3]), currentStringAcc[0],
->>>>>>> 10aaf36abce53d97ee040c12915f61b44c769123
                               currentStringAcc[1], Devise.valueOf(currentStringAcc[2]));
 
                       for (int j=0 ; j < Integer.valueOf(currentStringAcc[4]) ; j++)
@@ -195,12 +195,19 @@ public class FonctionsAux {
         String[] person = tab[1].split("--");
         Person p = new Person(Devise.valueOf(person[2]), person[0], person[1]);
 
+        for(String currentperson : tab)
+        {
+            System.out.println(currentperson);
+        }
+/*
         int nbAccount = Integer.parseInt(person[3]);
         while(nbAccount != 0)
         {
+            System.out.println(tab[compteur]);
+
             String[] currentStringAcc = tab[compteur].split("--");
             compteur ++;
-            Account currentAcc = p.addNewAccount(Float.parseFloat(currentStringAcc[3]), currentStringAcc[0],
+             Account currentAcc = p.addNewAccount(Float.parseFloat(currentStringAcc[3]), currentStringAcc[0],
                     currentStringAcc[1], Devise.valueOf(currentStringAcc[2]));
             int nbAct = Integer.parseInt(currentStringAcc[4]);
             while(nbAct !=0)
@@ -211,7 +218,7 @@ public class FonctionsAux {
                 nbAct --;
             }
             nbAccount --;
-        }
+        }*/
         return p;
     }
 

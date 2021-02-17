@@ -27,6 +27,7 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
 
     private Person owner;
     private TextView totalBalanceView;
+    private String firstName, lastName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +35,13 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         setContentView(R.layout.activity_accounts_select);
 
         Intent intent = getIntent();
-        String fistName = intent.getStringExtra(MainActivity.EXTRA_FIRST_NAME);
-        String lastName = intent.getStringExtra(MainActivity.EXTRA_LAST_NAME);
+        firstName = intent.getStringExtra(MainActivity.EXTRA_FIRST_NAME);
+        lastName = intent.getStringExtra(MainActivity.EXTRA_LAST_NAME);
 
-        Toast.makeText(getApplicationContext(), "Bonjour " + fistName + " " + lastName , Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Bonjour " + firstName + " " + lastName , Toast.LENGTH_LONG).show();
 
         // on charge le fichier
-        owner = FonctionsAux.loadUser(fistName, lastName, this);
+        owner = FonctionsAux.loadUser(firstName, lastName, this);
         owner.addNewAccount(50.0f, "Toto", "Les blagues a toto", Devise.Yen);
         // pour test on l'affiche
         TextView txt = findViewById(R.id.TitreAccSelect);
@@ -87,7 +88,7 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         //Si l'utilisateur n'a pas encore des comptes on change le textView
         if(this.owner.getAccounts().isEmpty())
         {
-            TextView s = findViewById(R.id.textView);
+            TextView s = findViewById(R.id.TitreAccSelect);
             s.setText("Vous n'avez pas des comptes");
         }
 
@@ -109,6 +110,13 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         currencySpinner.setAdapter(adapter);
         currencySpinner.setSelection(currencyIndex);
         currencySpinner.setOnItemSelectedListener(this);
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        FonctionsAux.savePerson(firstName, lastName, this, owner);
     }
 
     private void reset_User()
