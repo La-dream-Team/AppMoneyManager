@@ -66,7 +66,7 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
                 finish();
             }
         });
-        
+
         /*
         //Propietaire crée pour tester
         this.owner = new Person( Devise.Dolar_American, "Remy", "Debacque");
