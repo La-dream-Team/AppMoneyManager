@@ -3,6 +3,7 @@ package fr.Laruchsix;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ActivityChooserView;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -137,10 +138,11 @@ public class FonctionsAux {
     }
 
 
-      public static Account loadUser(String fistName, String lastName, AppCompatActivity act)
+      public static Person loadUser(String fistName, String lastName, AppCompatActivity act)
       {
           String fileName = fistName + lastName + "data.txt";
           StringBuilder sb;
+          Person p = null;
           try {
               // Open stream to read file.
               FileInputStream in = act.openFileInput(fileName);
@@ -152,7 +154,7 @@ public class FonctionsAux {
               while((s= br.readLine())!= null)  {
                   sb = sb.append(s).append("\n");
                   String[] person = sb.toString().split(" ");
-                  Person p = new Person(Devise.valueOf(person[2]), person[0], person[1]);
+                  p = new Person(Devise.valueOf(person[2]), person[0], person[1]);
 
                   for(int i=0; i < Integer.getInteger(person[3]) ; i++)
                   {
@@ -161,14 +163,59 @@ public class FonctionsAux {
                       Account currentAcc = p.createAcc(Float.valueOf(currentStringAcc[3]), currentStringAcc[0],
                               currentStringAcc[1], Devise.valueOf(currentStringAcc[2]));
 
-                      for int j=0 ; j < InterfaceColors currentStringAcc[4]
-
+                      for (int j=0 ; j < Integer.valueOf(currentStringAcc[4]) ; j++)
+                      {
+                          String[] currentActString = sb.toString().split(" ");
+                          currentAcc.addActivity(Float.valueOf(currentActString[2]), currentActString[1], currentActString[0], null);
+                      }
                   }
               }
           } catch (Exception e) {
               //Toast.makeText(this,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
-              return "";
+              return null;
           }
-          return sb.toString();
+          return p;
       }
+
+    public static void saveUser(String nom, String prenom, AppCompatActivity activity)
+    {
+        String users = readUser(activity);
+        String fileName = "user.txt";
+        StringBuilder sb;
+
+        String save = users + "\n" + nom + "--" + prenom ;
+        try {
+            // Open Stream to write file.
+            FileOutputStream out = activity.openFileOutput(fileName, MODE_PRIVATE);
+
+            // on met l'espace utilisateur dans le fichier
+            out.write(save.getBytes());
+            out.close();
+        } catch (Exception e) {
+            Toast.makeText(activity,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    public static String readUser(AppCompatActivity activity) {
+        String fileName = "user.txt";
+        StringBuilder sb;
+        try {
+            // Open stream to read file.
+            FileInputStream in = activity.openFileInput(fileName);
+
+            BufferedReader br= new BufferedReader(new InputStreamReader(in));
+
+            sb= new StringBuilder();
+            String s= null;
+            while((s= br.readLine())!= null)  {
+                sb.append(s).append("\n");
+            }
+        } catch (Exception e) {
+            //Toast.makeText(this,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
+            return "";
+        }
+        return sb.toString();
+    }
+
 }

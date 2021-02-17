@@ -14,6 +14,7 @@
     <string name="total_balance_text">Balance total des comptes : </string>
     <string name="total_balance_number"> 0 </string>
     <string name="account_currency">Devise du compte</string>
+    <string name="toastConnexion">This user space does not exist</string>
     <string-array name="currency">
         <item>€</item>
         <item>£</item>
