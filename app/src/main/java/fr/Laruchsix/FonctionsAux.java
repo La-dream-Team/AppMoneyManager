@@ -173,7 +173,11 @@ public class FonctionsAux {
                       s = br.readLine();
                       sb = sb.append(s).append("\n");
                       String[] currentStringAcc = sb.toString().split("--");
+<<<<<<< HEAD
                       Account currentAcc = p.addNewAccount(Float.parseFloat(currentStringAcc[3]), currentStringAcc[0],
+=======
+                      Account currentAcc = p.addNewAccount(Float.valueOf(currentStringAcc[3]), currentStringAcc[0],
+>>>>>>> 10aaf36abce53d97ee040c12915f61b44c769123
                               currentStringAcc[1], Devise.valueOf(currentStringAcc[2]));
 
                       for (int j=0 ; j < Integer.valueOf(currentStringAcc[4]) ; j++)

@@ -73,36 +73,34 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
                 finish();
             }
         });
-
+        
         /*
         //Propietaire crée pour tester
-        Person owner = new Person( Devise.Yen, "Remy", "Debacque");
+        this.owner = new Person( Devise.Dolar_American, "Remy", "Debacque");
 
         //Liste de comptes
-        addNewAccount(10000.86f, "Main", "Mon compte principal", owner, Devise.Euro);
-        addNewAccount(520.23f, "Francais", "Mon compte francais", owner, Devise.Dolar_American);
-        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", owner, Devise.Yen);
-        addNewAccount(10000.86f, "Main", "Mon compte principal", owner, Devise.Euro);
-        addNewAccount(520.23f, "Francais", "Mon compte francais", owner, Devise.Dolar_American);
-        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", owner, Devise.Yen);
-        addNewAccount(10000.86f, "Main", "Mon compte principal", owner, Devise.Euro);
-        addNewAccount(520.23f, "Francais", "Mon compte francais", owner, Devise.Dolar_American);
-        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", owner, Devise.Yen);
-        addNewAccount(10000.86f, "Main", "Mon compte principal", owner, Devise.Euro);
-        addNewAccount(520.23f, "Francais", "Mon compte francais", owner, Devise.Dolar_American);
-        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", owner, Devise.Yen);
-*/
+        this.owner.addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
+        this.owner.addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
+        this.owner.addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        */
+
+        //Si l'utilisateur n'a pas encore des comptes on change le textView
+        if(this.owner.getAccounts().isEmpty())
+        {
+            TextView s = findViewById(R.id.textView);
+            s.setText("Vous n'avez pas des comptes");
+        }
 
         //On ajoute l'adapter à la liste de comptes
         ListView accountListView = findViewById(R.id.account_list);
-        accountListView.setAdapter(new AccountAdapter(this, owner.getAccounts()));
+        accountListView.setAdapter(new AccountAdapter(this, this.owner.getAccounts()));
 
         //On initialise le compteur
         this.totalBalanceView = (TextView)findViewById(R.id.total_balance_number);
-        changeTotalBalanceViewText(owner.getGlobalBalance());
+        changeTotalBalanceViewText(this.owner.getGlobalBalance());
 
         //On recupere la devise de reference choisi par le propietaire de ces comptes
-        int currencyIndex = getIndexFromCurrency(owner.getDevise());
+        int currencyIndex = getIndexFromCurrency(this.owner.getDevise());
 
         //On recupere le spinner et on l'associe à la string array que doit traiter
         Spinner currencySpinner = findViewById(R.id.currency_spinner);
@@ -140,9 +138,26 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if(position == 0)
+        switch (position)
         {
-            changeTotalBalanceViewText(owner.getGlobalBalance());
+            case 0:
+                changeTotalBalanceViewText(this.owner.getGlobalBalance()*CurrencyTranslation.coefDev(this.owner.getDevise(), Devise.Euro));
+                break;
+            case 1:
+                changeTotalBalanceViewText(this.owner.getGlobalBalance()*CurrencyTranslation.coefDev(this.owner.getDevise(), Devise.Livre_Sterling));
+                break;
+            case 2:
+                changeTotalBalanceViewText(this.owner.getGlobalBalance()*CurrencyTranslation.coefDev(this.owner.getDevise(), Devise.Yen));
+                break;
+            case 3:
+                changeTotalBalanceViewText(this.owner.getGlobalBalance()*CurrencyTranslation.coefDev(this.owner.getDevise(), Devise.Dolar_American));
+                break;
+            case 4:
+                changeTotalBalanceViewText(this.owner.getGlobalBalance()*CurrencyTranslation.coefDev(this.owner.getDevise(), Devise.Rouble));
+                break;
+            default:
+                changeTotalBalanceViewText(-1.0f);
+                break;
         }
     }
 
