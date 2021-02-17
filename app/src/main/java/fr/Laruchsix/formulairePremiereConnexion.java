@@ -58,6 +58,7 @@ public class formulairePremiereConnexion extends AppCompatActivity {
                     {
                         System.out.println("bonjour " + firstName + " "  + lastName + " qui a pour devise " + dev.toString());
                         FonctionsAux.saveUser(lastName, firstName, act);
+                        FonctionsAux.createUserFile(firstName, lastName, dev, act);
                         Intent otherActivity = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(otherActivity);
                         finish();

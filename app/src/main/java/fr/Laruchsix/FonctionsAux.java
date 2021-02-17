@@ -119,9 +119,9 @@ public class FonctionsAux {
     }
 
 
-    public static void saveUser(String fistName, String lastName, AppCompatActivity act, Account acc)
+    public static void saveUser(String firstName, String lastName, AppCompatActivity act, Account acc)
     {
-        String fileName = fistName + lastName + "data.txt";
+        String fileName = lastName + firstName + "Data.txt";
         StringBuilder sb;
         try {
             // Open Stream to write file.
@@ -138,9 +138,9 @@ public class FonctionsAux {
     }
 
 
-      public static Person loadUser(String fistName, String lastName, AppCompatActivity act)
+      public static Person loadUser(String firstName, String lastName, AppCompatActivity act)
       {
-          String fileName = fistName + lastName + "data.txt";
+          String fileName = lastName + firstName + "Data.txt";
           StringBuilder sb;
           Person p = null;
           try {
@@ -153,19 +153,19 @@ public class FonctionsAux {
               String s= null;
               while((s= br.readLine())!= null)  {
                   sb = sb.append(s).append("\n");
-                  String[] person = sb.toString().split(" ");
+                  String[] person = sb.toString().split("--");
                   p = new Person(Devise.valueOf(person[2]), person[0], person[1]);
 
                   for(int i=0; i < Integer.getInteger(person[3]) ; i++)
                   {
                       sb = sb.append(br.readLine()).append("\n");
-                      String[] currentStringAcc = sb.toString().split(" ");
+                      String[] currentStringAcc = sb.toString().split("--");
                       Account currentAcc = p.createAcc(Float.valueOf(currentStringAcc[3]), currentStringAcc[0],
                               currentStringAcc[1], Devise.valueOf(currentStringAcc[2]));
 
                       for (int j=0 ; j < Integer.valueOf(currentStringAcc[4]) ; j++)
                       {
-                          String[] currentActString = sb.toString().split(" ");
+                          String[] currentActString = sb.toString().split("--");
                           currentAcc.addActivity(Float.valueOf(currentActString[2]), currentActString[1], currentActString[0], null);
                       }
                   }
@@ -183,7 +183,7 @@ public class FonctionsAux {
         String fileName = "user.txt";
         StringBuilder sb;
 
-        String save = users + "\n" + nom + "--" + prenom ;
+        String save = users + nom + "--" + prenom + "\n" ;
         try {
             // Open Stream to write file.
             FileOutputStream out = activity.openFileOutput(fileName, MODE_PRIVATE);
@@ -220,4 +220,21 @@ public class FonctionsAux {
         return sb.toString();
     }
 
+
+    public static void createUserFile(String firstName, String lastName, Devise devise, AppCompatActivity activity)
+    {
+        Person newp = new Person(devise, firstName, lastName);
+        String fileName = lastName + firstName + "Data.txt";
+        StringBuilder sb;
+        try {
+            // Open Stream to write file.
+            FileOutputStream out = activity.openFileOutput(fileName, MODE_PRIVATE);
+
+            // on met l'espace utilisateur dans le fichier
+            out.write(newp.toString().getBytes());
+            out.close();
+        } catch (Exception e) {
+            Toast.makeText(activity,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+    }
 }

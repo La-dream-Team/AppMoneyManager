@@ -8,17 +8,17 @@ public class Person {
     // attributs
     private float globalBalance;
     private String firstName;
-    private String secondName;
+    private String lastName;
     private Devise globalDevise;
     private InterfaceColors colors;
     private ArrayList<Account> accounts;
     
     // constructeurs
-    public Person(Devise dev, String firstName, String secondName)
+    public Person(Devise dev, String firstName, String lastName)
     {
         this.globalBalance = 0.0f;
         this.firstName = firstName;
-        this.secondName = secondName;
+        this.lastName = lastName;
         this.globalDevise = dev;
         
         this.accounts = new ArrayList<>();
@@ -33,7 +33,7 @@ public class Person {
     
     public String getSecondName() 
     {
-        return this.secondName;
+        return this.lastName;
     }
     
     public Devise getDevise()
@@ -99,9 +99,9 @@ public class Person {
     @Override
     public String toString()
     {
-        String ret = this.firstName + " " + this.secondName + " " + this.globalDevise.toString() + " "
-                + this.accounts.size();
-        for(Account currentAcc : this.accounts)
+        String ret = this.firstName + "--" + this.lastName + "--" + this.globalDevise.toString() + "--"
+                + this.acconts.size();
+        for(Account currentAcc : this.acconts)
         {
             ret = ret + "\n" + currentAcc.toString();
          }

@@ -150,8 +150,8 @@ public class Account {
     @Override
     public String toString()
     {
-        String ret = this.name + " " + this.description + " " + this.accountDevise.toString() + " "
-                + this.DEFAULT_BALANCE + " " + this.activites.size();
+        String ret = this.name + "--" + this.description + "--" + this.accountDevise.toString() + "--"
+                + this.DEFAULT_BALANCE + "--" + this.activites.size();
         for(Activity currentAct : this.activites)
         {
             ret = ret + "\n" + currentAct.toString();
