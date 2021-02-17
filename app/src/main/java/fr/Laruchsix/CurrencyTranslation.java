@@ -5,15 +5,15 @@ public class CurrencyTranslation {
     {
         switch(dev){
             case Dolar_American :
-                return 1.2125f;
+                return 0.83025f;
             case Livre_Sterling :
-                return 0.8885f;
+                return 1.15154f;
             case Yen :
-                return 125.8712f;
+                return 0.00782f;
             case Rouble :
-                return 91.6078f;
+                return 0.0112263f;
             default :
-                return 1f;
+                return 1.0f;
         }
     }
 
@@ -21,15 +21,15 @@ public class CurrencyTranslation {
     {
         switch(dev){
             case Euro :
-                return 0.8246f;
+                return 1.20450f;
             case Livre_Sterling :
-                return 0.7323f;
+                return 1.38650f;
             case Yen :
-                return 103.8015f;
+                return 0.00942f;
             case Rouble :
-                return 75.5571f;
+                return 0.0135153f;
             default :
-                return 1f;
+                return 1.0f;
         }
     }
 
@@ -37,15 +37,15 @@ public class CurrencyTranslation {
     {
         switch(dev){
             case Euro :
-                return 1.1260f;
+                return 0.86875f;
             case Dolar_American :
-                return 1.3655f;
+                return 0.721163f;
             case Yen :
-                return 141.7380f;
+                return 0.00679605f;
             case Rouble :
-                return 103.1712f;
+                return 0.00974641f;
             default :
-                return 1f;
+                return 1.0f;
         }
     }
 
@@ -53,15 +53,15 @@ public class CurrencyTranslation {
     {
         switch(dev){
             case Euro :
-                return 0.0079f;
+                return 127.94f;
             case Livre_Sterling :
-                return 0.0071f;
+                return 147.269f;
             case Dolar_American :
-                return 0.0096f;
+                return 106.205f;
             case Rouble :
-                return 0.7277f;
+                return 1.43567f;
             default :
-                return 1f;
+                return 1.0f;
         }
     }
 
@@ -69,13 +69,13 @@ public class CurrencyTranslation {
     {
         switch(dev){
             case Euro :
-                return 0.0109f;
+                return 89.0774f;
             case Livre_Sterling :
-                return 0.0096f;
+                return 102.541f;
             case Yen :
-                return 1.3741f;
+                return 0.697109f;
             case Dolar_American :
-                return 0.0132f;
+                return 73.9753f;
             default :
                 return 1f;
         }
@@ -122,4 +122,5 @@ public class CurrencyTranslation {
                 return "";
         }
     }
+
 }

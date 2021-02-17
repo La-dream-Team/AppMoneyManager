@@ -1,6 +1,7 @@
 package fr.Laruchsix;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Person {
@@ -10,17 +11,17 @@ public class Person {
     private String secondName;
     private Devise globalDevise;
     private InterfaceColors colors;
-    private ArrayList<Account> acconts;
+    private ArrayList<Account> accounts;
     
     // constructeurs
     public Person(Devise dev, String firstName, String secondName)
     {
-        this.globalBalance = 0f;
+        this.globalBalance = 0.0f;
         this.firstName = firstName;
         this.secondName = secondName;
         this.globalDevise = dev;
         
-        this.acconts = new ArrayList<>();
+        this.accounts = new ArrayList<>();
         this.colors = new InterfaceColors();
     }
     
@@ -40,11 +41,17 @@ public class Person {
         return this.globalDevise;
     }
 
+    public float getGlobalBalance(){ return this.globalBalance; }
+
+    private void setTotalBalance(float newTotalBalance){ this.globalBalance = newTotalBalance;}
+
+    public ArrayList<Account> getAccounts(){ return this.accounts; }
+
     public void setDevise(Devise newdev)
     {
         float coef = FonctionsAux.coefDev(this.globalDevise, newdev);
         this.globalBalance = this.globalBalance * coef;
-        this.globalDevise =newdev;
+        this.globalDevise = newdev;
     }
 
     public InterfaceColors getColors()
@@ -53,41 +60,48 @@ public class Person {
     }
     
     // methodes
-    public void refresh()
+    public void refreshAll()
     {
-        float sum = 0f;
+        float sum = 0.0f;
         // on parcours tous les compte de l'utilisateur
-        for(Account currentacc : this.acconts)
+        for(Account currentacc : this.accounts)
         {
-            float coef = FonctionsAux.coefDev(currentacc.getDevise(), this.globalDevise);
+            float coef = CurrencyTranslation.coefDev(currentacc.getDevise(), this.globalDevise);
             sum += currentacc.getCurrentBalance() * coef;
         }
         this.globalBalance = sum;
     }
 
-    public Account createAcc(float balance, String name, String description, Devise devise)
+    public void refreshNewOne(float balance, Devise accountDevise)
     {
-        Account ret = new Account(balance, name, description, null, this, devise);
-        this.acconts.add(ret);
+        this.globalBalance += balance * CurrencyTranslation.coefDev(accountDevise, this.globalDevise);
+    }
+
+    public Account addNewAccount(float balance, String name, String description, Devise devise)
+    {
+        Date currentTime = Calendar.getInstance().getTime();
+        Account ret = new Account(balance, name, description, currentTime, this, devise);
+        refreshNewOne(balance, devise);
+        this.accounts.add(ret);
         return ret;
     }
 
     public void forceRefresh()
     {
         // on parcours tous les comptes de l'utilisateur
-        for(Account currentAcc : this.acconts)
+        for(Account currentAcc : this.accounts)
         {
             currentAcc.forceRefresh();
         }
-        this.refresh();
+        this.refreshAll();
     }
 
     @Override
     public String toString()
     {
         String ret = this.firstName + " " + this.secondName + " " + this.globalDevise.toString() + " "
-                + this.acconts.size();
-        for(Account currentAcc : this.acconts)
+                + this.accounts.size();
+        for(Account currentAcc : this.accounts)
         {
             ret = ret + "\n" + currentAcc.toString();
          }

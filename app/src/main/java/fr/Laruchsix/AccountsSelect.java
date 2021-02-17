@@ -17,6 +17,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -24,9 +25,8 @@ import java.util.List;
 
 public class AccountsSelect extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    private float totalBalance = 0.0f;
+    private Person owner;
     private TextView totalBalanceView;
-    private List<Account> accountsList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +35,7 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         String secondName = intent.getStringExtra(MainActivity.EXTRA_SECOND_NAME);
 
         Toast.makeText(getApplicationContext(), "Bonjour " + fistName + " " + secondName , Toast.LENGTH_LONG).show();
-
-
+        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accounts_select);
 
@@ -67,24 +66,35 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
             }
         });
 
+        /*
         //Propietaire crée pour tester
-        Person owner = new Person( Devise.Euro, "Remy", "Debacque");
+        Person owner = new Person( Devise.Yen, "Remy", "Debacque");
 
         //Liste de comptes
         addNewAccount(10000.86f, "Main", "Mon compte principal", owner, Devise.Euro);
         addNewAccount(520.23f, "Francais", "Mon compte francais", owner, Devise.Dolar_American);
         addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", owner, Devise.Yen);
+        addNewAccount(10000.86f, "Main", "Mon compte principal", owner, Devise.Euro);
+        addNewAccount(520.23f, "Francais", "Mon compte francais", owner, Devise.Dolar_American);
+        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", owner, Devise.Yen);
+        addNewAccount(10000.86f, "Main", "Mon compte principal", owner, Devise.Euro);
+        addNewAccount(520.23f, "Francais", "Mon compte francais", owner, Devise.Dolar_American);
+        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", owner, Devise.Yen);
+        addNewAccount(10000.86f, "Main", "Mon compte principal", owner, Devise.Euro);
+        addNewAccount(520.23f, "Francais", "Mon compte francais", owner, Devise.Dolar_American);
+        addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", owner, Devise.Yen);
+*/
 
         //On ajoute l'adapter à la liste de comptes
         ListView accountListView = findViewById(R.id.account_list);
-        accountListView.setAdapter(new AccountAdapter(this, accountsList));
+        accountListView.setAdapter(new AccountAdapter(this, owner.getAccounts()));
 
         //On initialise le compteur
         this.totalBalanceView = (TextView)findViewById(R.id.total_balance_number);
-        changeTotalBalanceViewText();
+        changeTotalBalanceViewText(owner.getGlobalBalance());
 
         //On recupere la devise de reference choisi par le propietaire de ces comptes
-        int currencyIndex = getCurrencyStringIndex(owner.getDevise());
+        int currencyIndex = getIndexFromCurrency(owner.getDevise());
 
         //On recupere le spinner et on l'associe à la string array que doit traiter
         Spinner currencySpinner = findViewById(R.id.currency_spinner);
@@ -114,28 +124,18 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         }
     }
 
-
-
-    private float getTotalBalance()
+    private void changeTotalBalanceViewText(float balance)
     {
-        return this.totalBalance;
-    }
-
-    private void changeTotalBalanceViewText()
-    {
-        this.totalBalanceView.setText(String.valueOf(getTotalBalance()));
-    }
-
-    private void addNewAccount(float balance, String name, String description, Person owner,  Devise devise)
-    {
-        Date currentTime = Calendar.getInstance().getTime();
-        this.accountsList.add(new Account(balance, name, description, currentTime, owner, devise));
-        this.totalBalance += balance;
+        DecimalFormat totalBalanceFormat = new DecimalFormat("#.##");
+        this.totalBalanceView.setText(String.valueOf(totalBalanceFormat.format(balance)));
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        if(position == 0)
+        {
+            changeTotalBalanceViewText(owner.getGlobalBalance());
+        }
     }
 
     @Override
@@ -143,7 +143,8 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
 
     }
 
-    public int getCurrencyStringIndex (Devise currency)
+    //Ce methode transforme la devise global de l'utilisateur en l'index du tableau ou la devise se trouve sous forme de string
+    public int getIndexFromCurrency (Devise currency)
     {
         String[] tab = getResources().getStringArray(R.array.currency);
         switch (currency) {
@@ -161,5 +162,4 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
                 return -1;
         }
     }
-
 }

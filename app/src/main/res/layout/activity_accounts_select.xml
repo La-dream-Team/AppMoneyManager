@@ -20,46 +20,55 @@
     <ListView
         android:id="@+id/account_list"
         android:layout_width="match_parent"
-        android:layout_height="475dp"
+        android:layout_height="473dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:smoothScrollbar="true"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayoutTotalBalance"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_bias="0.08"
         tools:layout_editor_absoluteX="0dp" />
 
     <LinearLayout
+        android:id="@+id/linearLayoutTotalBalance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginBottom="12dp"
         android:gravity="center"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/account_list"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.83">
 
         <TextView
             android:id="@+id/total_balance_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/total_balance_text"
-            android:textSize="17dp" />
-        <TextView
-            android:id="@+id/total_balance_number"
-            android:layout_width="wrap_content"
+            android:textSize="17dp"
+            android:textColor="@color/black"/>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="@string/total_balance_number"
-            android:textSize="17dp"/>
-        <Spinner
-            android:id="@+id/currency_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"/>
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/total_balance_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2.5dp"
+                android:text="@string/total_balance_number"
+                android:textSize="17dp" />
+            <Spinner
+                android:id="@+id/currency_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2.5dp"/>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
