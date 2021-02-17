@@ -39,14 +39,14 @@ public class Person {
     {
         return this.globalDevise;
     }
-    
+
     public void setDevise(Devise newdev)
     {
         float coef = FonctionsAux.coefDev(this.globalDevise, newdev);
         this.globalBalance = this.globalBalance * coef;
         this.globalDevise =newdev;
     }
-    
+
     public InterfaceColors getColors()
     {
         return this.colors;
@@ -71,7 +71,7 @@ public class Person {
         this.acconts.add(ret);
         return ret;
     }
-    
+
     public void forceRefresh()
     {
         // on parcours tous les comptes de l'utilisateur
