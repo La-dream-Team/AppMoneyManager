@@ -143,6 +143,7 @@ public class FonctionsAux {
           String fileName = lastName + firstName + "Data.txt";
           StringBuilder sb;
           Person p = null;
+          String ret = null;
           try {
               // Open stream to read file.
               FileInputStream in = act.openFileInput(fileName);
@@ -152,15 +153,31 @@ public class FonctionsAux {
               sb= new StringBuilder();
               String s= null;
               while((s= br.readLine())!= null)  {
-                  sb = sb.append(s).append("\n");
+                  ret = ret + "\n" + sb.append(s).append("\n").toString();
+              }
+          } catch (Exception e) {
+              //Toast.makeText(this,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
+              return null;
+          }
+          p = StringToPerson(ret);
+          return p;
+      }
+
+      /*
+      sb = sb.append(s).append("\n");
                   String[] person = sb.toString().split("--");
                   p = new Person(Devise.valueOf(person[2]), person[0], person[1]);
 
-                  for(int i=0; i < Integer.getInteger(person[3]) ; i++)
+                  for(int i=0; i < Integer.parseInt(person[3]) ; i++)
                   {
-                      sb = sb.append(br.readLine()).append("\n");
+                      s = br.readLine();
+                      sb = sb.append(s).append("\n");
                       String[] currentStringAcc = sb.toString().split("--");
+<<<<<<< HEAD
+                      Account currentAcc = p.addNewAccount(Float.parseFloat(currentStringAcc[3]), currentStringAcc[0],
+=======
                       Account currentAcc = p.addNewAccount(Float.valueOf(currentStringAcc[3]), currentStringAcc[0],
+>>>>>>> 10aaf36abce53d97ee040c12915f61b44c769123
                               currentStringAcc[1], Devise.valueOf(currentStringAcc[2]));
 
                       for (int j=0 ; j < Integer.valueOf(currentStringAcc[4]) ; j++)
@@ -169,13 +186,34 @@ public class FonctionsAux {
                           currentAcc.addActivity(Float.valueOf(currentActString[2]), currentActString[1], currentActString[0], null);
                       }
                   }
-              }
-          } catch (Exception e) {
-              //Toast.makeText(this,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
-              return null;
-          }
-          return p;
-      }
+       */
+
+    public static Person StringToPerson(String string)
+    {
+        int compteur = 2;
+        String[] tab = string.split("\n");
+        String[] person = tab[1].split("--");
+        Person p = new Person(Devise.valueOf(person[2]), person[0], person[1]);
+
+        int nbAccount = Integer.parseInt(person[3]);
+        while(nbAccount != 0)
+        {
+            String[] currentStringAcc = tab[compteur].split("--");
+            compteur ++;
+            Account currentAcc = p.addNewAccount(Float.parseFloat(currentStringAcc[3]), currentStringAcc[0],
+                    currentStringAcc[1], Devise.valueOf(currentStringAcc[2]));
+            int nbAct = Integer.parseInt(currentStringAcc[4]);
+            while(nbAct !=0)
+            {
+                String[] currentActString = tab[compteur].split("--");
+                compteur++;
+                currentAcc.addActivity(Float.valueOf(currentActString[2]), currentActString[1], currentActString[0], null);
+                nbAct --;
+            }
+            nbAccount --;
+        }
+        return p;
+    }
 
     public static void saveUser(String nom, String prenom, AppCompatActivity activity)
     {
@@ -221,20 +259,22 @@ public class FonctionsAux {
     }
 
 
-    public static void createUserFile(String firstName, String lastName, Devise devise, AppCompatActivity activity)
+    public static String createUserFile(String firstName, String lastName, Devise devise, AppCompatActivity activity)
     {
         Person newp = new Person(devise, firstName, lastName);
         String fileName = lastName + firstName + "Data.txt";
         StringBuilder sb;
+        String ret = newp.toString();
         try {
             // Open Stream to write file.
             FileOutputStream out = activity.openFileOutput(fileName, MODE_PRIVATE);
 
             // on met l'espace utilisateur dans le fichier
-            out.write(newp.toString().getBytes());
+            out.write(ret.getBytes());
             out.close();
         } catch (Exception e) {
             Toast.makeText(activity,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
         }
+        return ret;
     }
 }

@@ -36,14 +36,16 @@ public class MainActivity extends AppCompatActivity {
         newuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent otherActivity = new Intent(getApplicationContext(), AccountsSelect.class);
+                Intent otherActivity = new Intent(getApplicationContext(), formulairePremiereConnexion.class);
                 startActivity(otherActivity);
                 finish();
             }
         });
 
         TextView data = findViewById(R.id.readData);
-        data.setText(FonctionsAux.readUser(this));
+        Person myp = FonctionsAux.loadUser("Tibo", "Ru", this);
+        data.setText(FonctionsAux.readUser(this) + myp.toString());
+        // + FonctionsAux.loadUser("Tibo", "Ru", this).toString()
 
         // button load
         Button loaduser= findViewById(R.id.butload);
