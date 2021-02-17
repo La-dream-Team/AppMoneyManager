@@ -30,6 +30,13 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent = getIntent();
+        String fistName = intent.getStringExtra(MainActivity.EXTRA_FIRST_NAME);
+        String secondName = intent.getStringExtra(MainActivity.EXTRA_SECOND_NAME);
+
+        Toast.makeText(getApplicationContext(), "Bonjour " + fistName + " " + secondName , Toast.LENGTH_LONG).show();
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accounts_select);
 

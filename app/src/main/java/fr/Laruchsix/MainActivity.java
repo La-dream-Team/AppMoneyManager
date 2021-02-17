@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,16 +18,18 @@ import java.io.InputStreamReader;
 
 
 public class MainActivity extends AppCompatActivity {
-    private AlertDialog.Builder  popup;
-    private MainActivity activity;
-    private String data;
+
+    public static final String EXTRA_FIRST_NAME = "fr.Laruchsix.application.name.EXTRA_FIRST_NAME";
+    public static final String EXTRA_SECOND_NAME = "fr.Laruchsix.application.name.EXTRA_SECOND_NAME";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.activity = this;
-
+        // on recupère les deux texts
+        EditText edPrenom = findViewById(R.id.edPrenom);
+        EditText edNom = findViewById(R.id.edNom);
 
         // but new
         Button newuser = findViewById(R.id.butnew);
@@ -44,35 +47,42 @@ public class MainActivity extends AppCompatActivity {
         loaduser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                loadUser(edNom.toString(), edPrenom.toString());
             }
         });
 
-
-
-
-
     }
 
 
-    private String readData() {
-        String fileName = getResources().getString(R.string.dateUser);
-        StringBuilder sb;
-        try {
-            // Open stream to read file.
-            FileInputStream in = this.openFileInput(fileName);
+    private void loadUser(String nom, String prenom)
+    {
+        String users = FonctionsAux.readUser(this);
+        String[] usersTab = users.split("\n");
 
-            BufferedReader br= new BufferedReader(new InputStreamReader(in));
-
-            sb= new StringBuilder();
-            String s= null;
-            while((s= br.readLine())!= null)  {
-                sb.append(s).append("\n");
+        boolean ret = false;
+        for(String currentUser : usersTab)
+        {
+            String[] user = currentUser.split("--");
+            if(user[0].equals(nom) && user[1].equals(prenom))
+            {
+                ret = true;
+                break;
             }
-        } catch (Exception e) {
-            //Toast.makeText(this,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
-            return "";
         }
-        return sb.toString();
+
+        if(ret)
+        {
+            Intent otherActivity = new Intent(this, AccountsSelect.class);
+            otherActivity.putExtra(EXTRA_FIRST_NAME, prenom);
+            otherActivity.putExtra(EXTRA_SECOND_NAME, nom);
+            startActivity(otherActivity);
+            finish();
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), R.string.toastConnexion, Toast.LENGTH_SHORT).show();
+        }
     }
+
+
 }

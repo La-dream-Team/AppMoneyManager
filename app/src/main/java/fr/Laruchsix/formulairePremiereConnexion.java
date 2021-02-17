@@ -14,12 +14,13 @@ import android.widget.Toast;
 import java.io.FileOutputStream;
 
 public class formulairePremiereConnexion extends AppCompatActivity {
-
+    private AppCompatActivity act;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulaire_premiere_connexion);
 
+        this.act = this;
 
         // button cancel
         final Button butCancel = (Button) findViewById(R.id.butAccCancel);
@@ -56,7 +57,7 @@ public class formulairePremiereConnexion extends AppCompatActivity {
                 else
                     {
                         System.out.println("bonjour " + firstName + " "  + lastName + " qui a pour devise " + dev.toString());
-                        save_Acc(firstName, lastName, dev);
+                        FonctionsAux.saveUser(lastName, firstName, act);
                         Intent otherActivity = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(otherActivity);
                         finish();
@@ -112,43 +113,5 @@ public class formulairePremiereConnexion extends AppCompatActivity {
                 }
             }
         }
-        /*switch(select){
-            case butEuroPer :
-                return Devise.Euro;
-                break;
-            case butDolarPer :
-                return Devise.Dolar_American;
-                break;
-            case butLivrePer :
-                return Devise.Livre_Sterling;
-                break;
-            case butYenPer :
-                return Devise.Yen;
-                break;
-            case butRouble :
-                return Devise.Rouble;
-                break;
-            default:
-                return null;
-        }*/
-    }
-
-    private void save_Acc(String first, String last, Devise devise)
-    {
-        // on créé la liste la chaîne de caractère de données
-        String data = (first + " " + last + " " + devise.toString());
-
-        String fileName = getResources().getString(R.string.dateUser) ;
-
-        try {
-            // Open Stream to write file.
-            FileOutputStream out = this.openFileOutput(fileName, MODE_PRIVATE);
-
-            out.write(data.getBytes());
-            out.close();
-            Toast.makeText(this,"File saved!",Toast.LENGTH_SHORT).show();
-            } catch (Exception e) {
-                Toast.makeText(this,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
-            }
     }
 }
