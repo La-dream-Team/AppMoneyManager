@@ -20,7 +20,7 @@ import java.io.InputStreamReader;
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_FIRST_NAME = "fr.Laruchsix.application.name.EXTRA_FIRST_NAME";
-    public static final String EXTRA_SECOND_NAME = "fr.Laruchsix.application.name.EXTRA_SECOND_NAME";
+    public static final String EXTRA_LAST_NAME = "fr.Laruchsix.application.name.EXTRA_LAST_NAME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // on recupère les deux texts
-        EditText edPrenom = findViewById(R.id.edPrenom);
+        EditText edPrenom  = findViewById(R.id.edPrenom);
         EditText edNom = findViewById(R.id.edNom);
 
         // but new
@@ -42,19 +42,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        TextView data = findViewById(R.id.readData);
+        data.setText(FonctionsAux.readUser(this));
+
         // button load
         Button loaduser= findViewById(R.id.butload);
         loaduser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadUser(edNom.toString(), edPrenom.toString());
+                loadUser(edNom.getText().toString(), edPrenom.getText().toString());
             }
         });
-
     }
 
 
-    private void loadUser(String nom, String prenom)
+    private void loadUser(String lastName, String firstName)
     {
         String users = FonctionsAux.readUser(this);
         String[] usersTab = users.split("\n");
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         for(String currentUser : usersTab)
         {
             String[] user = currentUser.split("--");
-            if(user[0].equals(nom) && user[1].equals(prenom))
+            if(user[0].equals(lastName) && user[1].equals(firstName))
             {
                 ret = true;
                 break;
@@ -73,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
         if(ret)
         {
             Intent otherActivity = new Intent(this, AccountsSelect.class);
-            otherActivity.putExtra(EXTRA_FIRST_NAME, prenom);
-            otherActivity.putExtra(EXTRA_SECOND_NAME, nom);
+            otherActivity.putExtra(EXTRA_FIRST_NAME, firstName);
+            otherActivity.putExtra(EXTRA_LAST_NAME, lastName);
             startActivity(otherActivity);
             finish();
         }
