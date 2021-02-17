@@ -59,7 +59,7 @@ public class Person {
         // on parcours tous les compte de l'utilisateur
         for(Account currentacc : this.acconts)
         {
-            //float coef = FonctionsAux.coefDev(currentacc.getDevise(), this.globalDevise);
+            float coef = FonctionsAux.coefDev(currentacc.getDevise(), this.globalDevise);
             sum += currentacc.getCurrentBalance() * coef;
         }
         this.globalBalance = sum;

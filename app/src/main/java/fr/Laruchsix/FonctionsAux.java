@@ -200,6 +200,7 @@ public class FonctionsAux {
     public static String readUser(AppCompatActivity activity) {
         String fileName = "user.txt";
         StringBuilder sb;
+        String ret = null;
         try {
             // Open stream to read file.
             FileInputStream in = activity.openFileInput(fileName);
@@ -209,7 +210,8 @@ public class FonctionsAux {
             sb= new StringBuilder();
             String s= null;
             while((s= br.readLine())!= null)  {
-                sb.append(s).append("\n");
+                ret = ret + "\n" + sb.append(s).append("\n").toString();
+
             }
         } catch (Exception e) {
             //Toast.makeText(this,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
