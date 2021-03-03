@@ -123,10 +123,11 @@ public class FonctionsAux {
     public static void savePerson(String firstName, String lastName, AppCompatActivity act, Person per)
     {
         String fileName = lastName + firstName + "Data.txt";
+        String clear = "";
         try {
             // Open Stream to write file.
             FileOutputStream out = act.openFileOutput(fileName, MODE_PRIVATE);
-            out.write("".getBytes());
+            out.write(clear.getBytes());
             out.close();
             out = act.openFileOutput(fileName, MODE_PRIVATE);
 
