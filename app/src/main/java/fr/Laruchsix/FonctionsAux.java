@@ -14,125 +14,33 @@ import java.io.InputStreamReader;
 import static android.content.Context.MODE_PRIVATE;
 
 public class FonctionsAux {
-    public static float toEuro(Devise dev)
-    {
-        switch(dev){
-            case Dolar_American :
-                return 1.2125f;
-            case Livre_Sterling :
-                return 0.8885f;
-            case Yen :
-                return 125.8712f;
-            case Rouble :
-                return 91.6078f;
-            default :
-                return 1f;
-        }
-    } 
-    
-    public static float toDolarAmerican(Devise dev)
-    {
-        switch(dev){
-            case Euro :
-                return 0.8246f;
-            case Livre_Sterling :
-                return 0.7323f;
-            case Yen :
-                return 103.8015f;
-            case Rouble :
-                return 75.5571f;
-            default :
-                return 1f;
-        }
-    } 
-    
-    public static float toLivreSterling(Devise dev)
-    {
-        switch(dev){
-            case Euro :
-                return 1.1260f;
-            case Dolar_American :
-                return 1.3655f;
-            case Yen :
-                return 141.7380f;
-            case Rouble :
-                return 103.1712f;
-            default :
-                return 1f;
-        }
-    } 
-    
-    public static float toYen(Devise dev)
-    {
-        switch(dev){
-            case Euro :
-                return 0.0079f;
-            case Livre_Sterling :
-                return 0.0071f;
-            case Dolar_American :
-                return 0.0096f;
-            case Rouble :
-                return 0.7277f;
-            default :
-                return 1f;
-        }
-    } 
-    
-    public static float toRouble(Devise dev)
-    {
-        switch(dev){
-            case Euro :
-                return 0.0109f;
-            case Livre_Sterling :
-                return 0.0096f;
-            case Yen :
-                return 1.3741f;
-            case Dolar_American :
-                return 0.0132f;
-            default :
-                return 1f;
-        }
-    } 
-    
-    public static float coefDev(Devise from, Devise to)
-    {
-        if(from != to)
-        {
-            switch (to){
-                case Euro :
-                    return toEuro(from);
-                case Livre_Sterling :
-                    return toLivreSterling(from);
-                case Yen :
-                    return toYen(from);
-                case Dolar_American :
-                    return toDolarAmerican(from);
-                case Rouble:
-                    return toRouble(from);
-                default :
-                    return 1f;
-            }
-        }
-        else
-        {
-            return 1.0f;
-        }  
-    }
 
-
-    public static void savePerson(String firstName, String lastName, AppCompatActivity act, Person per)
+    public static void clearFile(String fileName, AppCompatActivity act)
     {
-        String fileName = lastName + firstName + "Data.txt";
         String clear = "";
         try {
             // Open Stream to write file.
             FileOutputStream out = act.openFileOutput(fileName, MODE_PRIVATE);
             out.write(clear.getBytes());
             out.close();
-            out = act.openFileOutput(fileName, MODE_PRIVATE);
+
+        } catch (Exception e) {
+            Toast.makeText(act,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    public static void savePerson(String firstName, String lastName, AppCompatActivity act, Person per)
+    {
+        String fileName = lastName + firstName + "Data.txt";
+        clearFile(fileName, act);
+        try {
+            // Open Stream to write file.
+            FileOutputStream out = act.openFileOutput(fileName, MODE_PRIVATE);
 
             // on met l'espace utilisateur dans le fichier
             String save = per.toString();
+            System.out.println(save);
             out.write(save.getBytes());
             out.close();
 

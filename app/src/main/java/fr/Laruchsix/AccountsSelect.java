@@ -110,14 +110,17 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         currencySpinner.setAdapter(adapter);
         currencySpinner.setSelection(currencyIndex);
         currencySpinner.setOnItemSelectedListener(this);
+
+        FonctionsAux.savePerson(firstName, lastName, this, owner);
     }
 
+    /*
     @Override
     protected void onDestroy()
     {
         super.onDestroy();
         FonctionsAux.savePerson(firstName, lastName, this, owner);
-    }
+    }*/
 
     private void reset_User()
     {

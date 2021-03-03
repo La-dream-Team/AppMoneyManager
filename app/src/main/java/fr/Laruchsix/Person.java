@@ -49,7 +49,7 @@ public class Person {
 
     public void setDevise(Devise newdev)
     {
-        float coef = FonctionsAux.coefDev(this.globalDevise, newdev);
+        float coef = CurrencyTranslation.coefDev(this.globalDevise, newdev);
         this.globalBalance = this.globalBalance * coef;
         this.globalDevise = newdev;
     }
