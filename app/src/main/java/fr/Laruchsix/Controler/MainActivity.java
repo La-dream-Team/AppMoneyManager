@@ -1,9 +1,7 @@
-package fr.Laruchsix;
+package fr.Laruchsix.Controler;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,9 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
+import fr.Laruchsix.Model.FonctionsAux;
+import fr.Laruchsix.Model.Person;
+import fr.Laruchsix.R;
 
 
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package fr.Laruchsix;
+package fr.Laruchsix.Controler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,15 +13,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.InputStreamReader;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+
+import fr.Laruchsix.Controler.AccountAdapter;
+import fr.Laruchsix.Controler.MainActivity;
+import fr.Laruchsix.Controler.formulaireCreationDeCompte;
+import fr.Laruchsix.Model.CurrencyTranslation;
+import fr.Laruchsix.Model.Devise;
+import fr.Laruchsix.Model.FonctionsAux;
+import fr.Laruchsix.Model.Person;
+import fr.Laruchsix.R;
 
 public class AccountsSelect extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -152,7 +154,7 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         switch (position)
         {
             case 0:
-                changeTotalBalanceViewText(this.owner.getGlobalBalance()*CurrencyTranslation.coefDev(this.owner.getDevise(), Devise.Euro));
+                changeTotalBalanceViewText(this.owner.getGlobalBalance()* CurrencyTranslation.coefDev(this.owner.getDevise(), Devise.Euro));
                 break;
             case 1:
                 changeTotalBalanceViewText(this.owner.getGlobalBalance()*CurrencyTranslation.coefDev(this.owner.getDevise(), Devise.Livre_Sterling));

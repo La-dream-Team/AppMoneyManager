@@ -1,6 +1,8 @@
-package fr.Laruchsix;
+package fr.Laruchsix.Model;
 
 import java.util.Date;
+
+import fr.Laruchsix.Model.Account;
 
 public class Activity {
     private final float value;

@@ -1,4 +1,4 @@
-package fr.Laruchsix;
+package fr.Laruchsix.Controler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,11 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import java.io.FileOutputStream;
+import fr.Laruchsix.Model.Devise;
+import fr.Laruchsix.Model.FonctionsAux;
+import fr.Laruchsix.R;
 
 public class formulairePremiereConnexion extends AppCompatActivity {
     private AppCompatActivity act;

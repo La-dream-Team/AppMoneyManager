@@ -1,10 +1,12 @@
-package fr.Laruchsix;
+package fr.Laruchsix.Tools;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.widget.Button;
 import android.widget.TextView;
+
+import fr.Laruchsix.R;
 
 
 public class Popup extends Dialog {

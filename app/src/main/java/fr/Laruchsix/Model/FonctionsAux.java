@@ -1,15 +1,16 @@
-package fr.Laruchsix;
+package fr.Laruchsix.Model;
 
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ActivityChooserView;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
+
+import fr.Laruchsix.Model.Devise;
+import fr.Laruchsix.Model.Person;
 
 import static android.content.Context.MODE_PRIVATE;
 

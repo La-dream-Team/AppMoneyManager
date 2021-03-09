@@ -1,14 +1,17 @@
-package fr.Laruchsix;
+package fr.Laruchsix.Controler;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import fr.Laruchsix.Model.Account;
+import fr.Laruchsix.Model.CurrencyTranslation;
+import fr.Laruchsix.R;
 
 public class AccountAdapter extends BaseAdapter {
 

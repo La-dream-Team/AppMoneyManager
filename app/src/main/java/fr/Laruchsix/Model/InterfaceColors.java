@@ -1,4 +1,4 @@
-package fr.Laruchsix;
+package fr.Laruchsix.Model;
 
 
 import android.graphics.Color;

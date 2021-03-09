@@ -1,4 +1,4 @@
-package fr.Laruchsix;
+package fr.Laruchsix.Model;
 
 public class CurrencyTranslation {
     public static float toEuro(Devise dev)

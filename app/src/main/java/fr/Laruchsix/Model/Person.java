@@ -1,4 +1,4 @@
-package fr.Laruchsix;
+package fr.Laruchsix.Model;
 
 import java.util.ArrayList;
 import java.util.Calendar;
