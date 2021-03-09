@@ -8,14 +8,18 @@ import androidx.annotation.Nullable;
 
 public class MySqlLite extends SQLiteOpenHelper {
     // creation table
-    private
+    private String creaton = "CREATE TABLE person ("
+            + "id INTEGER PRIMARY KEY"
+            + "nom TEXT NOT NULL"
+            + "prenom TEXT NOT NULL);";
+
     public MySqlLite(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
-    string creation ="CREATE TABLE person (" 
-            ") "
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL();
+        db.execSQL(creaton);
     }//fin oncreate
 
     @Override

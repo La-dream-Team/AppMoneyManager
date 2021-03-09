@@ -43,8 +43,8 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         Toast.makeText(getApplicationContext(), "Bonjour " + firstName + " " + lastName , Toast.LENGTH_LONG).show();
 
         // on charge le fichier
-        owner = FonctionsAux.loadUser(firstName, lastName, this);
-        owner.addNewAccount(50.0f, "Toto", "Les blagues a toto", Devise.Yen);
+        //owner = FonctionsAux.loadUser(firstName, lastName, this);
+        //owner.addNewAccount(50.0f, "Toto", "Les blagues a toto", Devise.Yen);
         // pour test on l'affiche
         TextView txt = findViewById(R.id.TitreAccSelect);
         txt.setText(owner.toString());
@@ -115,14 +115,6 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
 
         FonctionsAux.savePerson(firstName, lastName, this, owner);
     }
-
-    /*
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        FonctionsAux.savePerson(firstName, lastName, this, owner);
-    }*/
 
     private void reset_User()
     {

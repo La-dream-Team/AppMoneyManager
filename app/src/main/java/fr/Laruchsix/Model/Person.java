@@ -12,6 +12,8 @@ public class Person {
     private Devise globalDevise;
     private InterfaceColors colors;
     private ArrayList<Account> accounts;
+    private int id;
+    private static int maxid;
     
     // constructeurs
     public Person(Devise dev, String firstName, String lastName)
@@ -31,7 +33,7 @@ public class Person {
         return this.firstName;
     }
     
-    public String getSecondName() 
+    public String getLastName()
     {
         return this.lastName;
     }
@@ -42,6 +44,8 @@ public class Person {
     }
 
     public float getGlobalBalance(){ return this.globalBalance; }
+
+    public int getId(){ return this.id; }
 
     private void setTotalBalance(float newTotalBalance){ this.globalBalance = newTotalBalance;}
 
