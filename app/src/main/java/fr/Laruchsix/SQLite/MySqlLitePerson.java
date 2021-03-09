@@ -6,14 +6,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-public class MySqlLite extends SQLiteOpenHelper {
+public class MySqlLitePerson extends SQLiteOpenHelper {
     // creation table
     private String creaton = "CREATE TABLE person ("
-            + "id INTEGER PRIMARY KEY"
-            + "nom TEXT NOT NULL"
-            + "prenom TEXT NOT NULL);";
+            + "id INTEGER PRIMARY KEY,"
+            + "nom TEXT NOT NULL,"
+            + "prenom TEXT NOT NULL,"
+            + "devise TEXT NOT NULL);";
 
-    public MySqlLite(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public MySqlLitePerson(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 

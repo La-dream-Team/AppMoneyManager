@@ -13,7 +13,7 @@ public class Person {
     private InterfaceColors colors;
     private ArrayList<Account> accounts;
     private int id;
-    private static int maxid;
+    private static int maxid = 0;
     
     // constructeurs
     public Person(Devise dev, String firstName, String lastName)
@@ -25,6 +25,25 @@ public class Person {
         
         this.accounts = new ArrayList<>();
         this.colors = new InterfaceColors();
+
+        this.id = maxid;
+        maxid++;
+    }
+
+    public Person(Devise dev, String firstName, String lastName, int id)
+    {
+        this.globalBalance = 0.0f;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.globalDevise = dev;
+
+        this.accounts = new ArrayList<>();
+        this.colors = new InterfaceColors();
+
+        this.id = id;
+        if(maxid < id)
+            maxid = id;
+
     }
     
     // get/set
