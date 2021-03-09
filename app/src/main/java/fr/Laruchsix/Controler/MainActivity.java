@@ -2,6 +2,7 @@ package fr.Laruchsix.Controler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,13 +14,17 @@ import android.widget.Toast;
 import fr.Laruchsix.Model.FonctionsAux;
 import fr.Laruchsix.Model.Person;
 import fr.Laruchsix.R;
+import fr.Laruchsix.SQLite.PersonDatas;
 
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_FIRST_NAME = "fr.Laruchsix.application.name.EXTRA_FIRST_NAME";
     public static final String EXTRA_LAST_NAME = "fr.Laruchsix.application.name.EXTRA_LAST_NAME";
+    public static final String EXTRA_ID = "fr.Laruchsix.application.id.EXTRA_ID";
+    public static final String EXTRA_DEVISE = "fr.Laruchsix.application.devise.EXTRA_DEVISE";
 
+    public Context act = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,17 +45,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        TextView data = findViewById(R.id.readData);
-        Person myp = FonctionsAux.loadUser("Tibo", "Ru", this);
-        data.setText(FonctionsAux.readUser(this) );
-        // + FonctionsAux.loadUser("Tibo", "Ru", this).toString()
-
         // button load
         Button loaduser= findViewById(R.id.butload);
         loaduser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadUser(edNom.getText().toString(), edPrenom.getText().toString());
+                PersonDatas datasUser = new PersonDatas(act);
+                Person currentUser = datasUser.findUser(edPrenom.getText().toString(), edNom.getText().toString());
+                if (currentUser != null){
+                    Intent otherActivity = new Intent(act, AccountsSelect.class);
+                    otherActivity.putExtra(EXTRA_FIRST_NAME, currentUser.getFirstName());
+                    otherActivity.putExtra(EXTRA_LAST_NAME, currentUser.getLastName());
+                    otherActivity.putExtra(EXTRA_ID, currentUser.getId());
+                    otherActivity.putExtra(EXTRA_DEVISE, currentUser.getDevise().toString());
+                    startActivity(otherActivity);
+                    finish();
+                }
+                else
+                    Toast.makeText(getApplicationContext(), R.string.toastConnexion, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -74,15 +86,11 @@ public class MainActivity extends AppCompatActivity {
 
         if(ret)
         {
-            Intent otherActivity = new Intent(this, AccountsSelect.class);
-            otherActivity.putExtra(EXTRA_FIRST_NAME, firstName);
-            otherActivity.putExtra(EXTRA_LAST_NAME, lastName);
-            startActivity(otherActivity);
-            finish();
+
         }
         else
         {
-            Toast.makeText(getApplicationContext(), R.string.toastConnexion, Toast.LENGTH_SHORT).show();
+
         }
     }
 

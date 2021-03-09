@@ -12,7 +12,9 @@ import android.widget.Toast;
 
 import fr.Laruchsix.Model.Devise;
 import fr.Laruchsix.Model.FonctionsAux;
+import fr.Laruchsix.Model.Person;
 import fr.Laruchsix.R;
+import fr.Laruchsix.SQLite.PersonDatas;
 
 public class formulairePremiereConnexion extends AppCompatActivity {
     private AppCompatActivity act;
@@ -57,12 +59,33 @@ public class formulairePremiereConnexion extends AppCompatActivity {
                 }
                 else
                     {
-                        System.out.println("bonjour " + firstName + " "  + lastName + " qui a pour devise " + dev.toString());
-                        FonctionsAux.saveUser(lastName, firstName, act);
-                        FonctionsAux.createUserFile(firstName, lastName, dev, act);
-                        Intent otherActivity = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(otherActivity);
-                        finish();
+                        //System.out.println("bonjour " + firstName + " "  + lastName + " qui a pour devise " + dev.toString());
+
+                        // paramètre pour gere la base de donnée
+                        PersonDatas dataBase = new PersonDatas(act);
+
+                        Person ispresent = dataBase.findUser(firstName, lastName);
+
+                        if(ispresent == null){
+                            Person.setMaxid(dataBase.getMaxiD());
+                            Person newPerson = new Person(dev, firstName, lastName);
+
+                            dataBase.ajout(newPerson);
+
+                            Intent otherActivity = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(otherActivity);
+                            finish();
+                        }
+                        else
+                        {
+                            System.out.println("ce qui est présent dans la base = " + ispresent.toString());
+                            Toast.makeText(getApplicationContext(), R.string.toastFormulaire, Toast.LENGTH_LONG).show();
+                        }
+
+
+                        //FonctionsAux.saveUser(lastName, firstName, act);
+                        //FonctionsAux.createUserFile(firstName, lastName, dev, act);
+
                 }
             }
         });

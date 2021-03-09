@@ -81,7 +81,9 @@ public class Person {
     {
         return this.colors;
     }
-    
+
+    public static void setMaxid(int mid) { maxid = mid; };
+
     // methodes
     public void refreshAll()
     {

@@ -30,6 +30,8 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
     private Person owner;
     private TextView totalBalanceView;
     private String firstName, lastName;
+    private Integer id;
+    private Devise devise;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +41,10 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         Intent intent = getIntent();
         firstName = intent.getStringExtra(MainActivity.EXTRA_FIRST_NAME);
         lastName = intent.getStringExtra(MainActivity.EXTRA_LAST_NAME);
+        id = intent.getIntExtra(MainActivity.EXTRA_ID, -1);
+        devise = Devise.valueOf(intent.getStringExtra(MainActivity.EXTRA_DEVISE));
 
-        Toast.makeText(getApplicationContext(), "Bonjour " + firstName + " " + lastName , Toast.LENGTH_LONG).show();
-
-        // on charge le fichier
-        //owner = FonctionsAux.loadUser(firstName, lastName, this);
-        //owner.addNewAccount(50.0f, "Toto", "Les blagues a toto", Devise.Yen);
-        // pour test on l'affiche
-        TextView txt = findViewById(R.id.TitreAccSelect);
-        txt.setText(owner.toString());
-
+        Toast.makeText(getApplicationContext(), "Bonjour " + firstName + " " + lastName + " id = " + id , Toast.LENGTH_LONG).show();
 
         // bouton reset
         Button reset = findViewById(R.id.resetuser);
@@ -77,15 +73,15 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
             }
         });
 
-        /*
+
         //Propietaire crée pour tester
-        this.owner = new Person( Devise.Dolar_American, "Remy", "Debacque");
+        this.owner = new Person(devise, firstName, lastName, id);
 
         //Liste de comptes
         this.owner.addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
         this.owner.addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
         this.owner.addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
-        */
+
 
         //Si l'utilisateur n'a pas encore des comptes on change le textView
         if(this.owner.getAccounts().isEmpty())

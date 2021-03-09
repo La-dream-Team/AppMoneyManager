@@ -21,8 +21,11 @@ public class PersonDatas {
 
     public void ajout(Person person){
         bd = accesBD.getWritableDatabase();
-        String sql = "INSERT INTO person (id, nom, prenom, devise) VALUES (\" "
-                + person.getId() + " \" ,\"" + person.getFirstName() + "\", \"" + person.getLastName() + "\", \"" + person.getDevise().toString() + "\");";
+        String sql = "INSERT INTO person (id, nom, prenom, devise) VALUES (\""
+                + person.getId() + "\" ,\"" + person.getLastName() + "\", \"" + person.getFirstName() + "\", \"" + person.getDevise().toString() + "\");";
+
+        System.out.println("requete sql =" + sql);
+
         bd.execSQL(sql);
     }
 
@@ -34,21 +37,36 @@ public class PersonDatas {
         // requete sql
         String sql = "SELECT * FROM person WHERE nom = \"" + lastName + "\" AND prenom = \"" + firstName + "\";";
 
+        System.out.println("requete sql =" + sql);
+
         Cursor curseur = bd.rawQuery(sql, null );
 
+        System.out.println("voici le curseur " + curseur.getColumnNames().length);
+
+        curseur.moveToFirst();
         // on compte le nombre de colomns
-        if(curseur.getCount() == 1){
+        if(curseur.moveToFirst()){
             int id = curseur.getInt(0);
             Devise devise = Devise.valueOf(curseur.getString(3));
 
             ret = new Person(devise, firstName, lastName, id);
         }
-        else{
-            if(curseur.getCount() != 0)
-                System.err.println("2 users had same first name and last name");
-        }
 
         // on retourne l'utilisateur
         return ret;
+    }
+
+    public int getMaxiD(){
+        bd = accesBD.getReadableDatabase();
+
+        //
+        int maxid = 0;
+        String sql = "SELECT id FROM person;";
+
+        Cursor curseur = bd.rawQuery(sql, null );
+
+        maxid = curseur.getCount();
+
+        return maxid;
     }
 }
