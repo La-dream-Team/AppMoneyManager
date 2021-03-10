@@ -81,6 +81,18 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         this.owner.addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
         this.owner.addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
         this.owner.addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        this.owner.addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
+        this.owner.addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
+        this.owner.addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        this.owner.addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
+        this.owner.addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
+        this.owner.addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        this.owner.addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
+        this.owner.addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
+        this.owner.addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
+        this.owner.addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
+        this.owner.addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
+        this.owner.addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
 
 
         //Si l'utilisateur n'a pas encore des comptes on change le textView
