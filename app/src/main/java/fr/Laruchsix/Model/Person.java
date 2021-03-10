@@ -102,10 +102,14 @@ public class Person {
         this.globalBalance += balance * CurrencyTranslation.coefDev(accountDevise, this.globalDevise);
     }
 
-    public Account addNewAccount(float balance, String name, String description, Devise devise)
+    public Account addNewAccount(float balance, String name, String description, Devise devise, int id)
     {
+        Account ret;
         Date currentTime = Calendar.getInstance().getTime();
-        Account ret = new Account(balance, name, description, currentTime, this, devise);
+        if(id == -1)
+            ret = new Account(balance, name, description, currentTime, this, devise);
+        else
+            ret = new Account(balance, name, description, currentTime, this, devise, id);
         refreshNewOne(balance, devise);
         this.accounts.add(ret);
         return ret;

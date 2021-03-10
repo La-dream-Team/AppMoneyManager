@@ -14,7 +14,7 @@ public class Account {
     private final Date openningDate; // date d'ouverture du compte
     private InterfaceColors colors; // couleurs choisi pour le ce compte
     private final int id; //
-    private static int current_ID = 0;
+    public static int max_id = 0;
     private ArrayList<Activity> activites;
     private final Person owner;
     private Devise accountDevise;
@@ -22,7 +22,6 @@ public class Account {
     // constructeurs
     public Account(float balance, String name, String description
                    ,Date currentDate, Person owner, Devise devise)
-
     {
         this.DEFAULT_BALANCE = balance;
         this.currentBalance = balance;
@@ -40,8 +39,32 @@ public class Account {
         this.activites = new ArrayList<>();
         this.owner = owner;
 
-        this.id = current_ID;
-        current_ID += 1;
+        this.id = max_id;
+        max_id += 1;
+    }
+
+    public Account(float balance, String name, String description
+            ,Date currentDate, Person owner, Devise devise, int id)
+    {
+        this.DEFAULT_BALANCE = balance;
+        this.currentBalance = balance;
+        this.name = name;
+        this.description = description;
+        this.openningDate = currentDate;
+        this.accountDevise = devise;
+
+        this.colors = new InterfaceColors();
+        this.colors.setBackGround(owner.getColors().getBackGround());
+        this.colors.setCredit(owner.getColors().getCredit());
+        this.colors.setDebit(owner.getColors().getDebit());
+
+
+        this.activites = new ArrayList<>();
+        this.owner = owner;
+
+        this.id = id;
+        if(id> max_id)
+            max_id =id ;
     }
 
     // getters / setters
@@ -101,6 +124,12 @@ public class Account {
     {
         return this.owner;
     }
+
+    public static int getMax_id() { return max_id; };
+
+    public  static void setMax_id(int maxi) { max_id = maxi; };
+
+    public int getId() { return this.id;  };
 
     // methodes
     public void addActivity(float val, String des, String name, Date day)
