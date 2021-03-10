@@ -9,12 +9,13 @@ import androidx.annotation.Nullable;
 public class MySqlLiteAccount extends SQLiteOpenHelper {
     // creation table
     private String creaton = "CREATE TABLE account ("
-            + "id INTEGER PRIMARY KEY,"
+            + "id INTEGER,"
             + "nom TEXT NOT NULL,"
             + "description TEXT NOT NULL,"
             + "devise TEXT NOT NULL,"
             + "montant FLOAT NOT NULL,"
-            + "fk_person_id INT PRIMARY KEY;";
+            + "fk_person_id INT,"
+            + "PRIMARY KEY (id, fk_person_id));";
 
     public MySqlLiteAccount(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -30,4 +31,4 @@ public class MySqlLiteAccount extends SQLiteOpenHelper {
 
     }//fin onupgrade
 }//fin class
-}
+

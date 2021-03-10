@@ -24,6 +24,7 @@ import fr.Laruchsix.Model.Devise;
 import fr.Laruchsix.Model.FonctionsAux;
 import fr.Laruchsix.Model.Person;
 import fr.Laruchsix.R;
+import fr.Laruchsix.SQLite.AccountDatas;
 
 public class AccountsSelect extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -43,6 +44,13 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         lastName = intent.getStringExtra(MainActivity.EXTRA_LAST_NAME);
         id = intent.getIntExtra(MainActivity.EXTRA_ID, -1);
         devise = Devise.valueOf(intent.getStringExtra(MainActivity.EXTRA_DEVISE));
+
+        //création du propriétaire
+        this.owner = new Person(devise, firstName, lastName, id);
+
+        // on récupère toutes ces activités
+        AccountDatas accountDatas = new AccountDatas(this);
+        accountDatas.loadAcc(this.owner);
 
         Toast.makeText(getApplicationContext(), "Bonjour " + firstName + " " + lastName + " id = " + id , Toast.LENGTH_LONG).show();
 
@@ -74,10 +82,10 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         });
 
 
-        //Propietaire crée pour tester
-        this.owner = new Person(devise, firstName, lastName, id);
+
 
         //Liste de comptes
+        /*
         this.owner.addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
         this.owner.addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
         this.owner.addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
@@ -93,7 +101,7 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         this.owner.addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
         this.owner.addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
         this.owner.addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
-
+*/
 
         //Si l'utilisateur n'a pas encore des comptes on change le textView
         if(this.owner.getAccounts().isEmpty())

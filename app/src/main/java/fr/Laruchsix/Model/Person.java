@@ -102,6 +102,21 @@ public class Person {
         this.globalBalance += balance * CurrencyTranslation.coefDev(accountDevise, this.globalDevise);
     }
 
+    public Account findName(String name)
+    {
+        Account ret = null;
+
+        for(Account currentAcc : this.accounts)
+        {
+            if(currentAcc.getName() == name)
+            {
+                ret = currentAcc;
+                break;
+            }
+        }
+        return ret;
+    }
+
     public Account addNewAccount(float balance, String name, String description, Devise devise, int id)
     {
         Account ret;

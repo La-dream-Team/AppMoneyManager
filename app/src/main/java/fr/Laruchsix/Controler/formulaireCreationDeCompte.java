@@ -6,16 +6,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
+import fr.Laruchsix.Model.Account;
+import fr.Laruchsix.Model.Devise;
+import fr.Laruchsix.Model.Person;
 import fr.Laruchsix.R;
+import fr.Laruchsix.SQLite.AccountDatas;
 
 public class formulaireCreationDeCompte extends AppCompatActivity {
+
+    private Person owner;
+    private String firstName, lastName;
+    private Integer id;
+    private Devise devise;
+    private AccountDatas accountDatas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulaire_creation_de_compte);
 
+        // chargement des donnés
+        loadDatas();
 
         // button cancel
         final Button butCancel = (Button) findViewById(R.id.butCompteCancel);
@@ -27,5 +41,94 @@ public class formulaireCreationDeCompte extends AppCompatActivity {
                 finish();
             }
         });
+
+        TextView ednom = findViewById(R.id.ednomCompte);
+        TextView eddesc = findViewById(R.id.eddescriptionCompte);
+        TextView edvalue = findViewById(R.id.edbalanceParDefaut);
+
+        // button Ok
+        final Button butOk = (Button) findViewById(R.id.butCompteOk);
+        butCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Devise dev = getDevise();
+
+                String nom, desc;
+                Float value = Float.parseFloat(edvalue.getText().toString());
+                nom = ednom.getText().toString();
+                desc = eddesc.getText().toString();
+
+                if((dev != null) && (nom != "") && (desc != "") && (value != null))
+                {
+                    Account newAcc = owner.addNewAccount(value, nom, desc, dev, -1);
+                    accountDatas.ajout(newAcc, owner);
+
+                    Intent otherActivity = new Intent(getApplicationContext(), AccountsSelect.class);
+                    startActivity(otherActivity);
+                    finish();
+                }
+
+
+            }
+        });
+    }
+
+    private void loadDatas (){
+        // on charge les données
+        Intent intent = getIntent();
+        firstName = intent.getStringExtra(MainActivity.EXTRA_FIRST_NAME);
+        lastName = intent.getStringExtra(MainActivity.EXTRA_LAST_NAME);
+        id = intent.getIntExtra(MainActivity.EXTRA_ID, -1);
+        devise = Devise.valueOf(intent.getStringExtra(MainActivity.EXTRA_DEVISE));
+
+        //création du propriétaire
+        this.owner = new Person(devise, firstName, lastName, id);
+
+        // on récupère toutes ces activités
+        accountDatas = new AccountDatas(this);
+        accountDatas.loadAcc(this.owner);
+    }
+
+    private Devise getDevise() {
+        // Le RadioGroup
+        RadioGroup gp;
+        // le bouton select
+        int select;
+
+        // recup du groupe
+        gp = findViewById(R.id.butgpUser);
+        try {
+            select = findViewById(gp.getCheckedRadioButtonId()).getId();
+        } catch (Exception e) {
+            return null;
+        }
+
+        // on recupère les ids de tous les boutons
+        int butEuroPer = findViewById(R.id.butEuroPerAcc).getId();
+        int butDolarPer = findViewById(R.id.butDolarPerAcc).getId();
+        int butLivrePer = findViewById(R.id.butLivrePerAcc).getId();
+        int butYenPer = findViewById(R.id.butYenPerAcc).getId();
+        int butRouble = findViewById(R.id.butRoubleAcc).getId();
+
+        if (select == butEuroPer)
+            return Devise.Euro;
+        else {
+            if (select == butDolarPer)
+                return Devise.Dolar_American;
+            else {
+                if (select == butLivrePer)
+                    return Devise.Livre_Sterling;
+                else {
+                    if (select == butYenPer)
+                        return Devise.Yen;
+                    else {
+                        if (select == butRouble)
+                            return Devise.Rouble;
+                        else
+                            return null;
+                    }
+                }
+            }
+        }
     }
 }

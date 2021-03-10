@@ -51,7 +51,8 @@ public class AccountDatas {
 
         curseur.moveToFirst();
         // on compte le nombre de colomns
-        do{
+        for(int i=0 ; i<curseur.getCount(); i++)
+        {
             // on recupère toute les informations
             int id = curseur.getInt(0);
             String nom = curseur.getString(1);
@@ -60,7 +61,10 @@ public class AccountDatas {
             float montant = curseur.getFloat(4);
 
             owner.addNewAccount(montant, nom, desc, dev, id);
-        }while(curseur.moveToNext());
+
+            if(!curseur.moveToNext())
+                break;
+        }
 
         // on retourne l'utilisateur
         return ret;

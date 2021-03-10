@@ -108,35 +108,35 @@
             android:layout_height="match_parent">
 
             <RadioButton
-                android:id="@+id/butEuroPer"
+                android:id="@+id/butEuroPerAcc"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginLeft="30dp"
                 android:text="Euro" />
 
             <RadioButton
-                android:id="@+id/butDolarPer"
+                android:id="@+id/butDolarPerAcc"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginLeft="30dp"
                 android:text="Dolar American" />
 
             <RadioButton
-                android:id="@+id/butLivrePer"
+                android:id="@+id/butLivrePerAcc"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginLeft="30dp"
                 android:text="Livre Sterling" />
 
             <RadioButton
-                android:id="@+id/butYenPer"
+                android:id="@+id/butYenPerAcc"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginLeft="30dp"
                 android:text="Yen" />
 
             <RadioButton
-                android:id="@+id/butRouble"
+                android:id="@+id/butRoubleAcc"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginLeft="30dp"

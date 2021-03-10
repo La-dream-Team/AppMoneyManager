@@ -70,7 +70,7 @@
         tools:layout_editor_absoluteX="0dp">
 
         <RadioGroup
-            android:id="@+id/butgpAcc"
+            android:id="@+id/butgpUser"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
