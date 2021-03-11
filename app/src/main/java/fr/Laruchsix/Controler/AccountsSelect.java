@@ -25,6 +25,7 @@ import fr.Laruchsix.Model.FonctionsAux;
 import fr.Laruchsix.Model.Person;
 import fr.Laruchsix.R;
 import fr.Laruchsix.SQLite.AccountDatas;
+import fr.Laruchsix.SQLite.PersonDatas;
 
 public class AccountsSelect extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -33,6 +34,7 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
     private String firstName, lastName;
     private Integer id;
     private Devise devise;
+    //public static string EXTRA_ID = ""
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +44,12 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         Intent intent = getIntent();
         firstName = intent.getStringExtra(MainActivity.EXTRA_FIRST_NAME);
         lastName = intent.getStringExtra(MainActivity.EXTRA_LAST_NAME);
-        id = intent.getIntExtra(MainActivity.EXTRA_ID, -1);
-        devise = Devise.valueOf(intent.getStringExtra(MainActivity.EXTRA_DEVISE));
+        //id = intent.getIntExtra(MainActivity.EXTRA_ID, -1);
+        //devise = Devise.valueOf(intent.getStringExtra(MainActivity.EXTRA_DEVISE));
 
         //création du propriétaire
-        this.owner = new Person(devise, firstName, lastName, id);
+        PersonDatas personDatas = new PersonDatas(this);
+        this.owner = personDatas.findUser(firstName, lastName);
 
         // on récupère toutes ces activités
         AccountDatas accountDatas = new AccountDatas(this);
@@ -73,9 +76,10 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         addAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 // start new actvity
                 Intent otherActivity = new Intent(getApplicationContext(), formulaireCreationDeCompte.class);
+                otherActivity.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
+                otherActivity.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
                 startActivity(otherActivity);
                 finish();
             }

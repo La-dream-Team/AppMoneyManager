@@ -14,6 +14,7 @@ import fr.Laruchsix.Model.Devise;
 import fr.Laruchsix.Model.Person;
 import fr.Laruchsix.R;
 import fr.Laruchsix.SQLite.AccountDatas;
+import fr.Laruchsix.SQLite.PersonDatas;
 
 public class formulaireCreationDeCompte extends AppCompatActivity {
 
@@ -37,6 +38,8 @@ public class formulaireCreationDeCompte extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent otherActivity = new Intent(getApplicationContext(), AccountsSelect.class);
+                otherActivity.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
+                otherActivity.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
                 startActivity(otherActivity);
                 finish();
             }
@@ -48,22 +51,25 @@ public class formulaireCreationDeCompte extends AppCompatActivity {
 
         // button Ok
         final Button butOk = (Button) findViewById(R.id.butCompteOk);
-        butCancel.setOnClickListener(new View.OnClickListener() {
+        butOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Devise dev = getDevise();
 
                 String nom, desc;
-                Float value = Float.parseFloat(edvalue.getText().toString());
+                Float value = Float.parseFloat(edvalue.getText().toString() + "f");
                 nom = ednom.getText().toString();
                 desc = eddesc.getText().toString();
 
+                System.out.println("nom = " + nom + " desc = " + desc + " value = " + value + " devise = " + dev.toString());
                 if((dev != null) && (nom != "") && (desc != "") && (value != null))
                 {
                     Account newAcc = owner.addNewAccount(value, nom, desc, dev, -1);
                     accountDatas.ajout(newAcc, owner);
 
                     Intent otherActivity = new Intent(getApplicationContext(), AccountsSelect.class);
+                    otherActivity.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
+                    otherActivity.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
                     startActivity(otherActivity);
                     finish();
                 }
@@ -78,11 +84,12 @@ public class formulaireCreationDeCompte extends AppCompatActivity {
         Intent intent = getIntent();
         firstName = intent.getStringExtra(MainActivity.EXTRA_FIRST_NAME);
         lastName = intent.getStringExtra(MainActivity.EXTRA_LAST_NAME);
-        id = intent.getIntExtra(MainActivity.EXTRA_ID, -1);
-        devise = Devise.valueOf(intent.getStringExtra(MainActivity.EXTRA_DEVISE));
 
         //création du propriétaire
-        this.owner = new Person(devise, firstName, lastName, id);
+        PersonDatas personDatas = new PersonDatas(this);
+        this.owner = personDatas.findUser(firstName, lastName);
+
+        System.out.println("voici le propriétaire " + owner.toString());
 
         // on récupère toutes ces activités
         accountDatas = new AccountDatas(this);
@@ -96,7 +103,7 @@ public class formulaireCreationDeCompte extends AppCompatActivity {
         int select;
 
         // recup du groupe
-        gp = findViewById(R.id.butgpUser);
+        gp = findViewById(R.id.butgpAcc);
         try {
             select = findViewById(gp.getCheckedRadioButtonId()).getId();
         } catch (Exception e) {
