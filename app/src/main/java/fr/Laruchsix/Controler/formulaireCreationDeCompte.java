@@ -57,7 +57,11 @@ public class formulaireCreationDeCompte extends AppCompatActivity {
                 Devise dev = getDevise();
 
                 String nom, desc;
-                Float value = Float.parseFloat(edvalue.getText().toString() + "f");
+                Float value;
+                if(edvalue.getText().toString() != null)
+                    value = Float.parseFloat(edvalue.getText().toString());
+                else
+                    value = null;
                 nom = ednom.getText().toString();
                 desc = eddesc.getText().toString();
 
