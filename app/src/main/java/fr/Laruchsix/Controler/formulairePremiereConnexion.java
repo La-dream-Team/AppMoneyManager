@@ -100,7 +100,7 @@ public class formulairePremiereConnexion extends AppCompatActivity {
         int select ;
 
         // recup du groupe
-        gp = findViewById(R.id.butgpAcc);
+        gp = findViewById(R.id.butgpUser);
         try{
             select = findViewById(gp.getCheckedRadioButtonId()).getId();
         } catch (Exception e){
