@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         newuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent otherActivity = new Intent(getApplicationContext(), AccountControler.class);
+                Intent otherActivity = new Intent(getApplicationContext(), formulairePremiereConnexion.class);
                 startActivity(otherActivity);
             }
         });
