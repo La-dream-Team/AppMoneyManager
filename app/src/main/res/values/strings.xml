@@ -9,9 +9,16 @@
     <string name="dateUser">user.txt</string>
     <string name="dataAccount">account.txt</string>
     <string name="account_name">Nom du compte :</string>
+    <string name="activity_name">Nom de l\'activité :</string>
+    <string name="activity_description">Description de l\'activité</string>
+    <string name="activity_date">Date de création de l\'activité</string>
+    <string name="activity_currency">Devise de l\'activité</string>
+    <string name="activity_balance">Balance de l\'activité</string>
     <string name="account_description">Description du compte</string>
     <string name="account_balance">Balance du compte</string>
     <string name="textViewAccountList">Liste de vos Comptes</string>
+    <string name="textViewActivityList">Liste des activités de ce compte</string>
+    <string name="textViewAccountTotalBalance">Balance total du compte : </string>
     <string name="total_balance_text">Balance total des comptes : </string>
     <string name="total_balance_number"> 0.0 </string>
     <string name="account_currency">Devise du compte</string>

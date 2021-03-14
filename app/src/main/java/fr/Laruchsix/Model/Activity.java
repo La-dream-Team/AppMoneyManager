@@ -48,6 +48,8 @@ public class Activity {
     {
         return this.id;
     }
+
+    public Devise getDevise(){ return this.account.getDevise();}
     
     public Account getAccount()
     {

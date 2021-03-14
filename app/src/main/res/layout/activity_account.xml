@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controler.AccountsSelect">
+    tools:context=".Controler.AccountControler">
 
     <TextView
-        android:id="@+id/TitreAccSelect"
+        android:id="@+id/TitreAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textViewAccountList"
+        android:text="@string/account_name"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/TitreActivityList"/>
+
+    <TextView
+        android:id="@+id/TitreActivityList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textViewActivityList"
+        android:textSize="20dp"
+        android:textColor="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TitreAccount"
         app:layout_constraintBottom_toTopOf="@+id/linearLayoutList"/>
 
     <LinearLayout
@@ -26,10 +39,9 @@
         app:layout_constraintBottom_toTopOf="@+id/linearLayoutTotalBalance"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TitreAccSelect">
-
+        app:layout_constraintTop_toBottomOf="@+id/TitreActivityList">
         <ListView
-            android:id="@+id/account_list"
+            android:id="@+id/activity_list"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:smoothScrollbar="true"
@@ -53,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="@string/total_balance_text"
+            android:text="@string/textViewAccountTotalBalance"
             android:textColor="@color/black"
             android:textSize="17dp" />
 
@@ -71,11 +83,13 @@
                 android:text="@string/total_balance_number"
                 android:textSize="17dp" />
 
-            <Spinner
-                android:id="@+id/currency_spinner"
+            <TextView
+                android:id="@+id/account_currency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="2.5dp" />
+                android:layout_marginRight="2.5dp"
+                android:text="@string/account_currency"
+                android:textSize="17dp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -91,19 +105,19 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutTotalBalance">
 
         <Button
-            android:id="@+id/ajoutAcc"
+            android:id="@+id/ajoutActivite"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginRight="5dp"
-            android:text="AJOUTER UN COMPTE"
+            android:text="AJOUTER UNE ACTIVITÉ"
             android:textSize="10dp" />
 
         <Button
-            android:id="@+id/suppAcc"
+            android:id="@+id/suppActivite"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginLeft="5dp"
-            android:text="SUPRIMMER UN COMPTE"
+            android:text="SUPRIMMER UNE ACTIVITÉ"
             android:textSize="10dp" />
 
     </LinearLayout>

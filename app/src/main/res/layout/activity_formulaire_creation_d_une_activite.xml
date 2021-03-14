@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controler.formulaireCreationDeCompte">
+    tools:context=".Controler.formulaireCreationDeActivite">
 
     <TextView
-        android:id="@+id/titreformAcc"
+        android:id="@+id/titreformActivite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -18,17 +18,17 @@
         android:textSize="20dp"/>
 
     <TextView
-        android:id="@+id/nomCompte"
+        android:id="@+id/nomActivite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="30dp"
         android:text="Nom de l'activité"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titreformAcc" />
+        app:layout_constraintTop_toBottomOf="@+id/titreformActivite" />
 
     <EditText
-        android:id="@+id/ednomCompte"
+        android:id="@+id/ednomActivite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -37,7 +37,7 @@
         android:inputType="textPersonName"
         android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomCompte" />
+        app:layout_constraintTop_toBottomOf="@+id/nomActivite" />
 
     <TextView
         android:id="@+id/balanceParDefaut"
@@ -47,7 +47,7 @@
         android:layout_marginTop="20dp"
         android:text="Argent attribué"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ednomCompte" />
+        app:layout_constraintTop_toBottomOf="@+id/ednomActivite" />
 
     <EditText
         android:id="@+id/edbalanceParDefaut"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/balanceParDefaut" />
 
     <TextView
-        android:id="@+id/descriptionCompte"
+        android:id="@+id/descriptionActivite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edbalanceParDefaut" />
 
     <EditText
-        android:id="@+id/eddescriptionCompte"
+        android:id="@+id/eddescriptionActivite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -81,7 +81,7 @@
         android:inputType="textPersonName"
         android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionCompte" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionActivite" />
 
     <TextView
         android:id="@+id/textView5"
@@ -91,29 +91,80 @@
         android:layout_marginTop="30dp"
         android:text="Devise :"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eddescriptionCompte" />
+        app:layout_constraintTop_toBottomOf="@+id/eddescriptionActivite" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        tools:layout_editor_absoluteX="0dp">
+
+        <RadioGroup
+            android:id="@+id/butgpAc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioButton
+                android:id="@+id/butEuroPer"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:text="Euro" />
+
+            <RadioButton
+                android:id="@+id/butDolarPer"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:text="Dolar American" />
+
+            <RadioButton
+                android:id="@+id/butLivrePer"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:text="Livre Sterling" />
+
+            <RadioButton
+                android:id="@+id/butYenPer"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:text="Yen" />
+
+            <RadioButton
+                android:id="@+id/butRouble"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:text="Rouble" />
+        </RadioGroup>
+    </LinearLayout>
 
     <Button
-        android:id="@+id/butCompteCancel"
+        android:id="@+id/butActivityCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:text="Annuler"
         app:backgroundTint="@color/teal_200"
-        app:layout_constraintEnd_toStartOf="@id/butCompteOk"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintEnd_toStartOf="@id/butActivityOk"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
 
     <Button
-        android:id="@+id/butCompteOk"
+        android:id="@+id/butActivityOk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:text="OK"
         android:visibility="visible"
         app:backgroundTint="@color/teal_700"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

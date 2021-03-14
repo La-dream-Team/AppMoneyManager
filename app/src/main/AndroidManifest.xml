@@ -11,7 +11,9 @@
         android:theme="@style/Theme.MoneyMananger">
         <activity android:name=".Controler.formulaireCreationDeCompte"></activity>
         <activity android:name=".Controler.AccountsSelect" />
+        <activity android:name=".Controler.AccountControler" />
         <activity android:name=".Controler.formulairePremiereConnexion" />
+        <activity android:name=".Controler.formulaireCreationDeActivite" />
         <activity android:name=".Controler.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
