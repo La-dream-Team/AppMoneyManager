@@ -12,8 +12,10 @@ public class MySqlLiteActivity  extends SQLiteOpenHelper {
             + "id INTEGER PRIMARY KEY,"
             + "nom TEXT NOT NULL,"
             + "description TEXT NOT NULL,"
-            + "date DATE NOT NULL,"
-            + "acount INTEGER NOT NULL" //FK
+            + "date LONG NOT NULL,"
+            + "value FLOAT NOT NULL,"
+            + "account INTEGER PRIMARY KEY," //FK
+            + "owner INTEGER PRIMARY KEY" //FK
             + ")";
 
     public MySqlLiteActivity(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {

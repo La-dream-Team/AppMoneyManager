@@ -63,8 +63,8 @@ public class Account {
         this.owner = owner;
 
         this.id = id;
-        if(id> max_id)
-            max_id =id ;
+        if(id >= max_id)
+            max_id = id + 1 ;
     }
 
     // getters / setters
@@ -132,10 +132,14 @@ public class Account {
     public int getId() { return this.id;  };
 
     // methodes
-    public void addActivity(float val, String des, String name, Date day)
+    public void addActivity(float val, String des, String name, Date day, int id)
     {
+        Activity newAct;
         // creation de l'activité
-        Activity newAct = new Activity(val, des, name, day, this);
+        if(id == -1)
+            newAct = new Activity(val, des, name, day, this);
+        else
+            newAct = new Activity(val, des, name, day, this, id);
         this.activites.add(newAct); // ajout aux activité du compte
         this.refresh(newAct); // mise a jours du solode courant
     }

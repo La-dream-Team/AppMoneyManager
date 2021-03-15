@@ -13,9 +13,11 @@ public class AccountDatas {
     private Integer versionBase = 1;
     private MySqlLiteAccount accesBD;
     private SQLiteDatabase bd;
+    private Context context;
 
     // constructeur
     public AccountDatas(Context context) {
+        this.context = context;
         accesBD = new MySqlLiteAccount(context, nomBase, null, versionBase);
     }
 
@@ -43,6 +45,8 @@ public class AccountDatas {
         String sql = "SELECT * FROM account WHERE fk_person_id = \""
                 + owner.getId() + "\";";
 
+        ActivityDatas activityDatas = new ActivityDatas(this.context);
+
         //System.out.println("requete sql =" + sql);
 
         Cursor curseur = bd.rawQuery(sql, null );
@@ -60,8 +64,8 @@ public class AccountDatas {
             Devise dev = Devise.valueOf(curseur.getString(3));
             float montant = curseur.getFloat(4);
 
-            owner.addNewAccount(montant, nom, desc, dev, id);
-
+            Account currentAcc = owner.addNewAccount(montant, nom, desc, dev, id);
+            activityDatas.findAllAct(owner, currentAcc);
             if(!curseur.moveToNext())
                 break;
         }
@@ -82,5 +86,18 @@ public class AccountDatas {
         maxid = curseur.getCount();
 
         return maxid;
+    }
+
+    public void removeAccount(Person owner, Account account) {
+        ActivityDatas activityDatas = new ActivityDatas(this.context);
+
+        bd = accesBD.getWritableDatabase();
+        String sql = "DELETE FROM activity WHERE"
+                + " account = \"" + account.getId() + "\" AND"
+                + " owner = \"" + owner.getId() + "\";";
+
+        System.out.println("requete sql =" + sql);
+
+        bd.execSQL(sql);
     }
 }

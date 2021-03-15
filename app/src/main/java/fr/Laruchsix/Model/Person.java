@@ -41,8 +41,8 @@ public class Person {
         this.colors = new InterfaceColors();
 
         this.id = id;
-        if(maxid < id)
-            maxid = id;
+        if(maxid <= id)
+            maxid = id + 1;
 
     }
     

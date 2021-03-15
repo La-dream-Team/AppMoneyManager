@@ -34,7 +34,6 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
     private String firstName, lastName;
     private Integer id;
     private Devise devise;
-    //public static string EXTRA_ID = ""
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +43,6 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         Intent intent = getIntent();
         firstName = intent.getStringExtra(MainActivity.EXTRA_FIRST_NAME);
         lastName = intent.getStringExtra(MainActivity.EXTRA_LAST_NAME);
-        //id = intent.getIntExtra(MainActivity.EXTRA_ID, -1);
-        //devise = Devise.valueOf(intent.getStringExtra(MainActivity.EXTRA_DEVISE));
 
         //création du propriétaire
         PersonDatas personDatas = new PersonDatas(this);
@@ -55,7 +52,7 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         AccountDatas accountDatas = new AccountDatas(this);
         accountDatas.loadAcc(this.owner);
 
-        Toast.makeText(getApplicationContext(), "Bonjour " + firstName + " " + lastName + " id = " + id , Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "Bonjour " + firstName + " " + lastName + " id = " + id , Toast.LENGTH_LONG).show();
 
         // bouton reset
         Button reset = findViewById(R.id.resetuser);

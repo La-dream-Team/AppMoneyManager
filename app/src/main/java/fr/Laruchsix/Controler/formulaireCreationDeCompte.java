@@ -93,7 +93,7 @@ public class formulaireCreationDeCompte extends AppCompatActivity {
         PersonDatas personDatas = new PersonDatas(this);
         this.owner = personDatas.findUser(firstName, lastName);
 
-        System.out.println("voici le propriétaire " + owner.toString());
+        //System.out.println("voici le propriétaire " + owner.toString());
 
         // on récupère toutes ces activités
         accountDatas = new AccountDatas(this);

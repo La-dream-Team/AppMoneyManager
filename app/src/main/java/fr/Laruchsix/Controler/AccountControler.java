@@ -73,9 +73,9 @@ public class AccountControler extends AppCompatActivity{
         this.account = new Account(10000.86f, "Main", "Mon compte principal", currentTime, owner, Devise.Euro);
 
         //Liste d'activités
-        this.account.addActivity(-5500.36f, "Achat de la Ferrai FX50", "Achat de nouvelle voiture", currentTime);
-        this.account.addActivity(-18.36f, "Burger King 15/03/2021", "Restaurant avec les potes", currentTime);
-        this.account.addActivity(-300.36f, "Achat de Samsung FE 2020", "Achat de portable", currentTime);
+        this.account.addActivity(-5500.36f, "Achat de la Ferrai FX50", "Achat de nouvelle voiture", currentTime,-1);
+        this.account.addActivity(-18.36f, "Burger King 15/03/2021", "Restaurant avec les potes", currentTime,-1);
+        this.account.addActivity(-300.36f, "Achat de Samsung FE 2020", "Achat de portable", currentTime,-1);
 
 
         //Si l'utilisateur n'a pas encore des activites on change le textView

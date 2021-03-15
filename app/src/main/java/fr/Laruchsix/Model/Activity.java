@@ -10,7 +10,7 @@ public class Activity {
     private final String name;
     private final Date date;
     private final int id;
-    private static int current_id = 0;
+    public static int max_id = 0;
     private final Account account;
     
     public Activity(float vl, String ds, String nm, Date dt, Account ac)
@@ -19,9 +19,22 @@ public class Activity {
         this.description = ds;
         this.name = nm;
         this.date = dt;
-        this.id = current_id;
-        current_id++;
+        this.id = max_id;
+        max_id++;
         this.account = ac;
+    }
+
+    public Activity(float vl, String ds, String nm, Date dt, Account ac, int id)
+    {
+        this.value = vl;
+        this.description = ds;
+        this.name = nm;
+        this.date = dt;
+        this.id = id;
+        this.account = ac;
+
+        if(id >= max_id)
+            max_id = id + 1 ;
     }
     
     public float getValue()
@@ -55,6 +68,10 @@ public class Activity {
     {
         return this.account;
     }
+
+    public static int getMax_id() { return  max_id ; };
+
+    public static void setMax_id(int id) { max_id = id; };
 
     @Override
     public String toString()
