@@ -96,28 +96,6 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
             }
         });
 
-
-
-
-        //Liste de comptes
-        /*
-        this.owner.addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
-        this.owner.addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
-        this.owner.addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
-        this.owner.addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
-        this.owner.addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
-        this.owner.addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
-        this.owner.addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
-        this.owner.addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
-        this.owner.addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
-        this.owner.addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
-        this.owner.addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
-        this.owner.addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
-        this.owner.addNewAccount(10000.86f, "Main", "Mon compte principal", Devise.Euro);
-        this.owner.addNewAccount(520.23f, "Francais", "Mon compte francais", Devise.Dolar_American);
-        this.owner.addNewAccount(3065.57f, "Espagnol", "Mon compte espagnol", Devise.Yen);
-*/
-
         //Si l'utilisateur n'a pas encore des comptes on change le textView
         if(this.owner.getAccounts().isEmpty())
         {
@@ -128,6 +106,19 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         //On ajoute l'adapter à la liste de comptes
         ListView accountListView = findViewById(R.id.account_list);
         accountListView.setAdapter(new AccountAdapter(this, this.owner.getAccounts()));
+        accountListView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener()
+                {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(getApplicationContext(), AccountControler.class);
+                        intent.putExtra("accountPosition", position);
+                        intent.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
+                        intent.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
+                        startActivity(intent);
+                    }
+                }
+        );
 
         //On initialise le compteur
         this.totalBalanceView = (TextView)findViewById(R.id.total_balance_number);

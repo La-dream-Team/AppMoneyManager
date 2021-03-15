@@ -17,26 +17,43 @@ import java.util.Date;
 
 import fr.Laruchsix.Model.Account;
 import fr.Laruchsix.Model.Devise;
+import fr.Laruchsix.Model.FonctionsAux;
 import fr.Laruchsix.Model.Person;
 import fr.Laruchsix.R;
+import fr.Laruchsix.SQLite.AccountDatas;
+import fr.Laruchsix.SQLite.PersonDatas;
 
 public class AccountControler extends AppCompatActivity{
     private Account account;
-    //private TextView totalBalanceView;
-    //private String firstName, lastName;
-    //private Integer id;
-    //private Devise devise;
+    private int accountPosition;
+    private Person owner;
+    private String firstName, lastName;
+    private Integer id;
+    private Devise devise;
+    private AccountDatas accountDatas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
-        //Intent intent = getIntent();
-        //firstName = intent.getStringExtra(MainActivity.EXTRA_FIRST_NAME);
-        //lastName = intent.getStringExtra(MainActivity.EXTRA_LAST_NAME);
+        Intent intent = getIntent();
+        accountPosition = intent.getIntExtra("accountPosition", -1);
+        firstName = intent.getStringExtra(MainActivity.EXTRA_FIRST_NAME);
+        lastName = intent.getStringExtra(MainActivity.EXTRA_LAST_NAME);
         //id = intent.getIntExtra(MainActivity.EXTRA_ID, -1);
         //devise = Devise.valueOf(intent.getStringExtra(MainActivity.EXTRA_DEVISE));
+
+        //création du propriÃ©taire
+        PersonDatas personDatas = new PersonDatas(this);
+        this.owner = personDatas.findUser(firstName, lastName);
+
+        // on récupère toutes ces activités
+        this.accountDatas = new AccountDatas(this);
+        accountDatas.loadAcc(this.owner);
+
+        // on récupère la compte choisi
+        this.account = this.owner.getAccounts().get(accountPosition);
 
         // bouton reset
         Button reset = findViewById(R.id.resetuser);
@@ -60,23 +77,13 @@ public class AccountControler extends AppCompatActivity{
 
                 //start new actvity
                 Intent otherActivity = new Intent(getApplicationContext(), formulaireCreationDeActivite.class);
+                otherActivity.putExtra("accountPosition", accountPosition);
+                otherActivity.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
+                otherActivity.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
                 startActivity(otherActivity);
                 finish();
             }
         });
-
-
-        Person owner = new Person(Devise.Euro, "Daniel", "Rodriguez", 000);
-
-        //Compte crée pour tester
-        Date currentTime = Calendar.getInstance().getTime();
-        this.account = new Account(10000.86f, "Main", "Mon compte principal", currentTime, owner, Devise.Euro);
-
-        //Liste d'activités
-        this.account.addActivity(-5500.36f, "Achat de la Ferrai FX50", "Achat de nouvelle voiture", currentTime,-1);
-        this.account.addActivity(-18.36f, "Burger King 15/03/2021", "Restaurant avec les potes", currentTime,-1);
-        this.account.addActivity(-300.36f, "Achat de Samsung FE 2020", "Achat de portable", currentTime,-1);
-
 
         //Si l'utilisateur n'a pas encore des activites on change le textView
         if(this.account.getActivities().isEmpty())
@@ -97,7 +104,7 @@ public class AccountControler extends AppCompatActivity{
         TextView accountCurrency = (TextView)findViewById(R.id.account_currency);
         accountCurrency.setText(getStringFromCurrency(this.account.getDevise()));
 
-        //FonctionsAux.savePerson(firstName, lastName, this, owner);
+        FonctionsAux.savePerson(firstName, lastName, this, owner);
     }
 
     private void reset_User()
