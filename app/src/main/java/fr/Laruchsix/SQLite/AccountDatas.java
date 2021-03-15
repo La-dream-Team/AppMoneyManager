@@ -69,7 +69,8 @@ public class AccountDatas {
             if(!curseur.moveToNext())
                 break;
         }
-
+        owner.forceRefresh();
+        ret = owner;
         // on retourne l'utilisateur
         return ret;
     }

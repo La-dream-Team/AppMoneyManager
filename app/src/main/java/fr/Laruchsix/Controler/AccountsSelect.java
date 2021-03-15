@@ -82,6 +82,20 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
             }
         });
 
+        // button Rem Acc
+        Button remAcc = findViewById(R.id.suppAcc);
+        remAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // start new actvity
+                Intent otherActivity = new Intent(getApplicationContext(), AccountDelete.class);
+                otherActivity.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
+                otherActivity.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
+                startActivity(otherActivity);
+                finish();
+            }
+        });
+
 
 
 

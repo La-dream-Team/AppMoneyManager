@@ -14,12 +14,12 @@ import fr.Laruchsix.Model.Person;
 public class ActivityDatas {
     private String nomBase = "bdActivity.sqlite";
     private Integer versionBase = 1;
-    private MySqlLitePerson accesBD;
+    private MySqlLiteActivity accesBD;
     private SQLiteDatabase bd;
 
     // constructeur
     public ActivityDatas(Context context) {
-        accesBD = new MySqlLitePerson(context, nomBase, null, versionBase);
+        accesBD = new MySqlLiteActivity(context, nomBase, null, versionBase);
     }
 
 
@@ -45,10 +45,11 @@ public class ActivityDatas {
         bd = accesBD.getReadableDatabase();
         Person ret = null;
         // requete sql
-        String sql = "SELECT * FROM account WHERE owner = \""
-                + owner.getId() + "\", AND account = " + account.getId() + ";";
+        String sql = "SELECT * FROM activity WHERE owner = \""
+                + owner.getId() + "\" AND account = \"" + account.getId() + "\";";
 
-        //System.out.println("requete sql =" + sql);
+
+        System.out.println("requete sql =" + sql);
 
         Cursor curseur = bd.rawQuery(sql, null );
 

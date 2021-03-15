@@ -14,7 +14,6 @@ import fr.Laruchsix.SQLite.PersonDatas;
 public class AccountDelete extends AppCompatActivity {
 
     private Person owner;
-    private TextView totalBalanceView;
     private String firstName, lastName;
 
     @Override
