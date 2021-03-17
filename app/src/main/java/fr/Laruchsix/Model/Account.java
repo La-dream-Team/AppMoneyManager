@@ -1,6 +1,14 @@
 package fr.Laruchsix.Model;
 
+import android.os.Build;
+import android.provider.CalendarContract;
+
+import androidx.annotation.RequiresApi;
+
+import java.time.Month;
+import java.time.Year;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Account {
@@ -194,6 +202,7 @@ public class Account {
         return ret;
     }
 
+<<<<<<< Updated upstream
     public String[] getActivityNames()
     {
         String[] activityNames = new String[this.activites.size()+1];
@@ -203,5 +212,27 @@ public class Account {
             activityNames[i] = this.activites.get(i-1).getName();
         }
         return activityNames;
+=======
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public ArrayList<Activity> computeBalanFromDate (Month mois, Year annee){
+
+        // si l'utilisateur veux visualier l'ensemble des acitivités du compte
+        if(mois.equals(null) && annee.equals(null)){
+            this.forceRefresh();
+            return this.activites;
+        }
+        else{
+            Calendar 
+            Date dateDefin, dateDeDebut;
+            Month decembre = Month.DECEMBER;
+            Month janvier = Month.JANUARY;
+            if(mois.equals(null)){
+                dateDeDebut = Calendar.set(annee.getValue(), 1, 1);
+            }
+            else{
+
+            }
+        }
+>>>>>>> Stashed changes
     }
 }

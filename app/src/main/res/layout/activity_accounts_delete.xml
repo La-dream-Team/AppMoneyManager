@@ -12,7 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:gravity="center"
+<<<<<<< Updated upstream
         android:text="@string/titreSupprimmerUnCompte"
+=======
+>>>>>>> Stashed changes
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/TitreActivityList"
         app:layout_constraintEnd_toEndOf="parent"
