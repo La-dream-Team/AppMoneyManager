@@ -202,17 +202,16 @@ public class Account {
         return ret;
     }
 
-<<<<<<< Updated upstream
-    public String[] getActivityNames()
-    {
-        String[] activityNames = new String[this.activites.size()+1];
+
+    public String[] getActivityNames() {
+        String[] activityNames = new String[this.activites.size() + 1];
         activityNames[0] = "Toutes les activités";
-        for(int i= 1; i < this.activites.size()+1; i++)
-        {
-            activityNames[i] = this.activites.get(i-1).getName();
+        for (int i = 1; i < this.activites.size() + 1; i++) {
+            activityNames[i] = this.activites.get(i - 1).getName();
         }
         return activityNames;
-=======
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public ArrayList<Activity> computeBalanFromDate (Month mois, Year annee){
 
@@ -222,7 +221,7 @@ public class Account {
             return this.activites;
         }
         else{
-            Calendar 
+            Calendar calendar ;
             Date dateDefin, dateDeDebut;
             Month decembre = Month.DECEMBER;
             Month janvier = Month.JANUARY;
@@ -233,6 +232,5 @@ public class Account {
 
             }
         }
->>>>>>> Stashed changes
     }
 }
