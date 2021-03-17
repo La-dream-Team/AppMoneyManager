@@ -39,14 +39,30 @@ public class AccountControler extends AppCompatActivity{
 
         this.loadData();
 
-        // button Add Acc
-        Button addAcc = findViewById(R.id.ajoutActivite);
-        addAcc.setOnClickListener(new View.OnClickListener() {
+        // button Add Activité
+        Button addAct = findViewById(R.id.ajoutActivite);
+        addAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 //start new actvity
                 Intent otherActivity = new Intent(getApplicationContext(), formulaireCreationDeActivite.class);
+                otherActivity.putExtra(MainActivity.EXTRA_ID, accountId);
+                otherActivity.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
+                otherActivity.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
+                startActivity(otherActivity);
+                finish();
+            }
+        });
+
+        // button Supp Activité
+        Button suppAct = findViewById(R.id.suppActivite);
+        suppAct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //start new actvity
+                Intent otherActivity = new Intent(getApplicationContext(), ActivityDelete.class);
                 otherActivity.putExtra(MainActivity.EXTRA_ID, accountId);
                 otherActivity.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
                 otherActivity.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());

@@ -193,4 +193,15 @@ public class Account {
 
         return ret;
     }
+
+    public String[] getActivityNames()
+    {
+        String[] activityNames = new String[this.activites.size()+1];
+        activityNames[0] = "Toutes les activités";
+        for(int i= 1; i < this.activites.size()+1; i++)
+        {
+            activityNames[i] = this.activites.get(i-1).getName();
+        }
+        return activityNames;
+    }
 }

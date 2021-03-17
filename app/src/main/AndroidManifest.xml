@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MoneyMananger">
         <activity android:name=".Controler.formulaireCreationDeCompte"></activity>
+        <activity android:name=".Controler.ActivityDelete" />
+        <activity android:name=".Controler.AccountDelete" />
         <activity android:name=".Controler.AccountsSelect" />
         <activity android:name=".Controler.AccountControler" />
         <activity android:name=".Controler.formulairePremiereConnexion" />

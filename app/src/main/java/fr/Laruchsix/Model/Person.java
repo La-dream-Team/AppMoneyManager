@@ -165,4 +165,15 @@ public class Person {
         }
         return ret;
     }
+
+    public String[] getAccountNames()
+    {
+        String[] accountNames = new String[this.accounts.size()+1];
+        accountNames[0] = "Tous les comptes";
+        for(int i= 1; i < this.accounts.size()+1; i++)
+        {
+            accountNames[i] = this.accounts.get(i-1).getName();
+        }
+        return accountNames;
+    }
 }

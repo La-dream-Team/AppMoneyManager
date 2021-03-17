@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/account_spiner"
+        android:id="@+id/account_spinner"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="40dp"
@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/ajoutAcc"
+            android:id="@+id/butSuppAccCancel"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginRight="20dp"
@@ -54,7 +54,7 @@
             android:textSize="10dp" />
 
         <Button
-            android:id="@+id/suppAcc"
+            android:id="@+id/butSuppAccOk"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginLeft="20dp"
