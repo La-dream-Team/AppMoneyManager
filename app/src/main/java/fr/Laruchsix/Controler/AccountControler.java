@@ -68,7 +68,13 @@ public class AccountControler extends AppCompatActivity{
 
         //On ajoute l'adapter à la liste de comptes
         ListView activityListView = findViewById(R.id.activity_list);
-        activityListView.setAdapter(new ActivityAdapter(this, this.account.getActivities()));
+        ActivityAdapter adapter = new ActivityAdapter(this, this.account.getActivities()){
+            @Override
+            public boolean isEnabled(int position) {
+                return false;
+            }
+        };
+        activityListView.setAdapter(adapter);
 
         //On met à jour le balance total de la view
         TextView totalBalanceView = (TextView)findViewById(R.id.total_balance_number);

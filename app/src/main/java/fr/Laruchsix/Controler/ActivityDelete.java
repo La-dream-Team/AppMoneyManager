@@ -2,7 +2,6 @@ package fr.Laruchsix.Controler;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +10,7 @@ import fr.Laruchsix.R;
 import fr.Laruchsix.SQLite.AccountDatas;
 import fr.Laruchsix.SQLite.PersonDatas;
 
-public class AccountDelete extends AppCompatActivity {
+public class ActivityDelete extends AppCompatActivity {
 
     private Person owner;
     private String firstName, lastName;
@@ -19,7 +18,7 @@ public class AccountDelete extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_accounts_delete);
+        setContentView(R.layout.activity_activity_delete);
 
         this.loadDatas();
     }

@@ -31,6 +31,8 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
 
     private Person owner;
     private TextView totalBalanceView;
+    private ListView accountListView;
+    private AccountAdapter adapter;
     private String firstName, lastName;
     private Integer id;
     private Devise devise;
@@ -103,7 +105,23 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
             s.setText("Vous n'avez pas des comptes");
         }
 
-
+        //On ajoute l'adapter à la liste de comptes
+        accountListView = findViewById(R.id.account_list);
+        adapter = new AccountAdapter(this, this.owner.getAccounts());
+        accountListView.setAdapter(adapter);
+        accountListView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener()
+                {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(getApplicationContext(), AccountControler.class);
+                        intent.putExtra(MainActivity.EXTRA_ID, owner.getAccounts().get(position).getId());
+                        intent.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
+                        intent.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
+                        startActivity(intent);
+                    }
+                }
+        );
 
         //On initialise le compteur
         this.totalBalanceView = (TextView)findViewById(R.id.total_balance_number);
@@ -145,24 +163,10 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
     @Override
     public void onResume(){
         super.onResume();
-        owner.forceRefresh();
-
-        //On ajoute l'adapter à la liste de comptes
-        ListView accountListView = findViewById(R.id.account_list);
-        accountListView.setAdapter(new AccountAdapter(this, this.owner.getAccounts()));
-        accountListView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener()
-                {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent intent = new Intent(getApplicationContext(), AccountControler.class);
-                        intent.putExtra(MainActivity.EXTRA_ID, owner.getAccounts().get(position).getId());
-                        intent.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
-                        intent.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
-                        startActivity(intent);
-                    }
-                }
-        );
+        owner.getAccounts().clear();
+        AccountDatas accountDatas = new AccountDatas(this);
+        accountDatas.loadAcc(this.owner);
+        adapter.notifyDataSetChanged();
     }
 
     private void changeTotalBalanceViewText(float balance)
