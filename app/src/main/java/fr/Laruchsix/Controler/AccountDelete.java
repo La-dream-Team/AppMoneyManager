@@ -21,6 +21,12 @@ public class AccountDelete extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accounts_select);
 
+        this.loadDatas();
+    }
+
+
+    // charge toute la base de donnée
+    private void loadDatas(){
         Intent intent = getIntent();
         firstName = intent.getStringExtra(MainActivity.EXTRA_FIRST_NAME);
         lastName = intent.getStringExtra(MainActivity.EXTRA_LAST_NAME);

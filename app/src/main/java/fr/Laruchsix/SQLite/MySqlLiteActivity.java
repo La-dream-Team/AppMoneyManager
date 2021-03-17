@@ -8,15 +8,15 @@ import androidx.annotation.Nullable;
 
 public class MySqlLiteActivity  extends SQLiteOpenHelper {
     // creation table
-    private String creaton = "CREATE TABLE activity ( "
-            + "id INTEGER PRIMARY KEY,"
+    private String creation = "CREATE TABLE activity ( "
+            + "id INTEGER NOT NULL,"
             + "nom TEXT NOT NULL,"
             + "description TEXT NOT NULL,"
             + "date LONG NOT NULL,"
             + "value FLOAT NOT NULL,"
-            + "account INTEGER PRIMARY KEY," //FK
-            + "owner INTEGER PRIMARY KEY" //FK
-            + ")";
+            + "account INTEGER NOT NULL," //FK
+            + "owner INTEGER NOT NULL," //FK
+            + "PRIMARY KEY(id,account,owner));";
 
     public MySqlLiteActivity(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -24,7 +24,8 @@ public class MySqlLiteActivity  extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(creaton);
+        System.out.println(creation);
+        db.execSQL(creation);
     }//fin oncreate
 
     @Override

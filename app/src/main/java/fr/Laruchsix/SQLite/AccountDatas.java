@@ -45,8 +45,6 @@ public class AccountDatas {
         String sql = "SELECT * FROM account WHERE fk_person_id = \""
                 + owner.getId() + "\";";
 
-        ActivityDatas activityDatas = new ActivityDatas(this.context);
-
         //System.out.println("requete sql =" + sql);
 
         Cursor curseur = bd.rawQuery(sql, null );
@@ -65,7 +63,9 @@ public class AccountDatas {
             float montant = curseur.getFloat(4);
 
             Account currentAcc = owner.addNewAccount(montant, nom, desc, dev, id);
-            activityDatas.findAllAct(owner, currentAcc);
+
+            MethodesAux.loadActivites(owner, currentAcc, context);
+            //activityDatas.findAllAct(owner, currentAcc);
             if(!curseur.moveToNext())
                 break;
         }
