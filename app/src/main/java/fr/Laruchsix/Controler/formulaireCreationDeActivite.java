@@ -16,7 +16,7 @@ import fr.Laruchsix.SQLite.PersonDatas;
 
 public class formulaireCreationDeActivite extends AppCompatActivity {
     private Account account;
-    private int accountPosition;
+    private int accountId;
     private Person owner;
     private String firstName, lastName;
     private Integer id;
@@ -37,7 +37,7 @@ public class formulaireCreationDeActivite extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent otherActivity = new Intent(getApplicationContext(), AccountControler.class);
-                otherActivity.putExtra("accountPosition", accountPosition);
+                otherActivity.putExtra(MainActivity.EXTRA_ID, accountId);
                 otherActivity.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
                 otherActivity.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
                 startActivity(otherActivity);
@@ -48,7 +48,7 @@ public class formulaireCreationDeActivite extends AppCompatActivity {
 
     private void loadDatas (){
         Intent intent = getIntent();
-        accountPosition = intent.getIntExtra("accountPosition", -1);
+        accountId = intent.getIntExtra(MainActivity.EXTRA_ID, -1);
         firstName = intent.getStringExtra(MainActivity.EXTRA_FIRST_NAME);
         lastName = intent.getStringExtra(MainActivity.EXTRA_LAST_NAME);
         //id = intent.getIntExtra(MainActivity.EXTRA_ID, -1);
@@ -63,6 +63,6 @@ public class formulaireCreationDeActivite extends AppCompatActivity {
         accountDatas.loadAcc(this.owner);
 
         // on récupère la compte choisi
-        this.account = this.owner.getAccounts().get(accountPosition);
+        this.account = this.owner.findAccountById(accountId);
     }
 }

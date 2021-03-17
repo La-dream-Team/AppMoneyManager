@@ -62,6 +62,10 @@ public class AccountControler extends AppCompatActivity{
             s.setText("Vous n'avez pas d'activités relies à votre compte");
         }
 
+        //On met le nom du compte comme titre de la view
+        TextView accountName = (TextView)findViewById(R.id.TitreAccount);
+        accountName.setText(this.account.getName());
+
         //On ajoute l'adapter à la liste de comptes
         ListView activityListView = findViewById(R.id.activity_list);
         activityListView.setAdapter(new ActivityAdapter(this, this.account.getActivities()));
