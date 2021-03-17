@@ -132,7 +132,7 @@ public class Account {
     public int getId() { return this.id;  };
 
     // methodes
-    public void addActivity(float val, String des, String name, Date day, int id)
+    public Activity addActivity(float val, String des, String name, Date day, int id)
     {
         Activity newAct;
         // creation de l'activité
@@ -142,6 +142,7 @@ public class Account {
             newAct = new Activity(val, des, name, day, this, id);
         this.activites.add(newAct); // ajout aux activité du compte
         this.refresh(newAct); // mise a jours du solode courant
+        return newAct;
     }
 
     public void refresh(Activity newAct)
