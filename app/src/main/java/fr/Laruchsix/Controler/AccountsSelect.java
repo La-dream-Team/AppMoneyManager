@@ -103,22 +103,7 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
             s.setText("Vous n'avez pas des comptes");
         }
 
-        //On ajoute l'adapter à la liste de comptes
-        ListView accountListView = findViewById(R.id.account_list);
-        accountListView.setAdapter(new AccountAdapter(this, this.owner.getAccounts()));
-        accountListView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener()
-                {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent intent = new Intent(getApplicationContext(), AccountControler.class);
-                        intent.putExtra(MainActivity.EXTRA_ID, owner.getAccounts().get(position).getId());
-                        intent.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
-                        intent.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
-                        startActivity(intent);
-                    }
-                }
-        );
+
 
         //On initialise le compteur
         this.totalBalanceView = (TextView)findViewById(R.id.total_balance_number);
@@ -155,6 +140,29 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         } catch (Exception e) {
             Toast.makeText(this,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        owner.forceRefresh();
+
+        //On ajoute l'adapter à la liste de comptes
+        ListView accountListView = findViewById(R.id.account_list);
+        accountListView.setAdapter(new AccountAdapter(this, this.owner.getAccounts()));
+        accountListView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener()
+                {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(getApplicationContext(), AccountControler.class);
+                        intent.putExtra(MainActivity.EXTRA_ID, owner.getAccounts().get(position).getId());
+                        intent.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
+                        intent.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
+                        startActivity(intent);
+                    }
+                }
+        );
     }
 
     private void changeTotalBalanceViewText(float balance)

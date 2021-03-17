@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import fr.Laruchsix.Model.Account;
 import fr.Laruchsix.Model.Activity;
 import fr.Laruchsix.Model.Devise;
@@ -54,7 +57,7 @@ public class formulaireCreationDeActivite extends AppCompatActivity {
         TextView edvalue = findViewById(R.id.edValueActivite);
 
         // button Ok
-        final Button butOk = (Button) findViewById(R.id.butCompteOk);
+        final Button butOk = (Button) findViewById(R.id.butActivityOk);
         butOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +73,8 @@ public class formulaireCreationDeActivite extends AppCompatActivity {
                 //System.out.println("nom = " + nom + " desc = " + desc + " value = " + value + " devise = " + dev.toString());
                 if((nom != "") && (desc != "") && (value != null))
                 {
-                    Activity newAct = account.addActivity(value, desc, nom, null, -1);
+                    Date currentTime = Calendar.getInstance().getTime();
+                    Activity newAct = account.addActivity(value, desc, nom, currentTime, -1);
                     activityDatas.ajout(account, owner, newAct);
 
                     Intent otherActivity = new Intent(getApplicationContext(), AccountControler.class);
