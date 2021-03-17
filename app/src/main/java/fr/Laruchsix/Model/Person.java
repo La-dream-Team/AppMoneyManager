@@ -152,4 +152,17 @@ public class Person {
 
         return ret;
     }
+
+    public Account findAccountById(int id)
+    {
+        Account ret = null;
+        for(Account currentAcc : this.accounts)
+        {
+            if(currentAcc.getId() == id){
+                ret = currentAcc;
+                break;
+            }
+        }
+        return ret;
+    }
 }

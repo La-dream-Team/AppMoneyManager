@@ -25,7 +25,7 @@ import fr.Laruchsix.SQLite.PersonDatas;
 
 public class AccountControler extends AppCompatActivity{
     private Account account;
-    private int accountPosition;
+    private int accountId;
     private Person owner;
     private String firstName, lastName;
     private Integer id;
@@ -37,37 +37,7 @@ public class AccountControler extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
-        Intent intent = getIntent();
-        accountPosition = intent.getIntExtra("accountPosition", -1);
-        firstName = intent.getStringExtra(MainActivity.EXTRA_FIRST_NAME);
-        lastName = intent.getStringExtra(MainActivity.EXTRA_LAST_NAME);
-        //id = intent.getIntExtra(MainActivity.EXTRA_ID, -1);
-        //devise = Devise.valueOf(intent.getStringExtra(MainActivity.EXTRA_DEVISE));
-
-        //création du propriÃ©taire
-        PersonDatas personDatas = new PersonDatas(this);
-        this.owner = personDatas.findUser(firstName, lastName);
-
-        // on récupère toutes ces activités
-        this.accountDatas = new AccountDatas(this);
-        accountDatas.loadAcc(this.owner);
-
-        // on récupère la compte choisi
-        this.account = this.owner.getAccounts().get(accountPosition);
-
-        // bouton reset
-        Button reset = findViewById(R.id.resetuser);
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                reset_User();
-
-                // on relance la page par default
-                Intent otherActivity = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(otherActivity);
-                finish();
-            }
-        });
+        this.loadData();
 
         // button Add Acc
         Button addAcc = findViewById(R.id.ajoutActivite);
@@ -77,7 +47,7 @@ public class AccountControler extends AppCompatActivity{
 
                 //start new actvity
                 Intent otherActivity = new Intent(getApplicationContext(), formulaireCreationDeActivite.class);
-                otherActivity.putExtra("accountPosition", accountPosition);
+                otherActivity.putExtra(MainActivity.EXTRA_ID, accountId);
                 otherActivity.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
                 otherActivity.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
                 startActivity(otherActivity);
@@ -107,24 +77,6 @@ public class AccountControler extends AppCompatActivity{
         FonctionsAux.savePerson(firstName, lastName, this, owner);
     }
 
-    private void reset_User()
-    {
-        // on créé la liste la chaîne de caractère de données
-        String data = "";
-
-        String fileName = getResources().getString(R.string.dateUser) ;
-
-        try {
-            // Open Stream to write file.
-            FileOutputStream out = this.openFileOutput(fileName, MODE_PRIVATE);
-
-            out.write(data.getBytes());
-            out.close();
-            Toast.makeText(this,"File saved!",Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Toast.makeText(this,"Error:"+ e.getMessage(),Toast.LENGTH_SHORT).show();
-        }
-    }
 
     //Ce methode transforme la devise global de l'utilisateur en l'index du tableau ou la devise se trouve sous forme de string
     public String getStringFromCurrency (Devise currency)
@@ -144,4 +96,23 @@ public class AccountControler extends AppCompatActivity{
                 return "";
         }
     }
+
+    private void loadData(){
+        Intent intent = getIntent();
+        accountId = intent.getIntExtra(MainActivity.EXTRA_ID, -1);
+        firstName = intent.getStringExtra(MainActivity.EXTRA_FIRST_NAME);
+        lastName = intent.getStringExtra(MainActivity.EXTRA_LAST_NAME);
+
+        //création du propriÃ©taire
+        PersonDatas personDatas = new PersonDatas(this);
+        this.owner = personDatas.findUser(firstName, lastName);
+
+        // on récupère toutes ces activités
+        this.accountDatas = new AccountDatas(this);
+        accountDatas.loadAcc(this.owner);
+
+        // on récupère la compte choisi
+        this.account = this.owner.findAccountById(accountId);
+    }
+
 }

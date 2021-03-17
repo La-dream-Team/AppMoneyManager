@@ -112,7 +112,7 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(getApplicationContext(), AccountControler.class);
-                        intent.putExtra("accountPosition", position);
+                        intent.putExtra(MainActivity.EXTRA_ID, owner.getAccounts().get(position).getId());
                         intent.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
                         intent.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
                         startActivity(intent);

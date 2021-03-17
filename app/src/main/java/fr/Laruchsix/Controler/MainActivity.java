@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_FIRST_NAME = "fr.Laruchsix.application.name.EXTRA_FIRST_NAME";
     public static final String EXTRA_LAST_NAME = "fr.Laruchsix.application.name.EXTRA_LAST_NAME";
-    public static final String EXTRA_ID = "fr.Laruchsix.application.id.EXTRA_ID";
-    public static final String EXTRA_DEVISE = "fr.Laruchsix.application.devise.EXTRA_DEVISE";
+    public static final String EXTRA_ID = "fr.Laruchsix.application.Account.id.EXTRA_ID";
+    //public static final String EXTRA_DEVISE = "fr.Laruchsix.application.devise.EXTRA_DEVISE";
 
     public Context act = this;
     @Override
@@ -55,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
                     Intent otherActivity = new Intent(act, AccountsSelect.class);
                     otherActivity.putExtra(EXTRA_FIRST_NAME, currentUser.getFirstName());
                     otherActivity.putExtra(EXTRA_LAST_NAME, currentUser.getLastName());
-                    otherActivity.putExtra(EXTRA_ID, currentUser.getId());
-                    otherActivity.putExtra(EXTRA_DEVISE, currentUser.getDevise().toString());
                     startActivity(otherActivity);
                     finish();
                 }
