@@ -216,7 +216,7 @@ public class Account {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public ArrayList<Activity>     (Month mois, Year annee){
+    public ArrayList<Activity> computeBalanceFromDate (Month mois, Year annee){
 
         // si l'utilisateur veux visualier l'ensemble des acitivités du compte
         if(mois.equals(null) && annee.equals(null)){
