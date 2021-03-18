@@ -56,20 +56,6 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
 
         //Toast.makeText(getApplicationContext(), "Bonjour " + firstName + " " + lastName + " id = " + id , Toast.LENGTH_LONG).show();
 
-        // bouton reset
-        Button reset = findViewById(R.id.resetuser);
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                reset_User();
-
-                // on relance la page par default
-                Intent otherActivity = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(otherActivity);
-                finish();
-            }
-        });
-
         // button Add Acc
         Button addAcc = findViewById(R.id.ajoutAcc);
         addAcc.setOnClickListener(new View.OnClickListener() {
@@ -166,6 +152,7 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         owner.getAccounts().clear();
         AccountDatas accountDatas = new AccountDatas(this);
         accountDatas.loadAcc(this.owner);
+        changeTotalBalanceViewText(this.owner.getGlobalBalance());
         adapter.notifyDataSetChanged();
     }
 
