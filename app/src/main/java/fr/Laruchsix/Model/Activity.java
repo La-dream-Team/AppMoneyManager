@@ -12,6 +12,8 @@ public class Activity {
     private final int id;
     public static int max_id = 0;
     private final Account account;
+    private Date endDate = null;
+    private Periodicity periodicity;
     
     public Activity(float vl, String ds, String nm, Date dt, Account ac)
     {
@@ -22,6 +24,8 @@ public class Activity {
         this.id = max_id;
         max_id++;
         this.account = ac;
+
+        this.periodicity = Periodicity.Occasional;
     }
 
     public Activity(float vl, String ds, String nm, Date dt, Account ac, int id)
@@ -35,6 +39,8 @@ public class Activity {
 
         if(id >= max_id)
             max_id = id + 1 ;
+
+        this.periodicity = Periodicity.Occasional;
     }
     
     public float getValue()
@@ -69,9 +75,18 @@ public class Activity {
         return this.account;
     }
 
-    public static int getMax_id() { return  max_id ; };
+    public static int getMax_id() { return  max_id ; }
 
-    public static void setMax_id(int id) { max_id = id; };
+    public static void setMax_id(int id) { max_id = id; }
+
+    public void setPeriodicity(Periodicity periodicity) { this.periodicity = periodicity;}
+
+    public Periodicity getPeriodicity() { return this.periodicity; }
+
+    public void setEndDate(Date endDate) { this.endDate = endDate; }
+
+    public  Date getEndDate() { return this.endDate; }
+
 
     @Override
     public String toString()

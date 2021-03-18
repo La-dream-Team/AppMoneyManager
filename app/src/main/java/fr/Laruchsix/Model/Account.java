@@ -10,6 +10,7 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Account {
     // attributs
@@ -26,6 +27,8 @@ public class Account {
     private ArrayList<Activity> activites;
     private final Person owner;
     private Devise accountDevise;
+
+
 
     // constructeurs
     public Account(float balance, String name, String description
@@ -213,7 +216,7 @@ public class Account {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public ArrayList<Activity> computeBalanFromDate (Month mois, Year annee){
+    public ArrayList<Activity> computeBalanceFromDate (Month mois, Year annee){
 
         // si l'utilisateur veux visualier l'ensemble des acitivités du compte
         if(mois.equals(null) && annee.equals(null)){
@@ -221,16 +224,56 @@ public class Account {
             return this.activites;
         }
         else{
-            Calendar calendar ;
+            Calendar calendar = new GregorianCalendar();
+
             Date dateDefin, dateDeDebut;
-            Month decembre = Month.DECEMBER;
-            Month janvier = Month.JANUARY;
             if(mois.equals(null)){
-                dateDeDebut = Calendar.set(annee.getValue(), 1, 1);
+                // on crée la date de début
+                calendar.set(annee.getValue(), 1, 1, 0, 0,0);
+                dateDeDebut = calendar.getTime();
+
+                // on cree la date de fin
+                calendar.set((annee.getValue() + 1), 1, 1, 0, 0,0);
+                dateDefin = calendar.getTime();
+
+                return this.getActivitiesDate(dateDeDebut, dateDefin);
             }
             else{
+                // on crée la date de début
+                calendar.set(annee.getValue(), mois.getValue(), 1, 0, 0,0);
+                dateDeDebut = calendar.getTime();
 
+                // on cree la date de fin
+                calendar.set(annee.getValue(), mois.getValue()+1, 1, 0, 0,0);
+                dateDefin = calendar.getTime();
+
+                return this.getActivitiesDate(dateDeDebut, dateDefin);
             }
         }
+    }
+
+    private ArrayList<Activity> getActivitiesDate(Date dateDeDebut,Date dateDefin){
+        ArrayList<Activity> ret = new ArrayList<>();
+        // on remet a 0 le solde du compte
+
+        this.currentBalance = this.DEFAULT_BALANCE;
+
+        for(Activity currentAct : this.activites){
+            Date actDate = currentAct.getDate();
+            switch (currentAct.getPeriodicity()){
+
+                default:
+                    // dans le ca ou c'est ocasionnel
+                    if(actDate.before(dateDefin)){
+                        this.currentBalance += currentAct.getValue();
+                        if(actDate.after(dateDeDebut)){
+                            ret.add(currentAct);
+                        }
+                    }
+            }
+
+        }
+
+        return ret;
     }
 }
