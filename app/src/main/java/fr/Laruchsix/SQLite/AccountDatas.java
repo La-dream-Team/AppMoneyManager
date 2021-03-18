@@ -90,14 +90,17 @@ public class AccountDatas {
     }
 
     public void removeAccount(Person owner, Account account) {
+        // il faut suprimer toutes les activités du compte
         ActivityDatas activityDatas = new ActivityDatas(this.context);
+        activityDatas.removeAllActivities(owner, account);
 
         bd = accesBD.getWritableDatabase();
-        String sql = "DELETE FROM activity WHERE"
-                + " account = \"" + account.getId() + "\" AND"
-                + " owner = \"" + owner.getId() + "\";";
+        String sql = "DELETE FROM account WHERE"
+                + " id = \"" + account.getId() + "\" AND"
+                + " fk_person_id = \"" + owner.getId() + "\";";
 
         System.out.println("requete sql =" + sql);
+
 
         bd.execSQL(sql);
     }

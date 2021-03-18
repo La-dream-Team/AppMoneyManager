@@ -75,7 +75,7 @@ public class ActivityDatas {
     public void removeActivity(Person owner, Account account, int id){
         bd = accesBD.getWritableDatabase();
         String sql = "DELETE FROM activity WHERE"
-                + "id = \"" + id + "\" AND"
+                + " id = \"" + id + "\" AND"
                 + " account = \"" + account.getId() + "\" AND"
                 + " owner = \"" + owner.getId() + "\";";
         //System.out.println("requete sql =" + sql);

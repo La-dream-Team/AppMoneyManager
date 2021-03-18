@@ -102,7 +102,7 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         if(this.owner.getAccounts().isEmpty())
         {
             TextView s = findViewById(R.id.TitreAccSelect);
-            s.setText("Vous n'avez pas des comptes");
+            s.setText("Vous n'avez pas de compte");
         }
 
         //On ajoute l'adapter à la liste de comptes

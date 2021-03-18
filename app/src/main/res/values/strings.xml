@@ -24,7 +24,7 @@
     <string name="account_currency">Devise du compte</string>
     <string name="toastConnexion">This user space does not exist</string>
     <string name="titreSupprimmerUnCompte">Voulez vous suprimer quel(s) compte(s) ?</string>
-    <string name="titreSupprimmerUneActivite">Voulez vous suprimer quelle(s) activité(s) ?</string>
+    <string name="titreSupprimmerUneActivite">Quelle(s) activité(s) voulez-vous suprimer ?</string>
     <string name="boutonAnnuler">Anuller</string>
     <string name="boutonOk">Ok</string>
     <string-array name="currency">

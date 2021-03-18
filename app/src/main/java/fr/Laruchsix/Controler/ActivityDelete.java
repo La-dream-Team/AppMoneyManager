@@ -1,5 +1,6 @@
 package fr.Laruchsix.Controler;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,10 +17,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import fr.Laruchsix.Model.Account;
+import fr.Laruchsix.Model.Activity;
 import fr.Laruchsix.Model.Devise;
 import fr.Laruchsix.Model.Person;
 import fr.Laruchsix.R;
 import fr.Laruchsix.SQLite.AccountDatas;
+import fr.Laruchsix.SQLite.ActivityDatas;
 import fr.Laruchsix.SQLite.PersonDatas;
 
 public class ActivityDelete extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -31,6 +34,8 @@ public class ActivityDelete extends AppCompatActivity implements AdapterView.OnI
     private Integer id;
     private Devise devise;
     private AccountDatas accountDatas;
+    private ActivityDatas activityDatas;
+    private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +67,31 @@ public class ActivityDelete extends AppCompatActivity implements AdapterView.OnI
                 otherActivity.putExtra(MainActivity.EXTRA_ID, accountId);
                 otherActivity.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
                 otherActivity.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
+                startActivity(otherActivity);
+                finish();
+            }
+        });
+
+        // Button ok
+        final Button butOk = (Button) findViewById(R.id.butSuppActOk);
+        butOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activityDatas = new ActivityDatas(context);
+                int possSelect = accountSpinner.getSelectedItemPosition();
+
+                if(possSelect == 0){
+                    activityDatas.removeAllActivities(owner, account);
+                }
+                else{
+                    Activity remAct = account.getActivities().get(possSelect -1);
+                    activityDatas.removeActivity(owner, account, remAct.getId());
+                }
+
+                Intent otherActivity = new Intent(getApplicationContext(), AccountControler.class);
+                otherActivity.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
+                otherActivity.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
+                otherActivity.putExtra(MainActivity.EXTRA_ID, accountId);
                 startActivity(otherActivity);
                 finish();
             }

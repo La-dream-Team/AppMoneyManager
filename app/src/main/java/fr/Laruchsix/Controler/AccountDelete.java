@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import fr.Laruchsix.Model.Account;
 import fr.Laruchsix.Model.Person;
 import fr.Laruchsix.R;
 import fr.Laruchsix.SQLite.AccountDatas;
@@ -24,6 +25,7 @@ public class AccountDelete extends AppCompatActivity implements AdapterView.OnIt
 
     private Person owner;
     private String firstName, lastName;
+    private AccountDatas accountDatas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,31 @@ public class AccountDelete extends AppCompatActivity implements AdapterView.OnIt
                 finish();
             }
         });
+
+
+        // Button ok
+        final Button butOk = (Button) findViewById(R.id.butSuppAccOk);
+        butOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int possSelect = accountSpinner.getSelectedItemPosition();
+
+                if(possSelect == 0){
+                    for(Account currentAcc : owner.getAccounts())
+                        accountDatas.removeAccount(owner, currentAcc);
+                }
+                else{
+                    Account remAcc = owner.getAccounts().get(possSelect -1);
+                    accountDatas.removeAccount(owner, remAcc);
+                }
+
+                Intent otherActivity = new Intent(getApplicationContext(), AccountsSelect.class);
+                otherActivity.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
+                otherActivity.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
+                startActivity(otherActivity);
+                finish();
+            }
+        });
     }
 
 
@@ -71,7 +98,7 @@ public class AccountDelete extends AppCompatActivity implements AdapterView.OnIt
         this.owner = personDatas.findUser(firstName, lastName);
 
         // on récupère toutes ces activités
-        AccountDatas accountDatas = new AccountDatas(this);
+        accountDatas = new AccountDatas(this);
         accountDatas.loadAcc(this.owner);
     }
 
