@@ -1,15 +1,24 @@
 package fr.Laruchsix.Controler;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import fr.Laruchsix.Model.Account;
 import fr.Laruchsix.Model.Activity;
@@ -20,7 +29,7 @@ import fr.Laruchsix.SQLite.AccountDatas;
 import fr.Laruchsix.SQLite.ActivityDatas;
 import fr.Laruchsix.SQLite.PersonDatas;
 
-public class formulaireCreationDeActivite extends AppCompatActivity {
+public class formulaireCreationDeActivite extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Account account;
     private int accountId;
     private Person owner;
@@ -29,6 +38,7 @@ public class formulaireCreationDeActivite extends AppCompatActivity {
     private Devise devise;
     private AccountDatas accountDatas;
     private ActivityDatas activityDatas;
+    private Spinner periodiciteSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +69,7 @@ public class formulaireCreationDeActivite extends AppCompatActivity {
         // button Ok
         final Button butOk = (Button) findViewById(R.id.butActivityOk);
         butOk.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 String nom, desc;
@@ -71,10 +82,41 @@ public class formulaireCreationDeActivite extends AppCompatActivity {
                 desc = eddesc.getText().toString();
 
                 //System.out.println("nom = " + nom + " desc = " + desc + " value = " + value + " devise = " + dev.toString());
-                if((nom != "") && (desc != "") && (value != null))
+                if((nom != "") && (desc != "") && (value != null) && (periodiciteSpinner.getSelectedItemPosition() != 0))
                 {
-                    Date currentTime = Calendar.getInstance().getTime();
-                    Activity newAct = account.addActivity(value, desc, nom, currentTime, -1);
+                    DatePicker dateDebutPicker = (DatePicker) findViewById(R.id.dateDebutPicker);
+                    DatePicker dateFinPicker = (DatePicker) findViewById(R.id.dateFinPicker);
+                    Calendar calendar = new GregorianCalendar();
+                    Date dateDeDebut = null;
+                    Date dateDeFin = null;
+                    if(periodiciteSpinner.getSelectedItemPosition() == 1)
+                    {
+                        int jourDebut = dateDebutPicker.getDayOfMonth();
+                        int moisDebut = dateDebutPicker.getMonth() + 1;
+                        int anneeDebut = dateDebutPicker.getYear();
+
+                        calendar.set(anneeDebut, moisDebut, jourDebut, 0, 0,0);
+                        dateDeDebut = calendar.getTime();
+                    }
+                    else
+                    {
+                        int jourDebut = dateDebutPicker.getDayOfMonth();
+                        int moisDebut = dateDebutPicker.getMonth() + 1;
+                        int anneeDebut = dateDebutPicker.getYear();
+
+                        calendar.set(anneeDebut, moisDebut, jourDebut, 0, 0,0);
+                        dateDeDebut = calendar.getTime();
+
+
+                        int jourFin = dateDebutPicker.getDayOfMonth();
+                        int moisFin = dateDebutPicker.getMonth() + 1;
+                        int anneeFin = dateDebutPicker.getYear();
+                        calendar.set(anneeFin, moisFin, jourFin, 0, 0,0);
+                        dateDeFin = calendar.getTime();
+                    }
+
+                    //Il faut gérer l'envoi de la date de début / fin
+                    Activity newAct = account.addActivity(value, desc, nom,null/**/, -1);
                     activityDatas.ajout(account, owner, newAct);
 
                     Intent otherActivity = new Intent(getApplicationContext(), AccountControler.class);
@@ -85,9 +127,18 @@ public class formulaireCreationDeActivite extends AppCompatActivity {
                     finish();
                 }
 
-
             }
         });
+
+        //On recupere le spinner et on l'associe à la périodicité
+        periodiciteSpinner = findViewById(R.id.periodicite_spinner);
+
+        //On établit la périodicité dans le spinner
+        ArrayAdapter<CharSequence> adapter0 = ArrayAdapter.createFromResource(this, R.array.periodicity, android.R.layout.simple_spinner_item);
+        adapter0.setDropDownViewResource(R.layout.periodicity_spinner_text_view);
+        periodiciteSpinner.setAdapter(adapter0);
+        periodiciteSpinner.setSelection(0);
+        periodiciteSpinner.setOnItemSelectedListener(this);
     }
 
     private void loadDatas (){
@@ -109,5 +160,40 @@ public class formulaireCreationDeActivite extends AppCompatActivity {
 
         //
         this.activityDatas = new ActivityDatas(this);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        LinearLayout dateDeDebutLayout = findViewById(R.id.dateDebutLinearLayout);
+        LinearLayout dateDeFinLayout = findViewById(R.id.dateFinLinearLayout);
+
+        if (position == 0) {
+            dateDeDebutLayout.setEnabled(false);
+            dateDeDebutLayout.setVisibility(View.INVISIBLE);
+            dateDeFinLayout.setEnabled(false);
+            dateDeFinLayout.setVisibility(View.INVISIBLE);
+        }
+        else if(position == 1)
+        {
+            TextView date = findViewById(R.id.dateDeDebut);
+            date.setText("Date");
+            dateDeDebutLayout.setEnabled(true);
+            dateDeDebutLayout.setVisibility(View.VISIBLE);
+            dateDeFinLayout.setEnabled(false);
+            dateDeFinLayout.setVisibility(View.INVISIBLE);
+        }
+        else {
+            TextView date = findViewById(R.id.dateDeDebut);
+            date.setText("Date de début");
+            dateDeDebutLayout.setEnabled(true);
+            dateDeDebutLayout.setVisibility(View.VISIBLE);
+            dateDeFinLayout.setEnabled(true);
+            dateDeFinLayout.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.whiteelephant.monthpicker.MonthPickerDialog;
+
 import java.io.FileOutputStream;
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -141,4 +143,23 @@ public class AccountControler extends AppCompatActivity{
         this.account = this.owner.findAccountById(accountId);
     }
 
+    public void btnMonthYear(View view) {
+        final Calendar today = Calendar.getInstance();
+        MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(this,
+                new MonthPickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(int selectedMonth, int selectedYear)
+                    {
+                        //Écrire la requête sql qui prend juste toutes les activités faites dans le mois et l'année choisies et les stocke dans la compte actuelle
+                    }
+                }
+                , today.get(Calendar.YEAR), today.get(Calendar.MONTH));
+        builder.setActivatedMonth(Calendar.JULY)
+                .setMinYear(1990)
+                .setActivatedMonth(today.get(Calendar.MONTH))
+                .setActivatedYear(today.get(Calendar.YEAR))
+                .setMaxYear(2040)
+                .setTitle("Choisir : Mois | Année")
+                .build().show();
+    }
 }
