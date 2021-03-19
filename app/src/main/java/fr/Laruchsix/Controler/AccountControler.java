@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -30,6 +31,8 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
     private Integer id;
     private Devise devise;
     private AccountDatas accountDatas;
+    private ListView activityListView;
+    private ScrollView activityScrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +85,7 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
         accountName.setText(this.account.getName());
 
         //On ajoute l'adapter à la liste de comptes
-        ListView activityListView = findViewById(R.id.activity_list);
+        activityListView = findViewById(R.id.activity_list);
         ActivityAdapter adapter = new ActivityAdapter(this, this.account.getActivities()){
             @Override
             public boolean isEnabled(int position) {
@@ -90,6 +93,12 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
             }
         };
         activityListView.setAdapter(adapter);
+
+        //On récupére la scroll view
+        activityScrollView = findViewById(R.id.activitiesListScrollView);
+
+        //On applique la méthode de smartScroll
+        FonctionsAux.smartScroll(activityScrollView,  activityListView);
 
         //On met à jour le balance total de la view
         TextView totalBalanceView = (TextView)findViewById(R.id.total_balance_number);

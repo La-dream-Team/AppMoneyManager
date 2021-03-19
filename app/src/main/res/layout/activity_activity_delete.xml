@@ -6,59 +6,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/TitreAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:gravity="center"
-        android:text="@string/titreSupprimmerUneActivite"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/TitreActivityList"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/activity_spinner"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="496dp"
-        app:layout_constraintBottom_toTopOf="@+id/ll1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TitreAccount"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/ll1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <Button
-            android:id="@+id/butSuppActCancel"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginRight="20dp"
-            android:text="@string/boutonAnnuler"
-            android:textSize="10dp" />
+            <TextView
+                android:id="@+id/TitreAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:text="@string/titreSupprimmerUneActivite"
+                android:textSize="25dp" />
 
-        <Button
-            android:id="@+id/butSuppActOk"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="20dp"
-            android:text="@string/boutonOk"
-            android:textSize="10dp" />
-    </LinearLayout>
+            <Spinner
+                android:id="@+id/activity_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"/>
+
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="420dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/butSuppActCancel"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/boutonAnnuler"
+                    android:textSize="10dp" />
+
+                <Button
+                    android:id="@+id/butSuppActOk"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/boutonOk"
+                    android:textSize="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

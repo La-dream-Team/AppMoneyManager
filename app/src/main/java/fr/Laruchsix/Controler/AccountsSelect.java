@@ -2,13 +2,16 @@ package fr.Laruchsix.Controler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +36,7 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
     private Person owner;
     private TextView totalBalanceView;
     private ListView accountListView;
+    private ScrollView accountScrollView;
     private AccountAdapter adapter;
     private String firstName, lastName;
     private Integer id;
@@ -109,6 +113,12 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
                     }
                 }
         );
+
+        //On récupére la scroll view
+        accountScrollView = findViewById(R.id.accountsListScrollView);
+
+        //On applique la méthode de smartScroll
+        FonctionsAux.smartScroll(accountScrollView, accountListView);
 
         //On initialise le compteur
         this.totalBalanceView = (TextView)findViewById(R.id.total_balance_number);
@@ -212,4 +222,6 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
                 return -1;
         }
     }
+
+
 }
