@@ -3,19 +3,16 @@ package fr.Laruchsix.Controler;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.whiteelephant.monthpicker.MonthPickerDialog;
-
-import java.io.FileOutputStream;
 import java.text.DecimalFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 import fr.Laruchsix.Model.Account;
 import fr.Laruchsix.Model.Devise;
@@ -25,7 +22,7 @@ import fr.Laruchsix.R;
 import fr.Laruchsix.SQLite.AccountDatas;
 import fr.Laruchsix.SQLite.PersonDatas;
 
-public class AccountControler extends AppCompatActivity{
+public class AccountControler extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Account account;
     private int accountId;
     private Person owner;
@@ -102,6 +99,26 @@ public class AccountControler extends AppCompatActivity{
         TextView accountCurrency = (TextView)findViewById(R.id.account_currency);
         accountCurrency.setText(getStringFromCurrency(this.account.getDevise()));
 
+        //On recupere le spinner des mois
+        Spinner moisSpinner = findViewById(R.id.mois_spinner);
+
+        //On établit les mois dans le spinner
+        ArrayAdapter<CharSequence> adapterMois = ArrayAdapter.createFromResource(this, R.array.mois, android.R.layout.simple_spinner_item);
+        adapterMois.setDropDownViewResource(R.layout.periodicity_spinner_text_view);
+        moisSpinner.setAdapter(adapterMois);
+        moisSpinner.setSelection(0);
+        moisSpinner.setOnItemSelectedListener(this);
+
+        //On recupere le spinner des années
+        Spinner anneeSpinner = findViewById(R.id.annee_spinner);
+
+        //On établit les années dans le spinner
+        ArrayAdapter<CharSequence> adapterAnnee = ArrayAdapter.createFromResource(this, R.array.annee, android.R.layout.simple_spinner_item);
+        adapterAnnee.setDropDownViewResource(R.layout.periodicity_spinner_text_view);
+        anneeSpinner.setAdapter(adapterAnnee);
+        anneeSpinner.setSelection(0);
+        anneeSpinner.setOnItemSelectedListener(this);
+
         FonctionsAux.savePerson(firstName, lastName, this, owner);
     }
 
@@ -143,23 +160,34 @@ public class AccountControler extends AppCompatActivity{
         this.account = this.owner.findAccountById(accountId);
     }
 
-    public void btnMonthYear(View view) {
-        final Calendar today = Calendar.getInstance();
-        MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(this,
-                new MonthPickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(int selectedMonth, int selectedYear)
-                    {
-                        //Écrire la requête sql qui prend juste toutes les activités faites dans le mois et l'année choisies et les stocke dans la compte actuelle
-                    }
-                }
-                , today.get(Calendar.YEAR), today.get(Calendar.MONTH));
-        builder.setActivatedMonth(Calendar.JULY)
-                .setMinYear(1990)
-                .setActivatedMonth(today.get(Calendar.MONTH))
-                .setActivatedYear(today.get(Calendar.YEAR))
-                .setMaxYear(2040)
-                .setTitle("Choisir : Mois | Année")
-                .build().show();
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if(parent.getId() == R.id.mois_spinner)
+        {
+            if(position == 0)
+            {
+
+            }
+            else
+            {
+                //numero mois == position
+            }
+        }
+        else if(parent.getId() == R.id.annee_spinner)
+        {
+            if(position == 0)
+            {
+
+            }
+            else
+            {
+                //valeur == position + 1989
+            }
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
