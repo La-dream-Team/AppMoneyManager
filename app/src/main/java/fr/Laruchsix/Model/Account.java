@@ -5,6 +5,7 @@ import android.provider.CalendarContract;
 
 import androidx.annotation.RequiresApi;
 
+import java.text.SimpleDateFormat;
 import java.time.Month;
 import java.time.Year;
 import java.util.ArrayList;
@@ -143,14 +144,14 @@ public class Account {
     public int getId() { return this.id;  };
 
     // methodes
-    public Activity addActivity(float val, String des, String name, Date day, int id)
+    public Activity addActivity(float val, String des, String name, Date day, int id, Periodicity periodicity, Date endDate)
     {
         Activity newAct;
         // creation de l'activité
         if(id == -1)
-            newAct = new Activity(val, des, name, day, this);
+            newAct = new Activity(val, des, name, day, this, periodicity, endDate);
         else
-            newAct = new Activity(val, des, name, day, this, id);
+            newAct = new Activity(val, des, name, day, this, id, periodicity, endDate);
         this.activites.add(newAct); // ajout aux activité du compte
         this.refresh(newAct); // mise a jours du solode courant
         return newAct;
@@ -219,15 +220,17 @@ public class Account {
     public ArrayList<Activity> computeBalanceFromDate (Month mois, Year annee){
 
         // si l'utilisateur veux visualier l'ensemble des acitivités du compte
-        if(mois.equals(null) && annee.equals(null)){
-            this.forceRefresh();
-            return this.activites;
+        if((mois == null) && (annee == null)){
+            // la date actuelle
+            Date datedeFin = Calendar.getInstance().getTime() ;
+
+            return this.getActivitiesDate(null, datedeFin);
         }
         else{
             Calendar calendar = new GregorianCalendar();
 
             Date dateDefin, dateDeDebut;
-            if(mois.equals(null)){
+            if(mois == null){
                 // on crée la date de début
                 calendar.set(annee.getValue(), 1, 1, 0, 0,0);
                 dateDeDebut = calendar.getTime();
@@ -252,23 +255,93 @@ public class Account {
         }
     }
 
+    private long dateOnThisYear(Date date){
+        long ret = 0 ;
+        SimpleDateFormat dateForm = new SimpleDateFormat("MM/dd/yyyy");
+
+        String[] list = dateForm.format(date).split("/");
+        long year = Long.parseLong(list[2]);
+
+        if(((year % 4) == 0) && (((year % 400) == 0) || ((year % 100) == 0)))
+            ret = 366;
+        else
+            ret = 365;
+
+        return ret;
+    }
+
+    private long dateOnThisMonth(Date date){
+        long ret = 0 ;
+        SimpleDateFormat dateForm = new SimpleDateFormat("MM/dd/yyyy");
+
+        String[] list = dateForm.format(date).split("/");
+        long month = Long.parseLong(list[0]);
+
+        switch((int) month){
+            case 2 :
+                if(dateOnThisYear(date) == 365)
+                    ret = 28;
+                else
+                    ret = 27;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                ret = 30;
+                break;
+            default :
+                ret = 31;
+        }
+
+        return ret;
+    }
+
+    private Date getNextDate (Date oldDate, Periodicity periodicity)
+    {
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(oldDate);
+        switch (periodicity){
+            case Weekly:
+                return new Date(oldDate.getTime() + (60 * 60 * 24 * 7));
+            case Annual:
+                return new Date(oldDate.getTime() + (60 * 60 * 24 * this.dateOnThisYear(oldDate)));
+            default:
+                calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH));
+                return calendar.getTime();
+        }
+    }
+
+
     private ArrayList<Activity> getActivitiesDate(Date dateDeDebut,Date dateDefin){
         ArrayList<Activity> ret = new ArrayList<>();
-        // on remet a 0 le solde du compte
 
+        // on remet a 0 le solde du compte
         this.currentBalance = this.DEFAULT_BALANCE;
+        Date currentDate;
 
         for(Activity currentAct : this.activites){
             Date actDate = currentAct.getDate();
             switch (currentAct.getPeriodicity()){
-
-                default:
-                    // dans le ca ou c'est ocasionnel
-                    if(actDate.before(dateDefin)){
+                    case Occasional:
+                    if( actDate.before(dateDefin)){
                         this.currentBalance += currentAct.getValue();
-                        if(actDate.after(dateDeDebut)){
+                        if((dateDeDebut == null) || actDate.after(dateDeDebut)){
                             ret.add(currentAct);
                         }
+                    }
+                    break;
+                default:
+                    currentDate = actDate;
+                    while(currentDate.before(dateDefin)){
+                        this.currentBalance += currentAct.getValue();
+                        if((dateDeDebut == null) || (currentDate.after(dateDeDebut))){
+                            Activity newAct = new Activity(currentAct.getValue(), currentAct.getDescription(), currentAct.getName(), currentDate,
+                                    null, currentAct.getPeriodicity(), currentAct.getEndDate());
+                            ret.add(currentAct);
+                        }
+                        currentDate = getNextDate(currentDate, currentAct.getPeriodicity());
+                        System.out.println(currentDate.toString());
                     }
             }
         }

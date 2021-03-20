@@ -1,6 +1,7 @@
 package fr.Laruchsix.Controler;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,11 +12,16 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DecimalFormat;
+import java.time.Month;
+import java.time.Year;
+import java.util.ArrayList;
 
 import fr.Laruchsix.Model.Account;
+import fr.Laruchsix.Model.Activity;
 import fr.Laruchsix.Model.Devise;
 import fr.Laruchsix.Model.FonctionsAux;
 import fr.Laruchsix.Model.Person;
@@ -128,7 +134,6 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
         anneeSpinner.setSelection(0);
         anneeSpinner.setOnItemSelectedListener(this);
 
-        FonctionsAux.savePerson(firstName, lastName, this, owner);
     }
 
 
@@ -169,30 +174,35 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
         this.account = this.owner.findAccountById(accountId);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if(parent.getId() == R.id.mois_spinner)
-        {
-            if(position == 0)
-            {
+        Spinner moisSpinner = findViewById(R.id.mois_spinner);
+        int nbMois = moisSpinner.getSelectedItemPosition();
+        Month mois = null;
+        if(moisSpinner.getSelectedItemPosition() != 0)
+            mois = Month.of(nbMois);
 
-            }
-            else
-            {
-                //numero mois == position
-            }
-        }
-        else if(parent.getId() == R.id.annee_spinner)
-        {
-            if(position == 0)
-            {
+        Spinner anneeSpinner = findViewById(R.id.annee_spinner);
+        int nbYear = anneeSpinner.getSelectedItemPosition();
+        Year year = null;
+        if(moisSpinner.getSelectedItemPosition() != 0)
+            year = Year.of(nbYear + 1989);
 
-            }
-            else
-            {
-                //valeur == position + 1989
-            }
+        ArrayList<Activity> list = account.computeBalanceFromDate(mois, year);
+
+        for(Activity currentAct : list)
+        {
+            System.out.println(currentAct.toString());
         }
+
+        ActivityAdapter adapter = new ActivityAdapter(this, list){
+            @Override
+            public boolean isEnabled(int position) {
+                return false;
+            }
+        };
+        activityListView.setAdapter(adapter);
     }
 
     @Override

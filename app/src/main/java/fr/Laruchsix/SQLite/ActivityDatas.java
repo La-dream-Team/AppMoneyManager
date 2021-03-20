@@ -9,6 +9,7 @@ import java.util.Date;
 import fr.Laruchsix.Model.Account;
 import fr.Laruchsix.Model.Activity;
 import fr.Laruchsix.Model.Devise;
+import fr.Laruchsix.Model.Periodicity;
 import fr.Laruchsix.Model.Person;
 
 public class ActivityDatas {
@@ -25,14 +26,16 @@ public class ActivityDatas {
 
     public void ajout(Account account, Person owener, Activity activity){
         bd = accesBD.getWritableDatabase();
-        String sql = "INSERT INTO activity (id, nom, description, date, value, account, owner) VALUES (\""
+        String sql = "INSERT INTO activity (id, nom, description, date, value, account, owner, periodicite, endDate) VALUES (\""
                 + activity.getId() + "\" ,\""
                 + activity.getName() + "\", \""
                 + activity.getDescription() + "\", \""
                 + activity.getDate().getTime() + "\", \""
                 + activity.getValue() + "\", \""
                 + account.getId() + "\", \""
-                + owener.getId() + "\");";
+                + owener.getId() + "\", \""
+                + activity.getPeriodicity().toString() + "\", \""
+                + activity.getEndDate().getTime() + "\");";
 
         System.out.println("requete sql =" + sql);
 
@@ -65,8 +68,11 @@ public class ActivityDatas {
             String desc = curseur.getString(2);
             Date date = new Date(curseur.getLong(3));
             float montant = curseur.getFloat(4);
+            Periodicity periodicity = Periodicity.valueOf(curseur.getString(7));
+            Date endDate = new Date(curseur.getLong(8));
 
-            account.addActivity(montant, desc, nom, date, id);
+
+            account.addActivity(montant, desc, nom, date, id, periodicity, endDate);
             if(!curseur.moveToNext())
                 break;
         }

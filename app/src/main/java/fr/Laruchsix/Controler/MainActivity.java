@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+/*
     private void loadUser(String lastName, String firstName)
     {
         String users = FonctionsAux.readUser(this);
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         {
 
         }
-    }
+    }*/
 
 
 }

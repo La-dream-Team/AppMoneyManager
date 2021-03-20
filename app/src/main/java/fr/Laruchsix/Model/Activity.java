@@ -15,7 +15,7 @@ public class Activity {
     private Date endDate = null;
     private Periodicity periodicity;
     
-    public Activity(float vl, String ds, String nm, Date dt, Account ac)
+    public Activity(float vl, String ds, String nm, Date dt, Account ac, Periodicity periodicity, Date endDate)
     {
         this.value = vl;
         this.description = ds;
@@ -25,10 +25,11 @@ public class Activity {
         max_id++;
         this.account = ac;
 
-        this.periodicity = Periodicity.Occasional;
+        this.periodicity = periodicity;
+        this.endDate = endDate;
     }
 
-    public Activity(float vl, String ds, String nm, Date dt, Account ac, int id)
+    public Activity(float vl, String ds, String nm, Date dt, Account ac, int id, Periodicity periodicity, Date endDate)
     {
         this.value = vl;
         this.description = ds;
@@ -40,7 +41,8 @@ public class Activity {
         if(id >= max_id)
             max_id = id + 1 ;
 
-        this.periodicity = Periodicity.Occasional;
+        this.periodicity = periodicity;
+        this.endDate = endDate;
     }
     
     public float getValue()

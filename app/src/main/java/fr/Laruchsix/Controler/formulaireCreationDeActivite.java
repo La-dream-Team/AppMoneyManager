@@ -23,6 +23,7 @@ import java.util.GregorianCalendar;
 import fr.Laruchsix.Model.Account;
 import fr.Laruchsix.Model.Activity;
 import fr.Laruchsix.Model.Devise;
+import fr.Laruchsix.Model.Periodicity;
 import fr.Laruchsix.Model.Person;
 import fr.Laruchsix.R;
 import fr.Laruchsix.SQLite.AccountDatas;
@@ -66,6 +67,11 @@ public class formulaireCreationDeActivite extends AppCompatActivity implements A
         TextView eddesc = findViewById(R.id.eddescriptionActivite);
         TextView edvalue = findViewById(R.id.edValueActivite);
 
+        Spinner periodicite_spinner = findViewById(R.id.periodicite_spinner);
+
+        DatePicker dateDebutPicker = (DatePicker) findViewById(R.id.dateDebutPicker);
+        DatePicker dateFinPicker = (DatePicker) findViewById(R.id.dateFinPicker);
+
         // button Ok
         final Button butOk = (Button) findViewById(R.id.butActivityOk);
         butOk.setOnClickListener(new View.OnClickListener() {
@@ -80,43 +86,33 @@ public class formulaireCreationDeActivite extends AppCompatActivity implements A
                     value = null;
                 nom = ednom.getText().toString();
                 desc = eddesc.getText().toString();
+                Periodicity periodicity =  getPeriodicity(periodicite_spinner);
 
                 //System.out.println("nom = " + nom + " desc = " + desc + " value = " + value + " devise = " + dev.toString());
                 if((nom != "") && (desc != "") && (value != null) && (periodiciteSpinner.getSelectedItemPosition() != 0))
                 {
-                    DatePicker dateDebutPicker = (DatePicker) findViewById(R.id.dateDebutPicker);
-                    DatePicker dateFinPicker = (DatePicker) findViewById(R.id.dateFinPicker);
                     Calendar calendar = new GregorianCalendar();
                     Date dateDeDebut = null;
                     Date dateDeFin = null;
-                    if(periodiciteSpinner.getSelectedItemPosition() == 1)
+
+                    int jourDebut = dateDebutPicker.getDayOfMonth();
+                    int moisDebut = dateDebutPicker.getMonth() + 1;
+                    int anneeDebut = dateDebutPicker.getYear();
+
+                    calendar.set(anneeDebut, moisDebut, jourDebut, 0, 0,0);
+
+                    dateDeDebut = calendar.getTime();
+                    if(periodiciteSpinner.getSelectedItemPosition() >= 1)
                     {
-                        int jourDebut = dateDebutPicker.getDayOfMonth();
-                        int moisDebut = dateDebutPicker.getMonth() + 1;
-                        int anneeDebut = dateDebutPicker.getYear();
-
-                        calendar.set(anneeDebut, moisDebut, jourDebut, 0, 0,0);
-                        dateDeDebut = calendar.getTime();
-                    }
-                    else
-                    {
-                        int jourDebut = dateDebutPicker.getDayOfMonth();
-                        int moisDebut = dateDebutPicker.getMonth() + 1;
-                        int anneeDebut = dateDebutPicker.getYear();
-
-                        calendar.set(anneeDebut, moisDebut, jourDebut, 0, 0,0);
-                        dateDeDebut = calendar.getTime();
-
-
-                        int jourFin = dateDebutPicker.getDayOfMonth();
-                        int moisFin = dateDebutPicker.getMonth() + 1;
-                        int anneeFin = dateDebutPicker.getYear();
+                        int jourFin = dateFinPicker.getDayOfMonth();
+                        int moisFin = dateFinPicker.getMonth() + 1;
+                        int anneeFin = dateFinPicker.getYear();
                         calendar.set(anneeFin, moisFin, jourFin, 0, 0,0);
                         dateDeFin = calendar.getTime();
                     }
 
                     //Il faut gérer l'envoi de la date de début / fin
-                    Activity newAct = account.addActivity(value, desc, nom,null/**/, -1);
+                    Activity newAct = account.addActivity(value, desc, nom,dateDeDebut, -1, periodicity, dateDeFin);
                     activityDatas.ajout(account, owner, newAct);
 
                     Intent otherActivity = new Intent(getApplicationContext(), AccountControler.class);
@@ -190,6 +186,25 @@ public class formulaireCreationDeActivite extends AppCompatActivity implements A
             dateDeFinLayout.setEnabled(true);
             dateDeFinLayout.setVisibility(View.VISIBLE);
         }
+    }
+
+    private Periodicity getPeriodicity(Spinner periodicite_spinner)
+    {
+        Periodicity ret;
+        switch(periodicite_spinner.getSelectedItemPosition()) {
+            case 2 :
+                ret = Periodicity.Weekly;
+                break;
+            case 3 :
+                ret = Periodicity.Monthly;
+                break;
+            case 4 :
+                ret = Periodicity.Annual;
+                break;
+            default :
+                ret = Periodicity.Occasional;
+        }
+        return ret;
     }
 
     @Override
