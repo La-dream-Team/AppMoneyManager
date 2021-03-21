@@ -5,7 +5,7 @@
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
+        android:id="@+id/toolbarAcc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -40,7 +40,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_below="@+id/toolbar2">
+        android:layout_below="@+id/toolbarAcc">
 
         <TextView
             android:id="@+id/total_balance_text"
