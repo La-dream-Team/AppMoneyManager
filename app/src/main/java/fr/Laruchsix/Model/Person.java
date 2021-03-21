@@ -1,8 +1,12 @@
 package fr.Laruchsix.Model;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+import fr.Laruchsix.R;
 
 public class Person {
     // attributs
@@ -166,10 +170,10 @@ public class Person {
         return ret;
     }
 
-    public String[] getAccountNames()
+    public String[] getAccountNames(Context context)
     {
         String[] accountNames = new String[this.accounts.size()+1];
-        accountNames[0] = "Tous les comptes";
+        accountNames[0] = context.getString(R.string.allAcc);
         for(int i= 1; i < this.accounts.size()+1; i++)
         {
             accountNames[i] = this.accounts.get(i-1).getName();

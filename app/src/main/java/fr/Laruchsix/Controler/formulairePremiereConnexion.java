@@ -53,7 +53,7 @@ public class formulairePremiereConnexion extends AppCompatActivity {
 
                 dev = getDevise();
 
-                if((dev == null) || (firstName.equals("Toto")) || (lastName.equals("R")))
+                if((dev == null) || (firstName.equals("")) || (lastName.equals("")))
                 {
                     Toast.makeText(getApplicationContext(), R.string.toastFormulaire, Toast.LENGTH_LONG).show();
                 }

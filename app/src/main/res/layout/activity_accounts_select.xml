@@ -25,7 +25,7 @@
             <LinearLayout
                 android:id="@+id/linearLayoutList"
                 android:layout_width="match_parent"
-                android:layout_height="390dp"
+                android:layout_height="400dp"
                 android:layout_marginTop="40dp"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -87,7 +87,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_marginRight="5dp"
-                    android:text="AJOUTER UN COMPTE"
+                    android:text="@string/ajoutAcc"
                     android:textSize="10dp" />
 
                 <Button
@@ -95,7 +95,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5dp"
-                    android:text="SUPRIMMER UN COMPTE"
+                    android:text="@string/suppAcc"
                     android:textSize="10dp" />
             </LinearLayout>
         </LinearLayout>

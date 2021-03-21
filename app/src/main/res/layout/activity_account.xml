@@ -37,7 +37,7 @@
                         android:id="@+id/moisTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Mois" />
+                        android:text="@string/spinnerMois" />
 
                     <Spinner
                         android:id="@+id/mois_spinner"
@@ -57,7 +57,7 @@
                         android:id="@+id/anneeTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Année" />
+                        android:text="@string/spinnerAnnée" />
 
                     <Spinner
                         android:id="@+id/annee_spinner"
@@ -154,7 +154,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_marginRight="5dp"
-                    android:text="AJOUTER UNE ACTIVITÉ"
+                    android:text="@string/ajoutAct"
                     android:textSize="10dp" />
 
                 <Button
@@ -162,7 +162,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5dp"
-                    android:text="SUPRIMMER UNE ACTIVITÉ"
+                    android:text="@string/suppAct"
                     android:textSize="10dp" />
 
             </LinearLayout>

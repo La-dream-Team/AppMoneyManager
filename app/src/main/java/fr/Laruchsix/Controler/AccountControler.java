@@ -83,7 +83,7 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
         if(this.account.getActivities().isEmpty())
         {
             TextView s = findViewById(R.id.TitreActivityList);
-            s.setText("Vous n'avez pas d'activités relies à votre compte");
+            s.setText(R.string.noActivities);
         }
 
         //On met le nom du compte comme titre de la view
@@ -142,15 +142,15 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
     {
         switch (currency) {
             case Euro:
-                return "Euro (€)";
+                return getString(R.string.devSymEuro);
             case Livre_Sterling:
-                return "Pound sterling (£)";
+                return getString(R.string.devSymLivreSterling);
             case Yen:
-                return "Yen (¥)";
+                return getString(R.string.devSymYen);
             case Dolar_American:
-                return "American dollar ($)";
+                return getString(R.string.devSymDollarAmericain);
             case Rouble:
-                return "Ruble (₽)";
+                return getString(R.string.devSymRouble);
             default:
                 return "";
         }

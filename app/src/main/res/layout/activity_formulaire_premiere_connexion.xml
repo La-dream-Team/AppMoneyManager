@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="40dp"
-                android:text="Nom" />
+                android:text="@string/nomFormPermiereCo" />
             <EditText
                 android:id="@+id/edAccName2"
                 android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="40dp"
-                android:text="Prénom" />
+                android:text="@string/prenomFormPermiereCo" />
             <EditText
                 android:id="@+id/edAccName"
                 android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="40dp"
-                android:text="Devise de référence :" />
+                android:text="@string/deviseFormPermiereCo" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -75,35 +75,35 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_marginLeft="30dp"
-                        android:text="Euro" />
+                        android:text="@string/deviseEuro" />
 
                     <RadioButton
                         android:id="@+id/butDolarPer"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_marginLeft="30dp"
-                        android:text="Dolar American" />
+                        android:text="@string/deviseDollarAmericain" />
 
                     <RadioButton
                         android:id="@+id/butLivrePer"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_marginLeft="30dp"
-                        android:text="Livre Sterling" />
+                        android:text="@string/deviseLivreSterling" />
 
                     <RadioButton
                         android:id="@+id/butYenPer"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_marginLeft="30dp"
-                        android:text="Yen" />
+                        android:text="@string/deviseYen" />
 
                     <RadioButton
                         android:id="@+id/butRouble"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_marginLeft="30dp"
-                        android:text="Rouble" />
+                        android:text="@string/deviseRouble" />
                 </RadioGroup>
             </LinearLayout>
             <LinearLayout
@@ -118,14 +118,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
-                    android:text="Annuler"
+                    android:text="@string/boutonAnnuler"
                     app:backgroundTint="@color/teal_200" />
                 <Button
                     android:id="@+id/butAccOk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="OK"
+                    android:text="@string/boutonOk"
                     app:backgroundTint="@color/teal_700" />
             </LinearLayout>
         </LinearLayout>

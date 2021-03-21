@@ -37,7 +37,7 @@ public class AccountDelete extends AppCompatActivity implements AdapterView.OnIt
         Spinner accountSpinner = findViewById(R.id.account_spinner);
 
         //On recupere les noms des comptes
-        String[] accountNames = this.owner.getAccountNames();
+        String[] accountNames = this.owner.getAccountNames(this);
         List<String> accountNamesList = new ArrayList<>(Arrays.asList(accountNames));
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, accountNamesList);

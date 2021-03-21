@@ -1,33 +1,69 @@
 <resources>
     <string name="app_name" translatable="false">MoneyManager</string>
-    <string name="no_account">Bonjour, Bienvenue sur l\'application Money Manager.</string>
-    <string name="no_accountbis">Appuyer sur le bouton pour continuer.</string>
-    <string name="no_account_button">Créer un compte</string>
-    <string name="yesbutton">Oui</string>
-    <string name="noButton">Non</string>
-    <string name="toastFormulaire">Vous n\'avez pas bien rempli le formulaire !</string>
+    <string name="no_account">Welcome to Money Manager.</string>
+    <string name="no_accountbis">Press the button to continue</string>
+    <string name="no_account_button">New Account</string>
+    <string name="yesbutton">Yes</string>
+    <string name="noButton">No</string>
+    <string name="noAccounts">You don\'t have any account</string>
+    <string name="noActivities">You have no activities linked to your account</string>
+    <string name="nomFormPermiereCo">Last name</string>
+    <string name="prenomFormPermiereCo">First name</string>
+    <string name="deviseFormPermiereCo">Reference currency :</string>
+    <string name="toastFormulaire">You have not completed the form correctly !</string>
+    <string name="titreMainAct">Log in</string>
+    <string name="nouvUtilisateur">NEW USER</string>
+    <string name="chargUtilisateur">LOAD USER</string>
     <string name="dateUser">user.txt</string>
     <string name="dataAccount">account.txt</string>
-    <string name="account_name">Nom du compte :</string>
-    <string name="activity_name">Nom de l\'activité :</string>
-    <string name="activity_description">Description de l\'activité</string>
-    <string name="activity_date">Date de création de l\'activité</string>
-    <string name="activity_currency">Devise de l\'activité</string>
-    <string name="activity_balance">Balance de l\'activité</string>
-    <string name="account_description">Description du compte</string>
-    <string name="account_balance">Balance du compte</string>
-    <string name="textViewAccountList">Liste de vos Comptes</string>
-    <string name="textViewActivityList">Liste des activités de ce compte</string>
-    <string name="textViewAccountTotalBalance">Balance total du compte : </string>
-    <string name="total_balance_text">Balance total des comptes : </string>
-    <string name="total_balance_number"> 0.0 </string>
-    <string name="account_currency">Devise du compte</string>
+    <string name="account_name">Account name :</string>
+    <string name="activity_name">Activity name :</string>
+    <string name="activity_description">Activity description :</string>
+    <string name="activity_balance">Awarded money :</string>
+    <string name="activity_currency">Activity currency :</string>
+    <string name="activity_date">Date of activity</string>
+    <string name="account_description">Account description</string>
+    <string name="account_balance">Account balance</string>
+    <string name="textViewAccountList">Accounts list</string>
+    <string name="textViewActivityList">Activities list for this account</string>
+    <string name="textViewAccountTotalBalance">Total account balance :</string>
+    <string name="total_balance_text">Total accounts balance :</string>
+    <string name="total_balance_number" translatable="false"> 0.0 </string>
+    <string name="account_currency">Account currency</string>
     <string name="toastConnexion">This user space does not exist</string>
-    <string name="titreSupprimmerUnCompte">Voulez vous suprimer quel(s) compte(s) ?</string>
-    <string name="titreSupprimmerUneActivite">Quelle(s) activité(s) voulez-vous suprimer ?</string>
-    <string name="boutonAnnuler">Anuller</string>
-    <string name="boutonOk">Ok</string>
-    <string-array name="currency">
+    <string name="titreSupprimmerUnCompte">Which account(s) do you want to delete ?</string>
+    <string name="titreSupprimmerUneActivite">Which activity(ies) do you want to delete ?</string>
+    <string name="boutonAnnuler">CANCEL</string>
+    <string name="boutonOk" translatable="false">OK</string>
+    <string name="ajoutAcc">ADD AN ACCOUNT</string>
+    <string name="suppAcc">DELETE AN ACCOUNT</string>
+    <string name="ajoutAct">ADD AN ACTIVITY</string>
+    <string name="suppAct">DELETE AN ACTIVITY</string>
+    <string name="spinnerMois">Month</string>
+    <string name="spinnerAnnée">Year</string>
+    <string name="dateDeDebut">Start date :</string>
+    <string name="dateDeFin">End date :</string>
+    <string name="date" translatable="false">Date :</string>
+    <string name="periodicity">Periodicity :</string>
+    <string name="titreFormAct">Form : New activity</string>
+    <string name="titreFormAcc">Form : New account</string>
+    <string name="nomCompteFormAcc">Account name :</string>
+    <string name="soldeInitFormAcc">Initial balance :</string>
+    <string name="descFormAcc">Account description :</string>
+    <string name="deviseDeRefFormAcc">Reference currency :</string>
+    <string name="deviseEuro">Euro</string>
+    <string name="deviseDollarAmericain">American dollar</string>
+    <string name="deviseLivreSterling">Pound sterling</string>
+    <string name="deviseYen">Yen</string>
+    <string name="deviseRouble">Ruble</string>
+    <string name="devSymEuro">Euro (€)</string>
+    <string name="devSymDollarAmericain">American dollar ($)</string>
+    <string name="devSymLivreSterling">Pound sterling (£)</string>
+    <string name="devSymYen">Yen (¥)</string>
+    <string name="devSymRouble">Ruble (₽)</string>
+    <string name="allAct">All the activities</string>
+    <string name="allAcc">All the accounts</string>
+    <string-array name="currency" translatable="false">
         <item>€</item>
         <item>£</item>
         <item>¥</item>
@@ -36,27 +72,28 @@
     </string-array>
     <string-array name="periodicity">
         <item></item>
-        <item>Occasionnel</item>
-        <item>Hebdomadaire</item>
-        <item>Mensuel</item>
-        <item>Annuel</item>
+        <item>Occasional</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Annual</item>
     </string-array>
     <string-array name="mois">
-        <item>Tous</item>
-        <item>Janvier</item>
-        <item>Février</item>
-        <item>Mars</item>
-        <item>Avril</item>
-        <item>Mai</item>
-        <item>Juin</item>
-        <item>Août</item>
-        <item>Septembre</item>
-        <item>Octobre</item>
-        <item>Novembre</item>
-        <item>Decembre</item>
+        <item>All</item>
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
     </string-array>
     <string-array name="annee">
-        <item>Tous</item>
+        <item>All</item>
         <item>1990</item>
         <item>1991</item>
         <item>1992</item>

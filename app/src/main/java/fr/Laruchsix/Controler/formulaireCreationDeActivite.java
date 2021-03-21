@@ -172,7 +172,7 @@ public class formulaireCreationDeActivite extends AppCompatActivity implements A
         else if(position == 1)
         {
             TextView date = findViewById(R.id.dateDeDebut);
-            date.setText("Date");
+            date.setText(R.string.date);
             dateDeDebutLayout.setEnabled(true);
             dateDeDebutLayout.setVisibility(View.VISIBLE);
             dateDeFinLayout.setEnabled(false);
@@ -180,7 +180,7 @@ public class formulaireCreationDeActivite extends AppCompatActivity implements A
         }
         else {
             TextView date = findViewById(R.id.dateDeDebut);
-            date.setText("Date de début");
+            date.setText(R.string.dateDeDebut);
             dateDeDebutLayout.setEnabled(true);
             dateDeDebutLayout.setVisibility(View.VISIBLE);
             dateDeFinLayout.setEnabled(true);

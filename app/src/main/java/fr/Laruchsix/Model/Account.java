@@ -1,5 +1,6 @@
 package fr.Laruchsix.Model;
 
+import android.content.Context;
 import android.os.Build;
 import android.provider.CalendarContract;
 
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import fr.Laruchsix.R;
 
 public class Account {
     // attributs
@@ -207,9 +210,9 @@ public class Account {
     }
 
 
-    public String[] getActivityNames() {
+    public String[] getActivityNames(Context context) {
         String[] activityNames = new String[this.activites.size() + 1];
-        activityNames[0] = "Toutes les activités";
+        activityNames[0] = context.getString(R.string.allAct);
         for (int i = 1; i < this.activites.size() + 1; i++) {
             activityNames[i] = this.activites.get(i - 1).getName();
         }
