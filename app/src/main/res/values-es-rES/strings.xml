@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_account">Bienvenue a Money Manager.</string>
+    <string name="no_accountbis">Pulsa el botón para continuar.</string>
+    <string name="no_account_button">Crear una cuenta</string>
+    <string name="yesbutton">Sí</string>
+    <string name="noButton">No</string>
+    <string name="noAccounts">No tiene ninguna cuenta</string>
+    <string name="noActivities">No hay ninguna actividad asociada a esta cuenta</string>
+    <string name="nomFormPermiereCo">Apellido :</string>
+    <string name="prenomFormPermiereCo">Nombre :</string>
+    <string name="deviseFormPermiereCo">Divisa de referencia :</string>
+    <string name="toastFormulaire">¡ No ha completado el formulario correctamente !</string>
+    <string name="titreMainAct">Inicar sesión</string>
+    <string name="nouvUtilisateur">NUEVO USUARIO</string>
+    <string name="chargUtilisateur">CARGAR USUARIO</string>
+    <string name="account_name">Nombre de la cuenta :</string>
+    <string name="activity_name">Nombre de la actividad :</string>
+    <string name="activity_description">Descripción de la actividad :</string>
+    <string name="activity_balance">Dinero otorgado :</string>
+    <string name="activity_currency">Divisa de la actividad :</string>
+    <string name="activity_date">Fecha de la actividad</string>
+    <string name="account_description">Descripción de la cuenta</string>
+    <string name="account_balance">Saldo de la cuenta</string>
+    <string name="textViewAccountList">Saldo total de las cuentas</string>
+    <string name="textViewActivityList">Lista de actividades de esta cuenta</string>
+    <string name="textViewAccountTotalBalance">Saldo total de la cuenta : </string>
+    <string name="total_balance_text">Saldo total de las cuentas : </string>
+    <string name="account_currency">Divisa de la cuenta</string>
+    <string name="toastConnexion">Este usuario no existe</string>
+    <string name="titreSupprimmerUnCompte">¿ Qué cuenta(s) desea eliminar ?</string>
+    <string name="titreSupprimmerUneActivite">¿ Qué actividad(es) desea eliminar ?</string>
+    <string name="boutonAnnuler">ANULAR</string>
+    <string name="ajoutAcc">AÑADIR UNA CUENTA</string>
+    <string name="suppAcc">SUPRIMMIR UNA CUENTA</string>
+    <string name="ajoutAct">AÑADIR UNA ACTIVIDAD</string>
+    <string name="suppAct">SUPRIMMIR UNA ACTIVIDAD</string>
+    <string name="spinnerMois">Mes</string>
+    <string name="spinnerAnnée">Año</string>
+    <string name="dateDeDebut">Fecha de inicio :</string>
+    <string name="dateDeFin">Fecha final :</string>
+    <string name="periodicity">Periodicidad</string>
+    <string name="titreFormAct">Formulario: Nueva actividad</string>
+    <string name="titreFormAcc">Formulario: Nueva cuenta</string>
+    <string name="nomCompteFormAcc">Nombre de la cuenta :</string>
+    <string name="soldeInitFormAcc">Saldo inicial :</string>
+    <string name="descFormAcc">Descriptción de la cuenta :</string>
+    <string name="deviseDeRefFormAcc">Divisa de referencia:</string>
+    <string name="deviseEuro">Euro</string>
+    <string name="deviseDollarAmericain">Dólar estadounidense</string>
+    <string name="deviseLivreSterling">Libra esterlina</string>
+    <string name="deviseYen">Yen</string>
+    <string name="deviseRouble">Rublo</string>
+    <string name="devSymEuro">Euro (€)</string>
+    <string name="devSymDollarAmericain">Dólar estadounidense ($)</string>
+    <string name="devSymLivreSterling">Libra esterlina (£)</string>
+    <string name="devSymYen">Yen (¥)</string>
+    <string name="devSymRouble">Rublo (₽)</string>
+    <string name="allAct">Todas las actividades</string>
+    <string name="allAcc">Todas las cuentas</string>
+    <string-array name="periodicity">
+        <item></item>
+        <item>Ocasional</item>
+        <item>Semanal</item>
+        <item>Mensual</item>
+        <item>Anual</item>
+    </string-array>
+    <string-array name="mois">
+        <item>Todos</item>
+        <item>Enero</item>
+        <item>Febrero</item>
+        <item>Marzo</item>
+        <item>Abril</item>
+        <item>Mayo</item>
+        <item>Junio</item>
+        <item>Julio</item>
+        <item>Agosto</item>
+        <item>Septiembre</item>
+        <item>Octubre</item>
+        <item>Noviembre</item>
+        <item>Diciembre</item>
+    </string-array>
+    <string-array name="annee">
+        <item>Todos</item>
+        <item>1990</item>
+        <item>1991</item>
+        <item>1992</item>
+        <item>1993</item>
+        <item>1994</item>
+        <item>1995</item>
+        <item>1996</item>
+        <item>1997</item>
+        <item>1998</item>
+        <item>1999</item>
+        <item>2000</item>
+        <item>2001</item>
+        <item>2002</item>
+        <item>2003</item>
+        <item>2004</item>
+        <item>2005</item>
+        <item>2006</item>
+        <item>2007</item>
+        <item>2008</item>
+        <item>2009</item>
+        <item>2010</item>
+        <item>2011</item>
+        <item>2012</item>
+        <item>2013</item>
+        <item>2014</item>
+        <item>2015</item>
+        <item>2016</item>
+        <item>2017</item>
+        <item>2018</item>
+        <item>2019</item>
+        <item>2020</item>
+        <item>2021</item>
+        <item>2022</item>
+        <item>2023</item>
+        <item>2024</item>
+        <item>2025</item>
+        <item>2026</item>
+        <item>2027</item>
+        <item>2028</item>
+        <item>2029</item>
+        <item>2030</item>
+        <item>2031</item>
+        <item>2032</item>
+        <item>2033</item>
+        <item>2034</item>
+        <item>2035</item>
+        <item>2036</item>
+        <item>2037</item>
+        <item>2038</item>
+        <item>2039</item>
+        <item>2040</item>
+    </string-array>
+</resources>

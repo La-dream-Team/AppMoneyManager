@@ -7,15 +7,15 @@
     <string name="noButton">No</string>
     <string name="noAccounts">You don\'t have any account</string>
     <string name="noActivities">You have no activities linked to your account</string>
-    <string name="nomFormPermiereCo">Last name</string>
-    <string name="prenomFormPermiereCo">First name</string>
+    <string name="nomFormPermiereCo">Last name :</string>
+    <string name="prenomFormPermiereCo">First name :</string>
     <string name="deviseFormPermiereCo">Reference currency :</string>
     <string name="toastFormulaire">You have not completed the form correctly !</string>
     <string name="titreMainAct">Log in</string>
     <string name="nouvUtilisateur">NEW USER</string>
     <string name="chargUtilisateur">LOAD USER</string>
-    <string name="dateUser">user.txt</string>
-    <string name="dataAccount">account.txt</string>
+    <string name="dateUser" translatable="false">user.txt</string>
+    <string name="dataAccount" translatable="false">account.txt</string>
     <string name="account_name">Account name :</string>
     <string name="activity_name">Activity name :</string>
     <string name="activity_description">Activity description :</string>
