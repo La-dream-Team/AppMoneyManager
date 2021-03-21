@@ -1,105 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Controler.AccountsSelect">
-    <ScrollView
-        android:id="@+id/accountsListScrollView"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+
+        <Button
+            android:id="@+id/ajoutAcc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="@string/ajoutAcc"
+            android:textSize="10dp"
+            app:backgroundTint="@color/teal_700"
+            />
+
+        <Button
+            android:id="@+id/suppAcc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            android:text="@string/suppAcc"
+            android:textSize="10dp"
+            app:backgroundTint="@color/teal_700"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutTotalBalance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_below="@+id/toolbar2">
+
+        <TextView
+            android:id="@+id/total_balance_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/total_balance_text"
+            android:textColor="@color/black"
+            android:textSize="17dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
             <TextView
-                android:id="@+id/TitreAccSelect"
+                android:id="@+id/total_balance_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="@string/textViewAccountList"
-                android:textSize="25dp" />
-            <LinearLayout
-                android:id="@+id/linearLayoutList"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_marginTop="40dp"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_marginRight="2.5dp"
+                android:text="@string/total_balance_number"
+                android:textSize="17dp" />
 
-                <ListView
-                    android:id="@+id/account_list"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:smoothScrollbar="true" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/linearLayoutTotalBalance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/total_balance_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="@string/total_balance_text"
-                    android:textColor="@color/black"
-                    android:textSize="17dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/total_balance_number"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="2.5dp"
-                        android:text="@string/total_balance_number"
-                        android:textSize="17dp" />
-
-                    <Spinner
-                        android:id="@+id/currency_spinner"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="2.5dp" />
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/linearLayout2"
+            <Spinner
+                android:id="@+id/currency_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/ajoutAcc"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_marginRight="5dp"
-                    android:text="@string/ajoutAcc"
-                    android:textSize="10dp" />
-
-                <Button
-                    android:id="@+id/suppAcc"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_marginLeft="5dp"
-                    android:text="@string/suppAcc"
-                    android:textSize="10dp" />
-            </LinearLayout>
+                android:layout_marginLeft="2.5dp" />
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_below="@+id/linearLayoutTotalBalance">
+        <TextView
+            android:id="@+id/TitreAccSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/textViewAccountList"
+            android:textSize="25dp" />
 
+        <LinearLayout
+            android:id="@+id/linearLayoutList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ListView
+                android:id="@+id/account_list"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:smoothScrollbar="true" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

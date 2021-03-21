@@ -115,10 +115,10 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
         );
 
         //On récupére la scroll view
-        accountScrollView = findViewById(R.id.accountsListScrollView);
+        //accountScrollView = findViewById(R.id.accountsListScrollView);
 
         //On applique la méthode de smartScroll
-        FonctionsAux.smartScroll(accountScrollView, accountListView);
+        //FonctionsAux.smartScroll(accountScrollView, accountListView);
 
         //On initialise le compteur
         this.totalBalanceView = (TextView)findViewById(R.id.total_balance_number);
