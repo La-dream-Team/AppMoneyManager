@@ -61,13 +61,13 @@
     <string name="btnFiltrer">APPLIQUER</string>
     <string-array name="periodicity">
         <item></item>
-        <item>Occasionnel</item>
+        <item>Occasionnelle</item>
         <item>Hebdomadaire</item>
-        <item>Mensuel</item>
-        <item>Annuel</item>
+        <item>Mensuelle</item>
+        <item>Annuelle</item>
         <item>Quotidien</item>
-        <item>Bimensuel</item>Daniel
-        <item>Trimestriel</item>
+        <item>Bimensuelle</item>Daniel
+        <item>Trimestrielle</item>
     </string-array>
     <string-array name="mois">
         <item>Tous</item>
