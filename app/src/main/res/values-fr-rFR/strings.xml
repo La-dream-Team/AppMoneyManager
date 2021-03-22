@@ -7,8 +7,8 @@
     <string name="noButton">Non</string>
     <string name="noAccounts">Vous n\'avez pas de compte</string>
     <string name="noActivities">Vous n\'avez pas d\'activités relies à votre compte</string>
-    <string name="nomFormPermiereCo">Nom :</string>
-    <string name="prenomFormPermiereCo">Prénom :</string>
+    <string name="nomFormPermiereCo">Nom</string>
+    <string name="prenomFormPermiereCo">Prénom</string>
     <string name="deviseFormPermiereCo">Devise de référence :</string>
     <string name="toastFormulaire">Vous n\'avez pas bien rempli le formulaire !</string>
     <string name="titreMainAct">Connectez-vous</string>
