@@ -7,8 +7,10 @@
     <string name="noButton">No</string>
     <string name="noAccounts">No tiene ninguna cuenta</string>
     <string name="noActivities">No hay ninguna actividad asociada a esta cuenta</string>
-    <string name="nomFormPermiereCo">Apellido</string>
-    <string name="prenomFormPermiereCo">Nombre</string>
+    <string name="nomFormPermiereCo">Apellido :</string>
+    <string name="prenomFormPermiereCo">Nombre :</string>
+    <string name="nom">Apellido</string>
+    <string name="prenom">Nombre</string>
     <string name="deviseFormPermiereCo">Divisa de referencia :</string>
     <string name="toastFormulaire">¡ No ha completado el formulario correctamente !</string>
     <string name="titreMainAct">Inicar sesión</string>
@@ -31,8 +33,10 @@
     <string name="titreSupprimmerUnCompte">¿ Qué cuenta(s) desea eliminar ?</string>
     <string name="titreSupprimmerUneActivite">¿ Qué actividad(es) desea eliminar ?</string>
     <string name="boutonAnnuler">ANULAR</string>
+    <string name="boutonAjouter">AÑADIR</string>
+    <string name="boutonSupprimer">SUPRIMIR</string>
     <string name="ajoutAcc">AÑADIR UNA CUENTA</string>
-    <string name="suppAcc">SUPRIMMIR UNA CUENTA</string>
+    <string name="suppAcc">SUPRIMIR UNA CUENTA</string>
     <string name="ajoutAct">AÑADIR UNA ACTIVIDAD</string>
     <string name="suppAct">SUPRIMMIR UNA ACTIVIDAD</string>
     <string name="spinnerMois">Mes</string>
@@ -59,6 +63,7 @@
     <string name="allAct">Todas las actividades</string>
     <string name="allAcc">Todas las cuentas</string>
     <string name="btnFiltrer">APLICAR</string>
+    <string name="titreFormUser">Formulario: Nuevo usuario</string>
     <string-array name="periodicity">
         <item></item>
         <item>Ocasional</item>

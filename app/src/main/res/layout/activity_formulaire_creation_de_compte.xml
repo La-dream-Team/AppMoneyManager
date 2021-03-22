@@ -1,164 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Controler.formulaireCreationDeCompte">
-
-    <ScrollView
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarFormAcc"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#606060"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+        <Button
+            android:id="@+id/butCompteCancel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
-            <TextView
-                android:id="@+id/titreformAcc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:text="@string/titreFormAcc"
-                android:textSize="20dp" />
+            android:layout_gravity="left"
+            android:layout_marginRight="20dp"
+            android:text="@string/boutonAnnuler"
+            android:textSize="10dp"
+            app:backgroundTint="@color/teal_700"/>
+        <Button
+            android:id="@+id/butCompteOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            android:text="@string/boutonAjouter"
+            android:textSize="10dp"
+            app:backgroundTint="#436EEE"/>
+    </androidx.appcompat.widget.Toolbar>
+    <TextView
+        android:id="@+id/titreformAcc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/titreFormAcc"
+        android:textSize="20dp"
+        android:layout_below="@+id/toolbarFormAcc"
+        android:layout_centerHorizontal="true"/>
 
-            <TextView
-                android:id="@+id/nomCompte"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="40dp"
-                android:text="@string/nomCompteFormAcc" />
+    <TextView
+        android:id="@+id/nomCompte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/nomCompteFormAcc"
+        android:layout_below="@+id/titreformAcc"/>
 
-            <EditText
-                android:id="@+id/ednomCompte"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="" />
+    <EditText
+        android:id="@+id/ednomCompte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:layout_below="@+id/nomCompte"/>
 
-            <TextView
-                android:id="@+id/balanceParDefaut"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/soldeInitFormAcc" />
+    <TextView
+        android:id="@+id/balanceParDefaut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/soldeInitFormAcc"
+        android:layout_below="@+id/ednomCompte"/>
 
-            <EditText
-                android:id="@+id/edbalanceParDefaut"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="phone"
-                android:text="" />
+    <EditText
+        android:id="@+id/edbalanceParDefaut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:text=""
+        android:layout_below="@+id/balanceParDefaut"/>
 
-            <TextView
-                android:id="@+id/descriptionCompte"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/descFormAcc" />
+    <TextView
+        android:id="@+id/descriptionCompte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/descFormAcc"
+        android:layout_below="@+id/edbalanceParDefaut"/>
 
-            <EditText
-                android:id="@+id/eddescriptionCompte"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="" />
+    <EditText
+        android:id="@+id/eddescriptionCompte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:layout_below="@+id/descriptionCompte"/>
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/deviseDeRefFormAcc" />
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/deviseDeRefFormAcc"
+        android:layout_below="@+id/eddescriptionCompte"/>
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:layout_below="@+id/textView5">
+        <RadioGroup
+            android:id="@+id/butgpAcc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="8dp">
+
+            <RadioButton
+                android:id="@+id/butEuroPerAcc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="vertical">
-                <RadioGroup
-                    android:id="@+id/butgpAcc"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="8dp">
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:text="@string/deviseEuro" />
 
-                    <RadioButton
-                        android:id="@+id/butEuroPerAcc"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="30dp"
-                        android:text="@string/deviseEuro" />
+            <RadioButton
+                android:id="@+id/butDolarPerAcc"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:text="@string/deviseDollarAmericain" />
 
-                    <RadioButton
-                        android:id="@+id/butDolarPerAcc"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="30dp"
-                        android:text="@string/deviseDollarAmericain" />
+            <RadioButton
+                android:id="@+id/butLivrePerAcc"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:text="@string/deviseLivreSterling" />
 
-                    <RadioButton
-                        android:id="@+id/butLivrePerAcc"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="30dp"
-                        android:text="@string/deviseLivreSterling" />
+            <RadioButton
+                android:id="@+id/butYenPerAcc"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:text="@string/deviseYen" />
 
-                    <RadioButton
-                        android:id="@+id/butYenPerAcc"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="30dp"
-                        android:text="@string/deviseYen" />
-
-                    <RadioButton
-                        android:id="@+id/butRoubleAcc"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="30dp"
-                        android:text="@string/deviseRouble" />
-                </RadioGroup>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_gravity="center">
-                <Button
-                    android:id="@+id/butCompteCancel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:text="@string/boutonAnnuler"
-                    app:backgroundTint="@color/teal_200" />
-
-                <Button
-                    android:id="@+id/butCompteOk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="@string/boutonOk"
-                    app:backgroundTint="@color/teal_700" />
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <RadioButton
+                android:id="@+id/butRoubleAcc"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:text="@string/deviseRouble" />
+        </RadioGroup>
+    </LinearLayout>
+</RelativeLayout>

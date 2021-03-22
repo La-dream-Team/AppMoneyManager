@@ -6,10 +6,17 @@
         android:id="@+id/toolbarAct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="#606060"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme">
-
+        <Button
+            android:id="@+id/ajoutActivite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="@string/ajoutAct"
+            android:textSize="10dp"
+            app:backgroundTint="#436EEE"/>
         <Button
             android:id="@+id/suppActivite"
             android:layout_width="wrap_content"
@@ -18,16 +25,7 @@
             android:layout_marginRight="20dp"
             android:text="@string/suppAct"
             android:textSize="10dp"
-            app:backgroundTint="@color/teal_700"/>
-        <Button
-            android:id="@+id/ajoutActivite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="@string/ajoutAct"
-            android:textSize="10dp"
-            app:backgroundTint="@color/teal_700"/>
-
+            app:backgroundTint="#A52A1C"/>
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
@@ -135,7 +133,7 @@
             android:layout_marginLeft="20dp"
             android:text="@string/btnFiltrer"
             android:textSize="10dp"
-            app:backgroundTint="@color/teal_700"/>
+            app:backgroundTint="#D4AE40"/>
     </LinearLayout>
 
     <TextView
@@ -154,6 +152,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/TitreAccount"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"

@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:ems="10"
-                android:hint="@string/prenomFormPermiereCo"
+                android:hint="@string/prenom"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:ems="10"
-                android:hint="@string/nomFormPermiereCo"
+                android:hint="@string/nom"
                 android:inputType="textPersonName" />
 
             <LinearLayout
@@ -52,13 +52,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
-                    android:text="New user" />
+                    android:text="@string/nouvUtilisateur" />
                 <Button
                     android:id="@+id/butload"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="Load User" />
+                    android:text="@string/chargUtilisateur" />
             </LinearLayout>
             <TextView
                 android:id="@+id/readData"
