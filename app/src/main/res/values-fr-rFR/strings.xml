@@ -58,6 +58,7 @@
     <string name="devSymRouble">Rouble (₽)</string>
     <string name="allAct">Toutes les activités</string>
     <string name="allAcc">Tous les comptes</string>
+    <string name="btnFiltrer">APPLIQUER</string>
     <string-array name="periodicity">
         <item></item>
         <item>Occasionnel</item>
@@ -65,7 +66,7 @@
         <item>Mensuel</item>
         <item>Annuel</item>
         <item>Quotidien</item>
-        <item>Bimensuel</item>
+        <item>Bimensuel</item>Daniel
         <item>Trimestriel</item>
     </string-array>
     <string-array name="mois">

@@ -63,6 +63,7 @@
     <string name="devSymRouble">Ruble (₽)</string>
     <string name="allAct">All the activities</string>
     <string name="allAcc">All the accounts</string>
+    <string name="btnFiltrer">APPLY</string>
     <string-array name="currency" translatable="false">
         <item>€</item>
         <item>£</item>

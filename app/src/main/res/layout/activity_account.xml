@@ -34,7 +34,7 @@
         android:id="@+id/linearLayoutTotalBalance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_below="@+id/toolbarAct">
@@ -72,63 +72,80 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/selectMoisAnneeLinearLayout"
-        android:layout_width="wrap_content"
+        android:id="@+id/filtrerMoisAnneeLinearLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:gravity="center"
         android:orientation="horizontal"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/linearLayoutTotalBalance"
         android:layout_centerHorizontal="true">
-
         <LinearLayout
-            android:id="@+id/moisLinearLayout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:layout_gravity="left">
 
-            <TextView
-                android:id="@+id/moisTextView"
+            <LinearLayout
+                android:id="@+id/moisLinearLayout"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/spinnerMois" />
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <Spinner
-                android:id="@+id/mois_spinner"
+                <TextView
+                    android:id="@+id/moisTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/spinnerMois" />
+
+                <Spinner
+                    android:id="@+id/mois_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/anneeLinearLayout"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dropdown" />
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/anneeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/spinnerAnnée" />
+
+                <Spinner
+                    android:id="@+id/annee_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/anneeLinearLayout"
+        <Button
+            android:id="@+id/filtrerActivites"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/anneeTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/spinnerAnnée" />
-
-            <Spinner
-                android:id="@+id/annee_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dropdown" />
-        </LinearLayout>
+            android:layout_gravity="end"
+            android:layout_marginLeft="20dp"
+            android:text="@string/btnFiltrer"
+            android:textSize="10dp"
+            app:backgroundTint="@color/teal_700"/>
     </LinearLayout>
+
     <TextView
         android:id="@+id/TitreAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/account_name"
         android:textSize="25dp"
-        android:layout_below="@+id/selectMoisAnneeLinearLayout"
+        android:layout_below="@+id/filtrerMoisAnneeLinearLayout"
         android:layout_centerHorizontal="true"/>
 
     <TextView
@@ -137,7 +154,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/TitreAccount"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/textViewActivityList"
         android:textColor="@color/cardview_dark_background"
         android:textSize="20dp" />
@@ -145,7 +162,7 @@
         android:id="@+id/linearLayoutList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:orientation="vertical"
         android:layout_below="@+id/TitreActivityList">
 
