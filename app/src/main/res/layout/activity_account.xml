@@ -1,175 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Controler.AccountControler">
-
-    <ScrollView
-        android:id="@+id/activitiesListScrollView"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarAct"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+
+        <Button
+            android:id="@+id/suppActivite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            android:text="@string/suppAct"
+            android:textSize="10dp"
+            app:backgroundTint="@color/teal_700"/>
+        <Button
+            android:id="@+id/ajoutActivite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="@string/ajoutAct"
+            android:textSize="10dp"
+            app:backgroundTint="@color/teal_700"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutTotalBalance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_below="@+id/toolbarAct">
+
+        <TextView
+            android:id="@+id/total_balance_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/textViewAccountTotalBalance"
+            android:textColor="@color/black"
+            android:textSize="17dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <LinearLayout
-                android:id="@+id/selectMoisAnneeLinearLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/moisLinearLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/moisTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/spinnerMois" />
-
-                    <Spinner
-                        android:id="@+id/mois_spinner"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:spinnerMode="dropdown" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/anneeLinearLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/anneeTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/spinnerAnnée" />
-
-                    <Spinner
-                        android:id="@+id/annee_spinner"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:spinnerMode="dropdown" />
-                </LinearLayout>
-            </LinearLayout>
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/TitreAccount"
+                android:id="@+id/total_balance_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="@string/account_name"
-                android:textSize="25dp" />
+                android:layout_marginRight="2.5dp"
+                android:text="@string/total_balance_number"
+                android:textSize="17dp" />
 
             <TextView
-                android:id="@+id/TitreActivityList"
+                android:id="@+id/account_currency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:gravity="center"
-                android:text="@string/textViewActivityList"
-                android:textColor="@color/cardview_dark_background"
-                android:textSize="20dp" />
-
-            <LinearLayout
-                android:id="@+id/linearLayoutList"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginTop="25dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ListView
-                    android:id="@+id/activity_list"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:smoothScrollbar="true" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayoutTotalBalance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/total_balance_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="@string/textViewAccountTotalBalance"
-                    android:textColor="@color/black"
-                    android:textSize="17dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/total_balance_number"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="2.5dp"
-                        android:text="@string/total_balance_number"
-                        android:textSize="17dp" />
-
-                    <TextView
-                        android:id="@+id/account_currency"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="2.5dp"
-                        android:text="@string/account_currency"
-                        android:textSize="17dp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/ajoutActivite"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_marginRight="5dp"
-                    android:text="@string/ajoutAct"
-                    android:textSize="10dp" />
-
-                <Button
-                    android:id="@+id/suppActivite"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_marginLeft="5dp"
-                    android:text="@string/suppAct"
-                    android:textSize="10dp" />
-
-            </LinearLayout>
-
-
+                android:layout_marginRight="2.5dp"
+                android:text="@string/account_currency"
+                android:textSize="17dp" />
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/selectMoisAnneeLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_below="@+id/linearLayoutTotalBalance"
+        android:layout_centerHorizontal="true">
 
+        <LinearLayout
+            android:id="@+id/moisLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/moisTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/spinnerMois" />
+
+            <Spinner
+                android:id="@+id/mois_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/anneeLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/anneeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/spinnerAnnée" />
+
+            <Spinner
+                android:id="@+id/annee_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/TitreAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/account_name"
+        android:textSize="25dp"
+        android:layout_below="@+id/selectMoisAnneeLinearLayout"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/TitreActivityList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TitreAccount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/textViewActivityList"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="20dp" />
+    <LinearLayout
+        android:id="@+id/linearLayoutList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:layout_below="@+id/TitreActivityList">
+
+        <ListView
+            android:id="@+id/activity_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:smoothScrollbar="true" />
+    </LinearLayout>
+</RelativeLayout>

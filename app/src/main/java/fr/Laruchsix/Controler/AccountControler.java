@@ -101,10 +101,10 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
         activityListView.setAdapter(adapter);
 
         //On récupére la scroll view
-        activityScrollView = findViewById(R.id.activitiesListScrollView);
+        //activityScrollView = findViewById(R.id.activitiesListScrollView);
 
         //On applique la méthode de smartScroll
-        FonctionsAux.smartScroll(activityScrollView,  activityListView);
+        //FonctionsAux.smartScroll(activityScrollView,  activityListView);
 
         //On met à jour le balance total de la view
         TextView totalBalanceView = (TextView)findViewById(R.id.total_balance_number);
