@@ -37,7 +37,7 @@ public class ActivityDatas {
                 + activity.getPeriodicity().toString() + "\", \""
                 + activity.getEndDate().getTime() + "\");";
 
-        System.out.println("requete sql =" + sql);
+        //System.out.println("requete sql =" + sql);
 
         bd.execSQL(sql);
     }
@@ -52,7 +52,7 @@ public class ActivityDatas {
                 + owner.getId() + "\" AND account = \"" + account.getId() + "\";";
 
 
-        System.out.println("requete sql =" + sql);
+        //System.out.println("requete sql =" + sql);
 
         Cursor curseur = bd.rawQuery(sql, null );
 

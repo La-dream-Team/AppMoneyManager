@@ -258,49 +258,6 @@ public class Account {
         }
     }
 
-    /*
-    private long dateOnThisYear(Date date){
-        long ret = 0 ;
-        SimpleDateFormat dateForm = new SimpleDateFormat("MM/dd/yyyy");
-
-        String[] list = dateForm.format(date).split("/");
-        long year = Long.parseLong(list[2]);
-
-        if(((year % 4) == 0) && (((year % 400) == 0) || ((year % 100) == 0)))
-            ret = 366;
-        else
-            ret = 365;
-
-        return ret;
-    }
-
-    private long dateOnThisMonth(Date date){
-        long ret = 0 ;
-        SimpleDateFormat dateForm = new SimpleDateFormat("MM/dd/yyyy");
-
-        String[] list = dateForm.format(date).split("/");
-        long month = Long.parseLong(list[0]);
-
-        switch((int) month){
-            case 2 :
-                if(dateOnThisYear(date) == 365)
-                    ret = 28;
-                else
-                    ret = 27;
-                break;
-            case 4:
-            case 6:
-            case 9:
-            case 11:
-                ret = 30;
-                break;
-            default :
-                ret = 31;
-        }
-
-        return ret;
-    }*/
-
     private Date getNextDate (Date oldDate, Periodicity periodicity)
     {
         Calendar calendar = new GregorianCalendar();
@@ -328,8 +285,8 @@ public class Account {
     }
 
 
-    private ArrayList<Activity> getActivitiesDate(Date dateDeDebut,Date dateDefin){
-        //System.out.println("date de debut : " + dateDeDebut.toString() + "\ndate de fin : " + dateDefin.toString());
+    public ArrayList<Activity> getActivitiesDate(Date dateDeDebut,Date dateDefin){
+        System.out.println(/*"date de debut : " + dateDeDebut.toString() + */"\ndate de fin : " + dateDefin.toString());
 
         ArrayList<Activity> ret = new ArrayList<>();
 
@@ -360,7 +317,7 @@ public class Account {
                         currentDate = getNextDate(currentDate, currentAct.getPeriodicity());
                         if(currentDate.before(currentAct.getEndDate()))
                             break;
-                        //System.out.println(currentDate.toString() + " is befor than " + dateDefin.toString());
+                        System.out.println(currentDate.toString() + " is befor than " + dateDefin.toString());
                         //System.out.println(currentDate.before(dateDefin));
                     }
             }

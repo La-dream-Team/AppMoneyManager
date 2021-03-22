@@ -93,7 +93,7 @@ public class Activity {
     @Override
     public String toString()
     {
-        String ret = this.name + "--" + this.description + "--" + this.value;
+        String ret = this.name + "--" + this.description + "--" + this.value + "--" + this.getDate() + "--" + this.getEndDate();
         return ret;
     }
 }

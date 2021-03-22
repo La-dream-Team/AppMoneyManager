@@ -99,7 +99,7 @@ public class AccountDatas {
                 + " id = \"" + account.getId() + "\" AND"
                 + " fk_person_id = \"" + owner.getId() + "\";";
 
-        System.out.println("requete sql =" + sql);
+        //System.out.println("requete sql =" + sql);
 
 
         bd.execSQL(sql);

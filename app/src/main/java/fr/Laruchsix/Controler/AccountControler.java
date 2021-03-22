@@ -19,6 +19,8 @@ import java.text.DecimalFormat;
 import java.time.Month;
 import java.time.Year;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import fr.Laruchsix.Model.Account;
 import fr.Laruchsix.Model.Activity;
@@ -92,7 +94,12 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
 
         //On ajoute l'adapter à la liste de comptes
         activityListView = findViewById(R.id.activity_list);
-        ActivityAdapter adapter = new ActivityAdapter(this, this.account.getActivities()){
+        for(Activity current : this.account.getActivities()){
+            System.out.println(current.toString());
+        }
+
+        ArrayList<Activity> listAct = this.account.getActivitiesDate(null, Calendar.getInstance().getTime());
+        ActivityAdapter adapter = new ActivityAdapter(this, listAct){
             @Override
             public boolean isEnabled(int position) {
                 return false;
@@ -203,6 +210,11 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
             }
         };
         activityListView.setAdapter(adapter);
+
+        //On met à jour le balance total de la view
+        TextView totalBalanceView = (TextView)findViewById(R.id.total_balance_number);
+        DecimalFormat totalBalanceFormat = new DecimalFormat("#.##");
+        totalBalanceView.setText(String.valueOf(totalBalanceFormat.format(this.account.getCurrentBalance())));
     }
 
     @Override

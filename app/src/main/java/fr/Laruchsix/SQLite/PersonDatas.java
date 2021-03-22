@@ -24,7 +24,7 @@ public class PersonDatas {
         String sql = "INSERT INTO person (id, nom, prenom, devise) VALUES (\""
                 + person.getId() + "\" ,\"" + person.getLastName() + "\", \"" + person.getFirstName() + "\", \"" + person.getDevise().toString() + "\");";
 
-        System.out.println("requete sql =" + sql);
+        //System.out.println("requete sql =" + sql);
 
         bd.execSQL(sql);
     }
@@ -37,11 +37,11 @@ public class PersonDatas {
         // requete sql
         String sql = "SELECT * FROM person WHERE nom = \"" + lastName + "\" AND prenom = \"" + firstName + "\";";
 
-        System.out.println("requete sql =" + sql);
+        //System.out.println("requete sql =" + sql);
 
         Cursor curseur = bd.rawQuery(sql, null );
 
-        System.out.println("voici le curseur " + curseur.getColumnNames().length);
+        //System.out.println("voici le curseur " + curseur.getColumnNames().length);
 
         //curseur.moveToFirst();
         // on compte le nombre de colomns
