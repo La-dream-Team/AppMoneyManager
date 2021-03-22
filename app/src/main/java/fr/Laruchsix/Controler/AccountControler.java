@@ -41,6 +41,7 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
     private AccountDatas accountDatas;
     private ListView activityListView;
     private ScrollView activityScrollView;
+    private ActivityAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,12 +95,15 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
 
         //On ajoute l'adapter à la liste de comptes
         activityListView = findViewById(R.id.activity_list);
-        for(Activity current : this.account.getActivities()){
+  /*      for(Activity current : this.account.getActivities()){
             System.out.println(current.toString());
         }
-
+*/
         ArrayList<Activity> listAct = this.account.getActivitiesDate(null, Calendar.getInstance().getTime());
-        ActivityAdapter adapter = new ActivityAdapter(this, listAct){
+        for(Activity current : listAct){
+            System.out.println(current.toString());
+        }
+        adapter = new ActivityAdapter(this, listAct){
             @Override
             public boolean isEnabled(int position) {
                 return false;
@@ -198,12 +202,13 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
 
         ArrayList<Activity> list = account.computeBalanceFromDate(mois, year);
 
-        for(Activity currentAct : list)
+        /*for(Activity currentAct : list)
         {
             System.out.println(currentAct.toString());
         }
+*/
 
-        ActivityAdapter adapter = new ActivityAdapter(this, list){
+        adapter = new ActivityAdapter(this, list){
             @Override
             public boolean isEnabled(int position) {
                 return false;

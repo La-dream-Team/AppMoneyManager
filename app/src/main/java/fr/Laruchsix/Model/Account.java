@@ -296,6 +296,7 @@ public class Account {
 
         for(Activity currentAct : this.activites){
             Date actDate = currentAct.getDate();
+            System.out.println(currentAct.toString());
             switch (currentAct.getPeriodicity()){
                 case Occasional:
                     if( actDate.before(dateDefin)){
@@ -315,9 +316,9 @@ public class Account {
                             ret.add(currentAct);
                         }
                         currentDate = getNextDate(currentDate, currentAct.getPeriodicity());
-                        if(currentDate.before(currentAct.getEndDate()))
+                        if(currentDate.after(currentAct.getEndDate()))
                             break;
-                        System.out.println(currentDate.toString() + " is befor than " + dateDefin.toString());
+                        //System.out.println(currentDate.toString() + " is befor than " + dateDefin.toString());
                         //System.out.println(currentDate.before(dateDefin));
                     }
             }

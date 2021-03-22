@@ -96,7 +96,7 @@ public class formulaireCreationDeActivite extends AppCompatActivity implements A
                     Date dateDeFin = null;
 
                     int jourDebut = dateDebutPicker.getDayOfMonth();
-                    int moisDebut = dateDebutPicker.getMonth() + 1;
+                    int moisDebut = dateDebutPicker.getMonth();
                     int anneeDebut = dateDebutPicker.getYear();
 
                     calendar.set(anneeDebut, moisDebut, jourDebut, 0, 0,0);
@@ -105,7 +105,7 @@ public class formulaireCreationDeActivite extends AppCompatActivity implements A
                     if(periodiciteSpinner.getSelectedItemPosition() >= 1)
                     {
                         int jourFin = dateFinPicker.getDayOfMonth();
-                        int moisFin = dateFinPicker.getMonth() + 1;
+                        int moisFin = dateFinPicker.getMonth();
                         int anneeFin = dateFinPicker.getYear();
                         calendar.set(anneeFin, moisFin, jourFin, 0, 0,0);
                         dateDeFin = calendar.getTime();
