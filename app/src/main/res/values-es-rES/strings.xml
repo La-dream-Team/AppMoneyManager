@@ -24,7 +24,7 @@
     <string name="activity_date">Fecha de la actividad</string>
     <string name="account_description">Descripción de la cuenta</string>
     <string name="account_balance">Saldo de la cuenta</string>
-    <string name="textViewAccountList">Saldo total de las cuentas</string>
+    <string name="textViewAccountList">Lista de cuentas</string>
     <string name="textViewActivityList">Lista de actividades de esta cuenta</string>
     <string name="textViewAccountTotalBalance">Saldo total de la cuenta : </string>
     <string name="total_balance_text">Saldo total de las cuentas : </string>
