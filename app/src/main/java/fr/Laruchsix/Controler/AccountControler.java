@@ -1,5 +1,6 @@
 package fr.Laruchsix.Controler;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -42,6 +43,7 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
     private ListView activityListView;
     private ScrollView activityScrollView;
     private ActivityAdapter adapter;
+    private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,10 +102,11 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
         }
 */
         ArrayList<Activity> listAct = this.account.getActivitiesDate(null, Calendar.getInstance().getTime());
+        /*System.out.println("liste des activités");
         for(Activity current : listAct){
             System.out.println(current.toString());
-        }
-        adapter = new ActivityAdapter(this, listAct){
+        }*/
+        adapter = new ActivityAdapter(this, listAct, account){
             @Override
             public boolean isEnabled(int position) {
                 return false;
@@ -145,6 +148,47 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
         anneeSpinner.setSelection(0);
         anneeSpinner.setOnItemSelectedListener(this);
 
+        // button apply
+        Button apply = findViewById(R.id.filtrerActivites);
+        apply.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View v) {
+                Spinner moisSpinner = findViewById(R.id.mois_spinner);
+                int nbMois = moisSpinner.getSelectedItemPosition();
+                Month mois = null;
+                if(moisSpinner.getSelectedItemPosition() != 0)
+                    mois = Month.of(nbMois);
+
+                Spinner anneeSpinner = findViewById(R.id.annee_spinner);
+                int nbYear = anneeSpinner.getSelectedItemPosition();
+                Year year = null;
+                if(anneeSpinner.getSelectedItemPosition() != 0)
+                    year = Year.of(nbYear + 1989);
+
+                ArrayList<Activity> list = account.computeBalanceFromDate(mois, year);
+
+        /*for(Activity currentAct : list)
+        {
+            System.out.println(currentAct.toString());
+        }
+*/
+
+                adapter = new ActivityAdapter(context, list, account){
+                    @Override
+                    public boolean isEnabled(int position) {
+                        return false;
+                    }
+                };
+                activityListView.setAdapter(adapter);
+
+                //On met à jour le balance total de la view
+                TextView totalBalanceView = (TextView)findViewById(R.id.total_balance_number);
+                DecimalFormat totalBalanceFormat = new DecimalFormat("#.##");
+                totalBalanceView.setText(String.valueOf(totalBalanceFormat.format(account.getCurrentBalance())));
+            }
+        });
+
     }
 
 
@@ -185,41 +229,10 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
         this.account = this.owner.findAccountById(accountId);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Spinner moisSpinner = findViewById(R.id.mois_spinner);
-        int nbMois = moisSpinner.getSelectedItemPosition();
-        Month mois = null;
-        if(moisSpinner.getSelectedItemPosition() != 0)
-            mois = Month.of(nbMois);
 
-        Spinner anneeSpinner = findViewById(R.id.annee_spinner);
-        int nbYear = anneeSpinner.getSelectedItemPosition();
-        Year year = null;
-        if(moisSpinner.getSelectedItemPosition() != 0)
-            year = Year.of(nbYear + 1989);
-
-        ArrayList<Activity> list = account.computeBalanceFromDate(mois, year);
-
-        /*for(Activity currentAct : list)
-        {
-            System.out.println(currentAct.toString());
-        }
-*/
-
-        adapter = new ActivityAdapter(this, list){
-            @Override
-            public boolean isEnabled(int position) {
-                return false;
-            }
-        };
-        activityListView.setAdapter(adapter);
-
-        //On met à jour le balance total de la view
-        TextView totalBalanceView = (TextView)findViewById(R.id.total_balance_number);
-        DecimalFormat totalBalanceFormat = new DecimalFormat("#.##");
-        totalBalanceView.setText(String.valueOf(totalBalanceFormat.format(this.account.getCurrentBalance())));
     }
 
     @Override

@@ -221,6 +221,14 @@ public class Account {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public ArrayList<Activity> computeBalanceFromDate (Month mois, Year annee){
+        if(mois != null)
+            System.out.println("mois = " + mois.toString());
+        else
+            System.out.println("mois = null");
+        if(annee != null)
+            System.out.println("annee = " + annee.toString());
+        else
+            System.out.println("annee = null");
 
         // si l'utilisateur veux visualier l'ensemble des acitivités du compte
         if((mois == null) && (annee == null)){
@@ -239,7 +247,7 @@ public class Account {
                 dateDeDebut = calendar.getTime();
 
                 // on cree la date de fin
-                calendar.set((annee.getValue() + 1), 0, 1, 0, 0,0);
+                calendar.set((annee.getValue() + 1), 0, 0, 23, 59,59);
                 dateDefin = calendar.getTime();
 
                 return this.getActivitiesDate(dateDeDebut, dateDefin);
@@ -250,7 +258,7 @@ public class Account {
                 dateDeDebut = calendar.getTime();
 
                 // on cree la date de fin
-                calendar.set(annee.getValue(), mois.getValue(), 1, 0, 0,0);
+                calendar.set(annee.getValue(), mois.getValue(), 0, 23, 59,59);
                 dateDefin = calendar.getTime();
 
                 return this.getActivitiesDate(dateDeDebut, dateDefin);
@@ -313,7 +321,8 @@ public class Account {
                         if((dateDeDebut == null) || (currentDate.after(dateDeDebut))){
                             Activity newAct = new Activity(currentAct.getValue(), currentAct.getDescription(), currentAct.getName(), currentDate,
                                     null, currentAct.getPeriodicity(), currentAct.getEndDate());
-                            ret.add(currentAct);
+                            ret.add(newAct);
+                            System.out.println("nouvelle activitée" + newAct.toString());
                         }
                         currentDate = getNextDate(currentDate, currentAct.getPeriodicity());
                         if(currentDate.after(currentAct.getEndDate()))
@@ -323,6 +332,11 @@ public class Account {
                     }
             }
         }
+        /*
+        System.out.println("liste des activités");
+        for(Activity current : ret ){
+            System.out.println(current.toString());
+        }*/
         return ret;
     }
 }
