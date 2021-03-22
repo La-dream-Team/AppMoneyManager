@@ -89,6 +89,19 @@ public class AccountsSelect extends AppCompatActivity implements AdapterView.OnI
             }
         });
 
+        // button retour
+        Button butretour = findViewById(R.id.butAccSelectReturn);
+        butretour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //start new actvity
+                Intent otherActivity = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(otherActivity);
+                finish();
+            }
+        });
+
         //Si l'utilisateur n'a pas encore des comptes on change le textView
         if(this.owner.getAccounts().isEmpty())
         {

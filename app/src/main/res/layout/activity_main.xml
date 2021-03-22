@@ -70,4 +70,5 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_below="@+id/edNom"/>
+
 </RelativeLayout>

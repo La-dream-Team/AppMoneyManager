@@ -14,8 +14,8 @@
     <string name="deviseFormPermiereCo">Devise de référence :</string>
     <string name="toastFormulaire">Vous n\'avez pas bien rempli le formulaire !</string>
     <string name="titreMainAct">Connectez-vous</string>
-    <string name="nouvUtilisateur">NOUVEAU UTILISATEUR</string>
-    <string name="chargUtilisateur">CHARGER UTILISATEUR</string>
+    <string name="nouvUtilisateur">nouveau</string>
+    <string name="chargUtilisateur">CHARGER</string>
     <string name="account_name">Nom du compte :</string>
     <string name="activity_name">Nom de l\'activité :</string>
     <string name="activity_description">Description de l\'activité :</string>

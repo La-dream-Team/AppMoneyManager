@@ -84,6 +84,22 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
             }
         });
 
+        // button retour
+        Button butretour = findViewById(R.id.butActSelectReturn);
+        butretour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //start new actvity
+                Intent otherActivity = new Intent(getApplicationContext(), AccountsSelect.class);
+                otherActivity.putExtra(MainActivity.EXTRA_FIRST_NAME, owner.getFirstName());
+                otherActivity.putExtra(MainActivity.EXTRA_LAST_NAME, owner.getLastName());
+                startActivity(otherActivity);
+                finish();
+            }
+        });
+
+
         //Si l'utilisateur n'a pas encore des activites on change le textView
         if(this.account.getActivities().isEmpty())
         {

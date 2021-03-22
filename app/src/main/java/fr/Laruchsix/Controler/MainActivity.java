@@ -64,33 +64,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-/*
-    private void loadUser(String lastName, String firstName)
-    {
-        String users = FonctionsAux.readUser(this);
-        String[] usersTab = users.split("\n");
-
-        boolean ret = false;
-        for(String currentUser : usersTab)
-        {
-            String[] user = currentUser.split("--");
-            if(user[0].equals(lastName) && user[1].equals(firstName))
-            {
-                ret = true;
-                break;
-            }
-        }
-
-        if(ret)
-        {
-
-        }
-        else
-        {
-
-        }
-    }*/
-
-
 }
