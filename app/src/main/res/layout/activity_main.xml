@@ -1,35 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:background="#F1F1F1">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#606060"
+        android:background="#1343D2"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme">
         <Button
             android:id="@+id/butnew"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="@string/nouvUtilisateur"
-            app:backgroundTint="#859C3C"/>
-        <Button
-            android:id="@+id/butload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
             android:layout_gravity="right"
-            android:layout_marginRight="20dp"
-            android:text="@string/chargUtilisateur"
-            app:backgroundTint="#D2C346"/>
+            android:layout_marginRight="15dp"
+            android:background="@drawable/ic_new_user"
+            app:backgroundTint="#F1F1F1"/>
     </androidx.appcompat.widget.Toolbar>
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="35dp"
         android:src="@drawable/logo"
         android:layout_below="@+id/toolbarMain"
         android:layout_centerHorizontal="true">
@@ -38,16 +31,18 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:text="@string/titreMainAct"
-        android:textSize="24sp"
+        android:textSize="30dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true" />
     <EditText
         android:id="@+id/edPrenom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="@string/prenom"
         android:inputType="textPersonName"
@@ -63,12 +58,14 @@
         android:inputType="textPersonName"
         android:layout_below="@+id/edPrenom"
         android:layout_centerHorizontal="true"/>
-    <TextView
-        android:id="@+id/readData"
+    <Button
+        android:id="@+id/butload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_below="@+id/edNom"/>
-
+        android:layout_gravity="right"
+        android:layout_marginTop="40dp"
+        android:text="@string/chargUtilisateur"
+        app:backgroundTint="#507AEA"
+        android:layout_below="@+id/edNom"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>

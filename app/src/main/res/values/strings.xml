@@ -13,7 +13,7 @@
     <string name="prenom">First name</string>
     <string name="deviseFormPermiereCo">Reference currency :</string>
     <string name="toastFormulaire">You have not completed the form correctly !</string>
-    <string name="titreMainAct">Log in</string>
+    <string name="titreMainAct">Login</string>
     <string name="nouvUtilisateur">NEW USER</string>
     <string name="chargUtilisateur">LOAD USER</string>
     <string name="dateUser" translatable="false">user.txt</string>
@@ -48,8 +48,8 @@
     <string name="dateDeFin">End date :</string>
     <string name="date" translatable="false">Date :</string>
     <string name="periodicity">Periodicity :</string>
-    <string name="titreFormAct">Form : New activity</string>
-    <string name="titreFormAcc">Form : New account</string>
+    <string name="titreFormAct">New activity</string>
+    <string name="titreFormAcc">New account</string>
     <string name="nomCompteFormAcc">Account name :</string>
     <string name="soldeInitFormAcc">Initial balance :</string>
     <string name="descFormAcc">Account description :</string>
@@ -67,7 +67,8 @@
     <string name="allAct">All the activities</string>
     <string name="allAcc">All the accounts</string>
     <string name="btnFiltrer">APPLY</string>
-    <string name="titreFormUser">From : New User</string>
+    <string name="titreFormUser">New User</string>
+    <string name="aideFormAct">(+ or -) Number</string>
     <string-array name="currency" translatable="false">
         <item>€</item>
         <item>£</item>

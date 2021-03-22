@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:background="#F1F1F1">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarFormUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#606060"
+        android:background="#1343D2"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme">
         <Button
             android:id="@+id/butAccCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
             android:layout_gravity="left"
-            android:text="@string/boutonAnnuler"
-            android:textSize="10dp"
-            app:backgroundTint="@color/teal_700"/>
+            android:background="@drawable/ic_return_arrow"
+            app:backgroundTint="#F1F1F1"/>
         <Button
             android:id="@+id/butAccOk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
             android:layout_gravity="right"
-            android:layout_marginRight="20dp"
-            android:text="@string/boutonAjouter"
-            android:textSize="10dp"
-            app:backgroundTint="#436EEE"/>
+            android:layout_marginRight="15dp"
+            android:background="@drawable/ic_validate"
+            app:backgroundTint="#F1F1F1"/>
     </androidx.appcompat.widget.Toolbar>
     <TextView
         android:id="@+id/titreformUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="@string/titreFormAcc"
-        android:textSize="20dp"
+        android:text="@string/titreFormUser"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="30dp"
         android:layout_below="@+id/toolbarFormUser"
         android:layout_centerHorizontal="true"/>
     <TextView

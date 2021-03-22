@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:background="#F1F1F1">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarAct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#606060"
+        android:background="#1343D2"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme">
         <Button
-            android:id="@+id/ajoutActivite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/butActSelectReturn"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
             android:layout_gravity="left"
-            android:text="@string/ajoutAct"
-            android:textSize="10dp"
-            app:backgroundTint="#436EEE"/>
+            app:backgroundTint="#F1F1F1"
+            android:background="@drawable/ic_return_arrow"
+            />
         <Button
-            android:id="@+id/suppActivite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        android:id="@+id/suppActivite"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="15dp"
+        app:backgroundTint="#F1F1F1"
+        android:background="@drawable/ic_remove"/>
+        <Button
+            android:id="@+id/ajoutActivite"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
             android:layout_gravity="right"
-            android:layout_marginRight="20dp"
-            android:text="@string/suppAct"
-            android:textSize="10dp"
-            app:backgroundTint="#A52A1C"/>
+            android:layout_marginRight="5dp"
+            app:backgroundTint="#F1F1F1"
+            android:background="@drawable/ic_add"/>
+
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
@@ -127,13 +135,12 @@
         </LinearLayout>
         <Button
             android:id="@+id/filtrerActivites"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
             android:layout_gravity="end"
             android:layout_marginLeft="20dp"
-            android:text="@string/btnFiltrer"
-            android:textSize="10dp"
-            app:backgroundTint="#D4AE40"/>
+            app:backgroundTint="#507AEA"
+            android:background="@drawable/ic_filter"/>
     </LinearLayout>
 
     <TextView
@@ -143,6 +150,8 @@
         android:layout_marginTop="10dp"
         android:text="@string/account_name"
         android:textSize="25dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:layout_below="@+id/filtrerMoisAnneeLinearLayout"
         android:layout_centerHorizontal="true"/>
 

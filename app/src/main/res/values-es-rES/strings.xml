@@ -44,8 +44,8 @@
     <string name="dateDeDebut">Fecha de inicio :</string>
     <string name="dateDeFin">Fecha final :</string>
     <string name="periodicity">Periodicidad</string>
-    <string name="titreFormAct">Formulario: Nueva actividad</string>
-    <string name="titreFormAcc">Formulario: Nueva cuenta</string>
+    <string name="titreFormAct">Nueva actividad</string>
+    <string name="titreFormAcc">Nueva cuenta</string>
     <string name="nomCompteFormAcc">Nombre de la cuenta :</string>
     <string name="soldeInitFormAcc">Saldo inicial :</string>
     <string name="descFormAcc">Descriptción de la cuenta :</string>
@@ -63,7 +63,8 @@
     <string name="allAct">Todas las actividades</string>
     <string name="allAcc">Todas las cuentas</string>
     <string name="btnFiltrer">APLICAR</string>
-    <string name="titreFormUser">Formulario: Nuevo usuario</string>
+    <string name="titreFormUser">Nuevo usuario</string>
+    <string name="aideFormAct">(+ o -) Número</string>
     <string-array name="periodicity">
         <item></item>
         <item>Ocasional</item>
