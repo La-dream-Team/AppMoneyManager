@@ -155,6 +155,8 @@
         android:layout_below="@+id/TitreAccount"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:text="@string/textViewActivityList"
         android:textColor="@color/cardview_dark_background"
         android:textSize="20dp" />

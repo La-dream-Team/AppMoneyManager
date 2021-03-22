@@ -7,8 +7,8 @@
     <string name="noButton">No</string>
     <string name="noAccounts">No tiene ninguna cuenta</string>
     <string name="noActivities">No hay ninguna actividad asociada a esta cuenta</string>
-    <string name="nomFormPermiereCo">Apellido :</string>
-    <string name="prenomFormPermiereCo">Nombre :</string>
+    <string name="nomFormPermiereCo">Apellido</string>
+    <string name="prenomFormPermiereCo">Nombre</string>
     <string name="deviseFormPermiereCo">Divisa de referencia :</string>
     <string name="toastFormulaire">¡ No ha completado el formulario correctamente !</string>
     <string name="titreMainAct">Inicar sesión</string>
@@ -65,9 +65,9 @@
         <item>Semanal</item>
         <item>Mensual</item>
         <item>Anual</item>
-        <item>Quotidien</item>
-        <item>Bimensuel</item>
-        <item>Trimestriel</item>
+        <item>Diario</item>
+        <item>Bimensual</item>
+        <item>Trimestral</item>
     </string-array>
     <string-array name="mois">
         <item>Todos</item>
