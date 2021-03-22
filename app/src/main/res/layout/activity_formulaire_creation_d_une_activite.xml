@@ -25,110 +25,102 @@
             android:background="@drawable/ic_validate"
             app:backgroundTint="#F1F1F1"/>
     </androidx.appcompat.widget.Toolbar>
-    <TextView
-        android:id="@+id/titreformActivite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/titreFormAct"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="30dp"
-        android:layout_below="@+id/toolbarFormAct"
-        android:layout_centerHorizontal="true"/>
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/titreformActivite"
-        android:layout_centerHorizontal="true">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginRight="20dp">
-            <TextView
-                android:id="@+id/nomActivite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="@string/activity_name" />
-            <EditText
-                android:id="@+id/ednomActivite"
-                android:layout_width="143dp"
-                android:layout_height="37dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text=""
-                android:textSize="16dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:orientation="vertical"
-            android:gravity="center">
-            <TextView
-                android:id="@+id/balanceParDefaut"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_balance" />
-            <EditText
-                android:id="@+id/edValueActivite"
-                android:layout_width="143dp"
-                android:layout_height="37dp"
-                android:ems="10"
-                android:inputType="phone"
-                android:text=""
-                android:hint="@string/aideFormAct"
-                android:textSize="16dp" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/linearLayout4"
-        android:layout_centerHorizontal="true">
-        <TextView
-            android:id="@+id/descriptionActivite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/activity_description" />
-        <EditText
-            android:id="@+id/eddescriptionActivite"
-            android:layout_width="143dp"
-            android:layout_height="37dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text=""
-            android:textSize="16dp" />
-    </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/linearLayout5"
-        android:layout_marginTop="20dp"
+        android:layout_below="@+id/toolbarFormAct"
         android:layout_centerVertical="true"
-        android:fillViewport="true"
-        android:background="#00FFFFFF">
+        android:background="#F1F1F1">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center">
+            <TextView
+                android:id="@+id/titreformActivite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/titreFormAct"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="30dp" />
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="20dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginRight="20dp">
+                    <TextView
+                        android:id="@+id/nomActivite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="@string/activity_name" />
+                    <EditText
+                        android:id="@+id/ednomActivite"
+                        android:layout_width="143dp"
+                        android:layout_height="37dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:text=""
+                        android:textSize="16dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/balanceParDefaut"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_balance" />
+                    <EditText
+                        android:id="@+id/edValueActivite"
+                        android:layout_width="143dp"
+                        android:layout_height="37dp"
+                        android:ems="10"
+                        android:inputType="phone"
+                        android:text=""
+                        android:hint="@string/aideFormAct"
+                        android:textSize="16dp" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="20dp">
+                <TextView
+                    android:id="@+id/descriptionActivite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_description" />
+                <EditText
+                    android:id="@+id/eddescriptionActivite"
+                    android:layout_width="143dp"
+                    android:layout_height="37dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text=""
+                    android:textSize="16dp" />
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:gravity="center">
                 <TextView
@@ -148,7 +140,7 @@
                 android:id="@+id/dateDebutLinearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -186,7 +178,6 @@
                     android:calendarViewShown="false"
                     android:datePickerMode="spinner" />
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

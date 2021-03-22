@@ -25,135 +25,139 @@
             android:background="@drawable/ic_validate"
             app:backgroundTint="#F1F1F1"/>
     </androidx.appcompat.widget.Toolbar>
-    <TextView
-        android:id="@+id/titreformAcc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/titreFormAcc"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="30dp"
-        android:layout_below="@+id/toolbarFormAcc"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/nomCompte"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:text="@string/nomCompteFormAcc"
-        android:layout_below="@+id/titreformAcc"/>
-
-    <EditText
-        android:id="@+id/ednomCompte"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:layout_below="@+id/nomCompte"/>
-
-    <TextView
-        android:id="@+id/balanceParDefaut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/soldeInitFormAcc"
-        android:layout_below="@+id/ednomCompte"/>
-
-    <EditText
-        android:id="@+id/edbalanceParDefaut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="phone"
-        android:text=""
-        android:layout_below="@+id/balanceParDefaut"/>
-
-    <TextView
-        android:id="@+id/descriptionCompte"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/descFormAcc"
-        android:layout_below="@+id/edbalanceParDefaut"/>
-
-    <EditText
-        android:id="@+id/eddescriptionCompte"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:layout_below="@+id/descriptionCompte"/>
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/deviseDeRefFormAcc"
-        android:layout_below="@+id/eddescriptionCompte"/>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        android:layout_below="@+id/textView5">
-        <RadioGroup
-            android:id="@+id/butgpAcc"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbarFormAcc"
+        android:layout_centerVertical="true"
+        android:background="#F1F1F1">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="8dp">
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/titreformAcc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:text="@string/titreFormAcc"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="30dp" />
 
-            <RadioButton
-                android:id="@+id/butEuroPerAcc"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginLeft="30dp"
-                android:text="@string/deviseEuro" />
+            <TextView
+                android:id="@+id/nomCompte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/nomCompteFormAcc" />
 
-            <RadioButton
-                android:id="@+id/butDolarPerAcc"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginLeft="30dp"
-                android:text="@string/deviseDollarAmericain" />
+            <EditText
+                android:id="@+id/ednomCompte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="" />
 
-            <RadioButton
-                android:id="@+id/butLivrePerAcc"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginLeft="30dp"
-                android:text="@string/deviseLivreSterling" />
+            <TextView
+                android:id="@+id/balanceParDefaut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/soldeInitFormAcc" />
 
-            <RadioButton
-                android:id="@+id/butYenPerAcc"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginLeft="30dp"
-                android:text="@string/deviseYen" />
+            <EditText
+                android:id="@+id/edbalanceParDefaut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="phone"
+                android:text="" />
 
-            <RadioButton
-                android:id="@+id/butRoubleAcc"
+            <TextView
+                android:id="@+id/descriptionCompte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/descFormAcc" />
+
+            <EditText
+                android:id="@+id/eddescriptionCompte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/deviseDeRefFormAcc" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginLeft="30dp"
-                android:text="@string/deviseRouble" />
-        </RadioGroup>
-    </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+                <RadioGroup
+                    android:id="@+id/butgpAcc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp">
+
+                    <RadioButton
+                        android:id="@+id/butEuroPerAcc"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:text="@string/deviseEuro" />
+
+                    <RadioButton
+                        android:id="@+id/butDolarPerAcc"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:text="@string/deviseDollarAmericain" />
+
+                    <RadioButton
+                        android:id="@+id/butLivrePerAcc"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:text="@string/deviseLivreSterling" />
+
+                    <RadioButton
+                        android:id="@+id/butYenPerAcc"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:text="@string/deviseYen" />
+
+                    <RadioButton
+                        android:id="@+id/butRoubleAcc"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:text="@string/deviseRouble" />
+                </RadioGroup>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </RelativeLayout>
