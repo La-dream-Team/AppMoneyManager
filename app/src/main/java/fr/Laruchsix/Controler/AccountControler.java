@@ -85,7 +85,7 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
         });
 
         // button retour
-        /*Button butretour = findViewById(R.id.butActSelectReturn);
+        Button butretour = findViewById(R.id.butActSelectReturn);
         butretour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +97,7 @@ public class AccountControler extends AppCompatActivity implements AdapterView.O
                 startActivity(otherActivity);
                 finish();
             }
-        });*/
+        });
 
 
         //Si l'utilisateur n'a pas encore des activites on change le textView
