@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="no_account">Bienvenue a Money Manager.</string>
+    <string name="no_account">Bienvenue a Money Manager</string>
     <string name="no_accountbis">Pulsa el botón para continuar.</string>
     <string name="no_account_button">Crear una cuenta</string>
     <string name="yesbutton">Sí</string>
