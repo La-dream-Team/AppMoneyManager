@@ -201,6 +201,15 @@ public class formulaireCreationDeActivite extends AppCompatActivity implements A
             case 4 :
                 ret = Periodicity.Annual;
                 break;
+            case 5 :
+                ret = Periodicity.Daily;
+                break;
+            case 6 :
+                ret = Periodicity.Fortnightly;
+                break;
+            case 7 :
+                ret = Periodicity.Quarterly;
+                break;
             default :
                 ret = Periodicity.Occasional;
         }

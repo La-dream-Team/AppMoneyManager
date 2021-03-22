@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent otherActivity = new Intent(getApplicationContext(), formulairePremiereConnexion.class);
                 startActivity(otherActivity);
+                finish();
             }
         });
 

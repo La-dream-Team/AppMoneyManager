@@ -235,22 +235,22 @@ public class Account {
             Date dateDefin, dateDeDebut;
             if(mois == null){
                 // on crée la date de début
-                calendar.set(annee.getValue(), 1, 1, 0, 0,0);
+                calendar.set(annee.getValue(), 0, 1, 0, 0,0);
                 dateDeDebut = calendar.getTime();
 
                 // on cree la date de fin
-                calendar.set((annee.getValue() + 1), 1, 1, 0, 0,0);
+                calendar.set((annee.getValue() + 1), 0, 1, 0, 0,0);
                 dateDefin = calendar.getTime();
 
                 return this.getActivitiesDate(dateDeDebut, dateDefin);
             }
             else{
                 // on crée la date de début
-                calendar.set(annee.getValue(), mois.getValue(), 1, 0, 0,0);
+                calendar.set(annee.getValue(), mois.getValue()-1, 1, 0, 0,0);
                 dateDeDebut = calendar.getTime();
 
                 // on cree la date de fin
-                calendar.set(annee.getValue(), mois.getValue()+1, 1, 0, 0,0);
+                calendar.set(annee.getValue(), mois.getValue(), 1, 0, 0,0);
                 dateDefin = calendar.getTime();
 
                 return this.getActivitiesDate(dateDeDebut, dateDefin);
@@ -258,6 +258,7 @@ public class Account {
         }
     }
 
+    /*
     private long dateOnThisYear(Date date){
         long ret = 0 ;
         SimpleDateFormat dateForm = new SimpleDateFormat("MM/dd/yyyy");
@@ -298,7 +299,7 @@ public class Account {
         }
 
         return ret;
-    }
+    }*/
 
     private Date getNextDate (Date oldDate, Periodicity periodicity)
     {
@@ -306,9 +307,20 @@ public class Account {
         calendar.setTime(oldDate);
         switch (periodicity){
             case Weekly:
-                return new Date(oldDate.getTime() + (60 * 60 * 24 * 7));
+                calendar.set(calendar.get(Calendar.YEAR) , calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH) + 7);
+                return calendar.getTime();
+            case Quarterly:
+                calendar.set(calendar.get(Calendar.YEAR) , calendar.get(Calendar.MONTH) + 3, calendar.get(Calendar.DAY_OF_MONTH));
+                return calendar.getTime();
+            case Daily:
+                calendar.set(calendar.get(Calendar.YEAR) , calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH) + 1);
+                return calendar.getTime();
+            case Fortnightly:
+                calendar.set(calendar.get(Calendar.YEAR) , calendar.get(Calendar.MONTH) + 2, calendar.get(Calendar.DAY_OF_MONTH));
+                return calendar.getTime();
             case Annual:
-                return new Date(oldDate.getTime() + (60 * 60 * 24 * this.dateOnThisYear(oldDate)));
+                calendar.set(calendar.get(Calendar.YEAR) +1 , calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+                return calendar.getTime();
             default:
                 calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH));
                 return calendar.getTime();
@@ -317,6 +329,8 @@ public class Account {
 
 
     private ArrayList<Activity> getActivitiesDate(Date dateDeDebut,Date dateDefin){
+        //System.out.println("date de debut : " + dateDeDebut.toString() + "\ndate de fin : " + dateDefin.toString());
+
         ArrayList<Activity> ret = new ArrayList<>();
 
         // on remet a 0 le solde du compte
@@ -326,7 +340,7 @@ public class Account {
         for(Activity currentAct : this.activites){
             Date actDate = currentAct.getDate();
             switch (currentAct.getPeriodicity()){
-                    case Occasional:
+                case Occasional:
                     if( actDate.before(dateDefin)){
                         this.currentBalance += currentAct.getValue();
                         if((dateDeDebut == null) || actDate.after(dateDeDebut)){
@@ -344,7 +358,10 @@ public class Account {
                             ret.add(currentAct);
                         }
                         currentDate = getNextDate(currentDate, currentAct.getPeriodicity());
-                        System.out.println(currentDate.toString());
+                        if(currentDate.before(currentAct.getEndDate()))
+                            break;
+                        //System.out.println(currentDate.toString() + " is befor than " + dateDefin.toString());
+                        //System.out.println(currentDate.before(dateDefin));
                     }
             }
         }

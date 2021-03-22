@@ -76,6 +76,9 @@
         <item>Weekly</item>
         <item>Monthly</item>
         <item>Annual</item>
+        <item>Daily</item>
+        <item>Fortnightly</item>
+        <item>Quarterly</item>
     </string-array>
     <string-array name="mois">
         <item>All</item>

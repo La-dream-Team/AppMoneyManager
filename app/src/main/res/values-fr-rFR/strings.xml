@@ -73,6 +73,9 @@
         <item>Hebdomadaire</item>
         <item>Mensuel</item>
         <item>Annuel</item>
+        <item>Quotidien</item>
+        <item>Bimensuel</item>
+        <item>Trimestriel</item>
     </string-array>
     <string-array name="mois">
         <item>Tous</item>

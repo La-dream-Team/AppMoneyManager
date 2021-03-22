@@ -43,7 +43,7 @@ public class PersonDatas {
 
         System.out.println("voici le curseur " + curseur.getColumnNames().length);
 
-        curseur.moveToFirst();
+        //curseur.moveToFirst();
         // on compte le nombre de colomns
         if(curseur.moveToFirst()){
             int id = curseur.getInt(0);
