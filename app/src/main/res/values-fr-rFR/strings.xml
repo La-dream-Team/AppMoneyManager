@@ -43,6 +43,7 @@
     <string name="spinnerAnnée">Année</string>
     <string name="dateDeDebut">Date de début :</string>
     <string name="dateDeFin">Date de fin :</string>
+    <string name="date">Date :</string>
     <string name="periodicity">Périodicité</string>
     <string name="titreFormAct">Nouvelle activité</string>
     <string name="titreFormAcc">Nouveau compte</string>

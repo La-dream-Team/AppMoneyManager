@@ -46,7 +46,7 @@
     <string name="spinnerAnnée">Year</string>
     <string name="dateDeDebut">Start date :</string>
     <string name="dateDeFin">End date :</string>
-    <string name="date" translatable="false">Date :</string>
+    <string name="date">Date :</string>
     <string name="periodicity">Periodicity :</string>
     <string name="titreFormAct">New activity</string>
     <string name="titreFormAcc">New account</string>
