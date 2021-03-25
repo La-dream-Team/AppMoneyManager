@@ -11,6 +11,7 @@ import java.time.Month;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -188,12 +189,18 @@ public class Account {
 
     public void forceRefresh()
     {
-        this.currentBalance = this.DEFAULT_BALANCE;
-        // on parcours toutes les activités du compte
-        for(Activity currentAct : this.activites)
-        {
-            this.currentBalance += currentAct.getValue();
-        }
+        this.getActivitiesDate(null, Calendar.getInstance().getTime());
+    }
+
+    public void fillList (ArrayList<Activity> oldList)
+    {
+        Comparator<Activity> c = new Comparator<Activity>() {
+            @Override
+            public int compare(Activity o1, Activity o2) {
+                return (int) (o1.getDate().getTime() - o2.getDate().getTime());
+            }
+        };
+        oldList.sort(c);
     }
 
     @Override
@@ -304,7 +311,7 @@ public class Account {
 
         for(Activity currentAct : this.activites){
             Date actDate = currentAct.getDate();
-            System.out.println(currentAct.toString());
+            //System.out.println(currentAct.toString());
             switch (currentAct.getPeriodicity()){
                 case Occasional:
                     if( actDate.before(dateDefin)){
@@ -337,6 +344,7 @@ public class Account {
         for(Activity current : ret ){
             System.out.println(current.toString());
         }*/
+        this.fillList(ret);
         return ret;
     }
 }
