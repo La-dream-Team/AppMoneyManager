@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent" android:layout_height="match_parent"
-xmlns:app="http://schemas.android.com/apk/res-auto" android:background="#F1F1F1">
+xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/backgroundColor">
 <androidx.appcompat.widget.Toolbar
     android:id="@+id/toolbarAct"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#1343D2"
+    android:background="@color/first_blue"
     android:minHeight="?attr/actionBarSize"
     android:theme="?attr/actionBarTheme">
     <Button
@@ -14,7 +14,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto" android:background="#F1F1F1"
         android:layout_width="45dp"
         android:layout_height="40dp"
         android:layout_gravity="left"
-        app:backgroundTint="#F1F1F1"
+        app:backgroundTint="@color/backgroundColor"
         android:background="@drawable/ic_return_arrow"/>
     <Button
         android:id="@+id/butSuppActOk"
@@ -23,7 +23,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto" android:background="#F1F1F1"
         android:layout_gravity="right"
         android:layout_marginRight="15dp"
         android:background="@drawable/ic_delete"
-        app:backgroundTint="#F1F1F1"/>
+        app:backgroundTint="@color/backgroundColor"/>
 </androidx.appcompat.widget.Toolbar>
 <TextView
     android:id="@+id/TitreActivity"
@@ -33,7 +33,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto" android:background="#F1F1F1"
     android:gravity="center"
     android:text="@string/titreSupprimmerUneActivite"
     android:textSize="25dp"
-    android:textColor="@color/black"
+    android:textColor="@color/firstTextColor"
     android:textStyle="bold"
     android:layout_below="@+id/toolbarAct"
     android:layout_centerHorizontal="true"/>

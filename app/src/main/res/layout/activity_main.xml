@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:background="#F1F1F1">
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/backgroundColor">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#1343D2"
+        android:background="@color/first_blue"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme">
+        <Button
+            android:id="@+id/butDarkMode"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:layout_gravity="left"
+            android:background="@drawable/ic_dark_mode"
+            app:backgroundTint="@color/backgroundColor"/>
         <Button
             android:id="@+id/butnew"
             android:layout_width="45dp"
@@ -16,14 +23,14 @@
             android:layout_gravity="right"
             android:layout_marginRight="15dp"
             android:background="@drawable/ic_new_user"
-            app:backgroundTint="#F1F1F1"/>
+            app:backgroundTint="@color/backgroundColor"/>
     </androidx.appcompat.widget.Toolbar>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbarMain"
         android:layout_centerVertical="true"
-        android:background="#F1F1F1">
+        android:background="@color/backgroundColor">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,7 +50,7 @@
                 android:layout_marginTop="30dp"
                 android:text="@string/titreMainAct"
                 android:textSize="30dp"
-                android:textColor="@color/black"
+                android:textColor="@color/firstTextColor"
                 android:textStyle="bold" />
             <EditText
                 android:id="@+id/edPrenom"
@@ -68,6 +75,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="40dp"
                 android:text="@string/chargUtilisateur"
+                android:textColor="@color/btnTextColor"
                 app:backgroundTint="#507AEA" />
         </LinearLayout>
     </ScrollView>

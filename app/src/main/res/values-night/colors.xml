@@ -4,8 +4,8 @@
     <color name="second_blue">#0F35A8</color>
     <color name="third_blue">#507AEA</color>
     <!-- for Normal/Light Mode -->
-    <color name="firstTextColor">#FF000000</color>
-    <color name="secondTextColor">#424242</color>
-    <color name="backgroundColor">#F1F1F1</color>
-    <color name="btnTextColor">#F1F1F1</color>
+    <color name="firstTextColor">#F1F1F1</color>
+    <color name="secondTextColor">#858585</color>
+    <color name="backgroundColor">#0C0C0C</color>
+    <color name="btnTextColor">#0C0C0C</color>
 </resources>
