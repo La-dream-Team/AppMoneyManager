@@ -15,7 +15,7 @@
     <string name="toastFormulaire">You have not completed the form correctly !</string>
     <string name="titreMainAct">Login</string>
     <string name="nouvUtilisateur">NEW USER</string>
-    <string name="chargUtilisateur">LOAD USER</string>
+    <string name="chargUtilisateur">CONNECTION</string>
     <string name="dateUser" translatable="false">user.txt</string>
     <string name="dataAccount" translatable="false">account.txt</string>
     <string name="account_name">Account name :</string>

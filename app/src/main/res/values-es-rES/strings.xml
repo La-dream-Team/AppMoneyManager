@@ -15,7 +15,7 @@
     <string name="toastFormulaire">¡ No ha completado el formulario correctamente !</string>
     <string name="titreMainAct">Iniciar sesión</string>
     <string name="nouvUtilisateur">NUEVO USUARIO</string>
-    <string name="chargUtilisateur">CARGAR USUARIO</string>
+    <string name="chargUtilisateur">CONEXIÓN</string>
     <string name="account_name">Nombre de la cuenta :</string>
     <string name="activity_name">Nombre de la actividad :</string>
     <string name="activity_description">Descripción de la actividad :</string>
