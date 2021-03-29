@@ -40,7 +40,7 @@
                 android:id="@+id/logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="60dp"
                 android:src="@drawable/logo">
             </ImageView>
             <TextView
@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="60dp"
                 android:text="@string/chargUtilisateur"
                 android:textColor="@color/btnTextColor"
                 app:backgroundTint="#507AEA" />
