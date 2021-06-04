@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_FIRST_NAME = "fr.Laruchsix.application.name.EXTRA_FIRST_NAME";
     public static final String EXTRA_LAST_NAME = "fr.Laruchsix.application.name.EXTRA_LAST_NAME";
     public static final String EXTRA_ID = "fr.Laruchsix.application.Account.id.EXTRA_ID";
-    //public static final String EXTRA_DEVISE = "fr.Laruchsix.application.devise.EXTRA_DEVISE";
 
     public Context act = this;
     @Override
@@ -68,12 +67,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Button new
+        // Button New User
         Button newuser = findViewById(R.id.butnew);
         newuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent otherActivity = new Intent(getApplicationContext(), formulairePremiereConnexion.class);
+                Intent otherActivity = new Intent(getApplicationContext(),
+                        formulairePremiereConnexion.class);
                 startActivity(otherActivity);
                 finish();
             }

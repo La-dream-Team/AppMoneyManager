@@ -194,13 +194,25 @@ public class Account {
 
     public void fillList (ArrayList<Activity> oldList)
     {
-        Comparator<Activity> c = new Comparator<Activity>() {
+        /*Comparator<Activity> c = new Comparator<Activity>() {
             @Override
             public int compare(Activity o1, Activity o2) {
                 return (int) (o1.getDate().getTime() - o2.getDate().getTime());
             }
         };
-        oldList.sort(c);
+        oldList.sort(c);*/
+        ArrayList<Activity> ret = new ArrayList<>();
+        Activity current;
+        for(int i=0; i<oldList.size() ; i++){
+            current = oldList.get(i);
+            for(int j=(i+1); j<oldList.size() ; j++){
+                Activity newact = oldList.get(j);
+                if(current.getDate().after(newact.getDate()))
+                    current = newact;
+            }
+            ret.add(current);
+        }
+        oldList = ret;
     }
 
     @Override
